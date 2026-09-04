@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #edf1e8;
+  --bg2: #d7dbd2;
+  --fg: #141414;
+  --accent1: #ed6a5a;
+  --accent2: #f4f1bb;
+  --accent3: #9bc1bc;
+  --accent4: #5d576b;
+}
+
+* {
+  /* bold  */
+  font-family: var(--font-2);
+}
+
+body {
+  background-color: var(--bg);
+}
+
+/* ultra light  */
+.font1 {
+  font-family: var(--font-1);
+}
+
+/* medium  */
+.font2 {
+  font-family: var(--font-3);
+}
+
+/* ================== Scrollbar CSS ============== */
+/* ================== Hero Animations ============== */
+
+@keyframes clipReveal {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.initial-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ================== Scrollbar CSS ============== */
+* {
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  /* cursor: none; */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
+}
