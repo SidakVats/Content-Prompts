@@ -1,22 +1,8 @@
 @import "tailwindcss";
 
-:root {
-  --bg: #edf1e8;
-  --bg2: #d7dbd2;
-  --fg: #141414;
-  --accent1: #ed6a5a;
-  --accent2: #f4f1bb;
-  --accent3: #9bc1bc;
-  --accent4: #5d576b;
-}
-
-* {
+body {
   /* bold  */
   font-family: var(--font-2);
-}
-
-body {
-  background-color: var(--bg);
 }
 
 /* ultra light  */
@@ -30,27 +16,30 @@ body {
 }
 
 /* ================== Scrollbar CSS ============== */
-/* ================== Hero Animations ============== */
-
-@keyframes clipReveal {
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-.initial-visible {
-  clip-path: inset(0 0 0 0);
-}
-
-/* ================== Scrollbar CSS ============== */
 * {
-  /* Firefox */
   -ms-overflow-style: none;
-  /* IE and Edge */
   /* cursor: none; */
 }
 
 *::-webkit-scrollbar {
   display: none;
-  /* Chrome, Safari and Opera */
 }
+
+/* ================== Preloader ============== */
+/* Ensures SplitText mask clipping works correctly */
+.hero-title h1,
+.hero-subtitle h3 {
+  overflow: visible;
+}
+
+/* progress-marker font style (not easily expressible in Tailwind) */
+.progress-marker {
+  font-family: "DM Mono", ui-monospace, monospace;
+}
+
+.progress-marker img {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+}
+
