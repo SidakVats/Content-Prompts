@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+/* ============================================================
+   MARQUEE ANIMATION (Brands)
+   ============================================================ */
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee-scroll var(--marquee-duration, 80s) linear infinite;
+  animation-direction: var(--marquee-direction, forwards);
+}
+
 body {
   /* bold  */
   font-family: var(--font-2);

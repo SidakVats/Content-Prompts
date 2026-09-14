@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const font1 = localFont({
   src: "./fonts/font1.ttf",
@@ -30,7 +31,9 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${font1.variable} ${font2.variable} ${font3.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-black">{children}</body>
+      <body className="min-h-full flex flex-col bg-black">
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }

@@ -1,0 +1,133 @@
+"use client";
+
+import React, { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
+
+const About = () => {
+  const rootRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // ── 1. Tagline lines — line-by-line clip from bottom ──
+      const taglineSplit = SplitText.create(".about-tagline p", {
+        type: "lines",
+        mask: "lines",
+      });
+
+      gsap.from(taglineSplit.lines, {
+        scrollTrigger: {
+          trigger: ".about-tagline",
+          start: "top 88%",
+          once: true,
+        },
+        yPercent: 100,
+        duration: 0.9,
+        ease: "power3.out",
+        stagger: 0.12,
+      });
+
+      // ── 2. Big headline — word-by-word clip from bottom ──
+      const headlineSplit = SplitText.create(".about-headline", {
+        type: "words",
+        mask: "words",
+      });
+
+      gsap.from(headlineSplit.words, {
+        scrollTrigger: {
+          trigger: ".about-headline",
+          start: "top 82%",
+          once: true,
+        },
+        yPercent: 100,
+        duration: 1,
+        ease: "power4.out",
+        stagger: 0.1,
+      });
+
+      // ── 3. Subheading — line-by-line clip from bottom ──
+      const subSplit = SplitText.create(".about-subhead", {
+        type: "lines",
+        mask: "lines",
+      });
+
+      gsap.from(subSplit.lines, {
+        scrollTrigger: {
+          trigger: ".about-subhead",
+          start: "top 85%",
+          once: true,
+        },
+        yPercent: 100,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.1,
+      });
+
+      // ── 4. CTA link — clip from bottom ──
+      const linkSplit = SplitText.create(".about-link", {
+        type: "lines",
+        mask: "lines",
+      });
+
+      gsap.from(linkSplit.lines, {
+        scrollTrigger: {
+          trigger: ".about-link",
+          start: "top 92%",
+          once: true,
+        },
+        yPercent: 100,
+        duration: 0.9,
+        ease: "power3.out",
+      });
+    }, rootRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div className="bg-white" ref={rootRef}>
+      {/* ── Tagline ── */}
+      <section className="relative flex flex-col justify-center items-center mx-auto! pt-24! 2xl:pt-32! text-center lg:w-[85%]">
+        <div className="about-tagline max-w-400 mx-auto! md:px-8!">
+          <p className="text-lg md:text-xl font2 leading-tight uppercase md:tracking-[0.05rem]">
+            Big Ideas. Bigger Stories. Biggest Impact.
+          </p>
+          <p className="text-lg md:text-xl font2 uppercase leading-tight md:tracking-[0.05rem]">
+            We are BigFlick.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Big headline ── */}
+      <section className="relative w-full h-full flex justify-center items-center p-8! pb-16! text-center font-medium leading-[0.9] lg:leading-[0.85] lg:p-0!">
+        <h1 className="about-headline relative z-10 w-full pt-5! text-[#331C4F] lg:p-8! text-[14.5vw] lg:text-[8vw] pointer-events-none uppercase">
+          Flick <span className="text-[14.5vw] lg:text-[5.5vw]">That</span> Stick
+        </h1>
+      </section>
+
+      {/* ── Subheading + CTA ── */}
+      <section className="w-full lg:pt-16!">
+        <div className="max-w-300 mx-auto! px-5! lg:px-8! flex flex-col gap-16">
+          <div className="about-subhead lg:w-[90%] uppercase 2xl:w-full mx-auto! text-center text-[6vw] lg:text-[2.5rem] font2 leading-none 2xl:leading-[0.9]">
+            Designed by experts, for creators, brands, and everyone who dares to
+            dream.
+          </div>
+
+          <div className="flex flex-col gap-16 mx-auto! mb-16! lg:mb-20! 2xl:mb-32! text-center lg:w-[90%]">
+            <a
+              href="/"
+              className="about-link text-lg md:text-xl tracking-wide w-max mx-auto! font2 text-[#331C4F] hover:opacity-70 transition-opacity"
+            >
+              [ &nbsp;Discover Our Stories&nbsp; ]
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default About;

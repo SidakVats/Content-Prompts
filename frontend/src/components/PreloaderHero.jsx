@@ -1,9 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import { SplitText } from "gsap/SplitText";
+import MenuNav from "@/components/MenuNav";
+import Brands from "./Brands";
+import About from "./About";
 
 gsap.registerPlugin(Flip, SplitText);
 
@@ -12,20 +15,6 @@ export default function PreloaderHero() {
   const preloaderBgRef = useRef(null);
   const preloaderGridRef = useRef(null);
   const progressMarkerRef = useRef(null);
-  const plusRef = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen((prev) => {
-      const next = !prev;
-      gsap.to(plusRef.current, {
-        rotation: next ? 45 : 0,
-        duration: 0.4,
-        ease: "power3.out",
-      });
-      return next;
-    });
-  };
 
   useEffect(() => {
     const preloader = preloaderRef.current;
@@ -210,7 +199,7 @@ export default function PreloaderHero() {
       {/* Preloader */}
       <div
         ref={preloaderRef}
-        className="preloader fixed top-0 left-0 w-full h-svh overflow-hidden z-2"
+        className="preloader fixed top-0 left-0 w-full h-svh overflow-hidden z-50"
       >
         <div
           ref={preloaderBgRef}
@@ -229,80 +218,39 @@ export default function PreloaderHero() {
       </div>
 
       {/* ── Menu button ── */}
-      <nav className="fixed top-6 right-6 z-50">
-        {/* Outer ring */}
-        <div
-          className="rounded-lg p-1"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(255,255,255,0.12), rgba(255,255,255,0))",
-          }}
-        >
-          {/* Inner button */}
-          <button
-            onClick={toggleMenu}
-            className="flex items-center justify-between bg-black/80 px-4 py-2.5 rounded-[5px] cursor-pointer"
-            style={{
-              width: "160px",
-              border: "1px solid rgba(255,255,255,0.15)",
-            }}
-          >
-            <span className="overflow-hidden" style={{ lineHeight: 0 }}>
-              <span
-                className="menu-label block font3 text-xs text-white uppercase"
-                style={{
-                  letterSpacing: "0.1em",
-                  lineHeight: 1,
-                }}
-              >
-                Menu
-              </span>
-            </span>
-            <span
-              ref={plusRef}
-              className="text-white select-none inline-block"
-              style={{
-                transformOrigin: "center",
-                fontSize: "18px",
-                fontWeight: 300,
-                lineHeight: 1,
-              }}
-            >
-              +
-            </span>
-          </button>
-        </div>
-      </nav>
+      <MenuNav />
 
       {/* Hero */}
-      <section className="relative w-full h-svh p-10 max-md:p-8 flex justify-between items-end max-md:flex-col max-md:justify-end max-md:items-start max-md:gap-8 overflow-hidden">
+      <section className="relative w-full h-svh p-10 max-md:p-4 flex justify-between items-end max-md:flex-col max-md:justify-end max-md:items-start max-md:gap-4 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full">
           <video
             src="/hero-video.mp4"
-            width="100%"
-            height="auto"
             autoPlay
             muted
             loop
             playsInline
+            className="w-full h-full object-cover"
           />
         </div>
 
         <div className="hero-title relative z-1">
-          <h1 className="text-[#c4d600] font-extrabold uppercase leading-[0.8] text-[clamp(3rem,6.5vw,25rem)] tracking-tight">
+          <h1 className="text-[#c4d600] uppercase leading-[1.1] text-[10.5vw] md:text-[6.5vw] tracking-tight">
             Content
           </h1>
-          <h1 className="text-[#c4d600] font-extrabold uppercase leading-[0.8] text-[clamp(3rem,9.5vw,25rem)] tracking-tight">
+          <h1 className="text-[#c4d600] uppercase leading-[0.8] text-[15vw] md:text-[9.5vw] tracking-tight">
             Prompts
           </h1>
         </div>
 
         <div className="hero-subtitle relative z-1">
-          <h3 className="text-white font1 leading-tight tracking-wide w-120 text-[clamp(2rem,1vw,4rem)]">
+          <h3 className="text-white font1 leading-[0.9] uppercase tracking-tighter md:w-100 text-[9vw] md:text-[2vw]">
             Prompted by Strategy. Powered by Creativity.
           </h3>
         </div>
       </section>
+
+      {/* <Brands /> */}
+      <About/>
     </>
   );
 }
