@@ -88,14 +88,14 @@ const About = () => {
   }, []);
 
   return (
-    <div className="bg-white" ref={rootRef}>
+    <div className="bg-[#edeee8]" ref={rootRef}>
       {/* ── Tagline ── */}
-      <section className="relative flex flex-col justify-center items-center mx-auto! pt-24! 2xl:pt-32! text-center lg:w-[85%]">
+      <section className="relative flex flex-col justify-center items-center mx-auto! pt-14! 2xl:pt-20! text-center lg:w-[85%]">
         <div className="about-tagline max-w-400 mx-auto! md:px-8!">
-          <p className="text-lg md:text-xl font2 leading-tight uppercase md:tracking-[0.05rem]">
+          <p className="text-lg md:text-2xl font-medium leading-tight">
             Big Ideas. Bigger Stories. Biggest Impact.
           </p>
-          <p className="text-lg md:text-xl font2 uppercase leading-tight md:tracking-[0.05rem]">
+          <p className="text-lg md:text-2xl leading-tight mt-1">
             We are BigFlick.
           </p>
         </div>
@@ -103,20 +103,20 @@ const About = () => {
 
       {/* ── Big headline ── */}
       <section className="relative w-full h-full flex justify-center items-center p-8! pb-16! text-center font-medium leading-[0.9] lg:leading-[0.85] lg:p-0!">
-        <h1 className="about-headline relative z-10 w-full pt-5! text-[#331C4F] lg:p-8! text-[14.5vw] lg:text-[8vw] pointer-events-none uppercase">
-          Flick <span className="text-[14.5vw] lg:text-[5.5vw]">That</span> Stick
+        <h1 className="about-headline font5 relative z-10 w-full pt-5! text-[#331C4F] lg:p-8! text-[19vw] lg:text-[11vw] 2xl:text-[10vw] pointer-events-none uppercase">
+          Flick That Stick
         </h1>
       </section>
 
       {/* ── Subheading + CTA ── */}
-      <section className="w-full lg:pt-16!">
-        <div className="max-w-300 mx-auto! px-5! lg:px-8! flex flex-col gap-16">
-          <div className="about-subhead lg:w-[90%] uppercase 2xl:w-full mx-auto! text-center text-[6vw] lg:text-[2.5rem] font2 leading-none 2xl:leading-[0.9]">
+      <section className="w-full lg:pt-20!">
+        <div className="max-w-300 mx-auto! px-5! lg:px-8! flex flex-col gap-3 lg:gap-10 2xl:gap-16">
+          <div className="about-subhead lg:w-[90%] uppercase 2xl:w-full mx-auto! text-center text-[6vw] lg:text-[2.2rem] font2 leading-none 2xl:leading-[0.9]">
             Designed by experts, for creators, brands, and everyone who dares to
             dream.
           </div>
 
-          <div className="flex flex-col gap-16 mx-auto! mb-16! lg:mb-20! 2xl:mb-32! text-center lg:w-[90%]">
+          <div className="flex flex-col gap-16 mx-auto! text-center lg:w-[90%]">
             <a
               href="/"
               className="about-link text-lg md:text-xl tracking-wide w-max mx-auto! font2 text-[#331C4F] hover:opacity-70 transition-opacity"

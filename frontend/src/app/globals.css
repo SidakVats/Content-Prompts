@@ -16,7 +16,7 @@
 
 body {
   /* bold  */
-  font-family: var(--font-2);
+  font-family: var(--font-4);
 }
 
 /* ultra light  */
@@ -29,6 +29,16 @@ body {
   font-family: var(--font-3);
 }
 
+/* bold  */
+.font3 {
+  font-family: var(--font-2);
+}
+
+/* Hero Text  */
+.font5 {
+  font-family: var(--font-5);
+}
+
 /* ================== Scrollbar CSS ============== */
 * {
   -ms-overflow-style: none;
@@ -38,6 +48,10 @@ body {
 *::-webkit-scrollbar {
   display: none;
 }
+
+/* ================== Otsuka 3D Cards ============== */
+.otsuka-cube  { transform-style: preserve-3d; }
+.otsuka-face  { backface-visibility: hidden; }
 
 /* ================== Preloader ============== */
 /* Ensures SplitText mask clipping works correctly */

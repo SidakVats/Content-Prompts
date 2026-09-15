@@ -263,7 +263,7 @@ export default function MenuNav() {
         >
           <button
             onClick={toggleMenu}
-            className="flex items-center justify-between w-30 md:w-40 bg-black/80 px-4 py-2.5 rounded-[5px] cursor-pointer"
+            className="flex items-center justify-between w-30 md:w-40 bg-black/90 px-4 py-2.5 rounded-[5px] cursor-pointer"
             style={{
               border: "1px solid rgba(255,255,255,0.1)",
             }}
@@ -275,7 +275,7 @@ export default function MenuNav() {
             >
               <span
                 ref={labelRef}
-                className="menu-label block font3 text-xs text-white uppercase will-change-transform"
+                className="menu-label block font-medium text-xs text-white uppercase will-change-transform"
                 style={{ letterSpacing: "0.1em", lineHeight: 1 }}
               >
                 Menu
