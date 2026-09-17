@@ -2,6 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const cardsData = [
   {
@@ -167,8 +170,34 @@ function FaceContent({ tag, title, description, price, thumbImg }) {
   );
 }
 
-function Card({ tag, title, description, price, thumbImg }) {
+function Card({ tag, title, description, price, thumbImg, index }) {
   const cubeRef = useRef(null);
+  const wrapperRef = useRef(null);
+
+  // ── Reveal animation ──────────────────────────────────
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 28 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: "power3.out",
+        delay: (index % 4) * 0.08, // subtle row-based stagger
+        scrollTrigger: {
+          trigger: el,
+          start: "top 88%",
+          once: true,
+        },
+      }
+    );
+
+    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
+  }, [index]);
 
   useEffect(() => {
     const cube = cubeRef.current;
@@ -245,7 +274,10 @@ function Card({ tag, title, description, price, thumbImg }) {
 
   return (
     /* Perspective wrapper */
-    <div className="" style={{ width: W, height: H, perspective: "2000px" }}>
+    <div
+      ref={wrapperRef}
+      style={{ width: W, height: H, perspective: "2000px", opacity: 0 }}
+    >
       {/* Cube — preserve-3d via .otsuka-cube in globals.css */}
       <div
         ref={cubeRef}
@@ -336,7 +368,7 @@ export default function OtsukaCards() {
     <section className="relative w-full bg-[#edeee8] py-20 px-8 2xl:px-30 overflow-hidden">
       <div className="grid grid-cols-1 gap-y-8 justify-items-center sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {cardsData.map((card, i) => (
-          <Card key={i} {...card} />
+          <Card key={i} index={i} {...card} />
         ))}
       </div>
     </section>

@@ -7,6 +7,7 @@ import { SplitText } from "gsap/SplitText";
 import MenuNav from "@/components/MenuNav";
 import Brands from "./Brands";
 import About from "./About";
+import HamburgerMenu from "./HamburgerMenu.jsx";
 
 gsap.registerPlugin(Flip, SplitText);
 
@@ -26,18 +27,29 @@ export default function PreloaderHero() {
     const hasSeenPreloader = sessionStorage.getItem("preloader-done");
     if (hasSeenPreloader) {
       preloader.remove();
-      // Still animate hero text in immediately
-      const splitCopy = (selector, type, className) =>
-        SplitText.create(selector, {
-          type,
-          [`${type}Class`]: className,
-          mask: type,
-        });
-      const titleChars   = splitCopy(".hero-title h1", "chars", "char").chars;
-      const subtitleLines = splitCopy(".hero-subtitle h3", "lines", "line").lines;
-      const menuWord     = splitCopy(".menu-label", "words", "word").words;
-      gsap.set([titleChars, subtitleLines, menuWord], { y: "0%" });
-      return;
+      // Defer SplitText calls until after React has committed the DOM
+      const raf = requestAnimationFrame(() => {
+        const titleEl    = document.querySelector(".hero-title h1");
+        const subtitleEl = document.querySelector(".hero-subtitle h3");
+        const menuEl     = document.querySelector(".menu-label");
+
+        const splitCopy = (el, type, className) => {
+          if (!el) return { [type]: [] };
+          return SplitText.create(el, {
+            type,
+            [`${type}Class`]: className,
+            mask: type,
+          });
+        };
+
+        const titleChars    = splitCopy(titleEl,    "chars", "char").chars;
+        const subtitleLines = splitCopy(subtitleEl, "lines", "line").lines;
+        const menuWord      = menuEl ? splitCopy(menuEl, "words", "word").words : [];
+
+        const targets = [...titleChars, ...subtitleLines, ...menuWord].filter(Boolean);
+        if (targets.length) gsap.set(targets, { y: "0%" });
+      });
+      return () => cancelAnimationFrame(raf);
     }
 
     const isDesktop = window.innerWidth >= 1000;
@@ -125,18 +137,24 @@ export default function PreloaderHero() {
       }
     }
 
-    const splitCopy = (selector, type, className) =>
-      SplitText.create(selector, {
+    const splitCopy = (selector, type, className) => {
+      const el = typeof selector === "string"
+        ? document.querySelector(selector)
+        : selector;
+      if (!el) return { chars: [], lines: [], words: [] };
+      return SplitText.create(el, {
         type,
         [`${type}Class`]: className,
         mask: type,
       });
+    };
 
-    const titleChars    = splitCopy(".hero-title h1", "chars", "char").chars;
+    const titleChars    = splitCopy(".hero-title h1",   "chars", "char").chars;
     const subtitleLines = splitCopy(".hero-subtitle h3", "lines", "line").lines;
-    const menuWord      = splitCopy(".menu-label", "words", "word").words;
+    const menuWord      = splitCopy(".menu-label",       "words", "word").words;
 
-    gsap.set([titleChars, subtitleLines, menuWord], { y: "100%" });
+    const splitTargets = [...titleChars, ...subtitleLines, ...menuWord].filter(Boolean);
+    if (splitTargets.length) gsap.set(splitTargets, { y: "100%" });
 
     const timeline = gsap.timeline({ delay: 1 });
 
@@ -256,7 +274,8 @@ export default function PreloaderHero() {
       </div>
 
       {/* ── Menu button ── */}
-      <MenuNav />
+      {/* <MenuNav /> */}
+      <HamburgerMenu />
 
       {/* Hero */}
       <section className="relative w-full h-svh p-10 max-md:p-4 flex justify-between items-end max-md:flex-col max-md:justify-end max-md:items-start max-md:gap-4 overflow-hidden">
