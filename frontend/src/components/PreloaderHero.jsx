@@ -255,7 +255,7 @@ export default function PreloaderHero() {
       {/* Preloader */}
       <div
         ref={preloaderRef}
-        className="preloader fixed top-0 left-0 w-full h-svh overflow-hidden z-50"
+        className="preloader fixed top-0 left-0 w-full h-svh overflow-hidden z-100"
       >
         <div
           ref={preloaderBgRef}
