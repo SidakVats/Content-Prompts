@@ -121,11 +121,11 @@ function InfiniteMarquee({ items, speed = "slow", pauseOnHover = true }) {
 
 export default function Brands() {
   return (
-    <section className="w-full text-center bg-white px-5 py-16 md:py-24">
-      <p className="text-xl md:text-4xl font3 tracking-wide text-black/90 mb-2">
+    <section className="w-full text-center bg-black px-5 pb-16 md:pb-24">
+      <p className="text-xl md:text-5xl tracking-wide text-white mb-2">
         Trusted by leading enterprises
       </p>
-      <p className="text-xs md:text-lg tracking-widest text-black/60 mb-12">
+      <p className="text-xs md:text-lg tracking-widest text-white mb-12">
         Powering mission-critical workflows for global teams that demand
         reliability, security, and scale
       </p>

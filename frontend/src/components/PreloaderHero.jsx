@@ -4,8 +4,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import { SplitText } from "gsap/SplitText";
-import MenuNav from "@/components/MenuNav";
-import Brands from "./Brands";
 import About from "./About";
 import HamburgerMenu from "./HamburgerMenu.jsx";
 
