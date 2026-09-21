@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import { SplitText } from "gsap/SplitText";
 import About from "./About";
-import HamburgerMenu from "./HamburgerMenu.jsx";
 
 gsap.registerPlugin(Flip, SplitText);
 
@@ -14,6 +13,8 @@ export default function PreloaderHero() {
   const preloaderBgRef = useRef(null);
   const preloaderGridRef = useRef(null);
   const progressMarkerRef = useRef(null);
+  // Controls React unmount of preloader — never call .remove() on the node directly
+  const [preloaderDone, setPreloaderDone] = useState(false);
 
   useEffect(() => {
     const preloader = preloaderRef.current;
@@ -24,7 +25,8 @@ export default function PreloaderHero() {
     // ── Once-per-session: skip preloader if already seen ──
     const hasSeenPreloader = sessionStorage.getItem("preloader-done");
     if (hasSeenPreloader) {
-      preloader.remove();
+      // Already seen — skip preloader entirely via React state
+      setPreloaderDone(true);
       // Defer SplitText calls until after React has committed the DOM
       const raf = requestAnimationFrame(() => {
         const titleEl    = document.querySelector(".hero-title h1");
@@ -186,8 +188,10 @@ export default function PreloaderHero() {
       2.75,
     );
 
-    // Phase 4 — remove background rect (safe: progressMarker is still in DOM)
-    timeline.add(() => preloaderBg.remove(), "+=0.1");
+    // Phase 4 — hide background rect via style, don't remove (React owns the node)
+    timeline.add(() => {
+      if (preloaderBg) preloaderBg.style.display = "none";
+    }, "+=0.1");
 
     // Phase 5 — tiles collapse
     const collapsingTiles = tiles.filter((tile) => tile !== finalStop);
@@ -231,10 +235,10 @@ export default function PreloaderHero() {
       "<0.25",
     );
 
-    // Phase 7 — only NOW remove the preloader shell (all animations done)
+    // Phase 7 — let React unmount the preloader shell (never call .remove() on React nodes)
     timeline.add(() => {
-      preloader.remove();
       sessionStorage.setItem("preloader-done", "1");
+      setPreloaderDone(true);
     });
 
     return () => {
@@ -250,30 +254,31 @@ export default function PreloaderHero() {
 
   return (
     <>
-      {/* Preloader */}
-      <div
-        ref={preloaderRef}
-        className="preloader fixed top-0 left-0 w-full h-svh overflow-hidden z-100"
-      >
+      {/* Preloader — rendered by React, removed by React via state */}
+      {!preloaderDone && (
         <div
-          ref={preloaderBgRef}
-          className="absolute w-full h-full bg-[#e1e1e1] z-0"
-        />
-        <div
-          ref={preloaderGridRef}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-wrap z-1"
-        />
-        <div
-          ref={progressMarkerRef}
-          className="progress-marker absolute top-0 left-0 z-2 flex items-center justify-center bg-white font-mono font-medium text-[0.85rem] text-black will-change-transform"
+          ref={preloaderRef}
+          className="preloader fixed top-0 left-0 w-full h-svh overflow-hidden z-100"
         >
-          <p>25</p>
+          <div
+            ref={preloaderBgRef}
+            className="absolute w-full h-full bg-[#e1e1e1] z-0"
+          />
+          <div
+            ref={preloaderGridRef}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-wrap z-1"
+          />
+          <div
+            ref={progressMarkerRef}
+            className="progress-marker absolute top-0 left-0 z-2 flex items-center justify-center bg-white font-mono font-medium text-[0.85rem] text-black will-change-transform"
+          >
+            <p>25</p>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* ── Menu button ── */}
       {/* <MenuNav /> */}
-      <HamburgerMenu />
 
       {/* Hero */}
       <section className="relative w-full h-svh p-10 max-md:p-4 flex justify-between items-end max-md:flex-col max-md:justify-end max-md:items-start max-md:gap-4 overflow-hidden">

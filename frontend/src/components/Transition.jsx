@@ -1,64 +1,159 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 
-let _animateTransition = null;
+// ─── Shared imperative trigger ────────────────────────────────────────────────
+// Stores { fn, clickX, clickY } so the grid knows where the click came from
+let _trigger = null;
 
-export function animateTransition() {
-  if (_animateTransition) return _animateTransition();
+export function animateTransition(clickX = window.innerWidth / 2, clickY = window.innerHeight / 2) {
+  if (_trigger) return _trigger(clickX, clickY);
   return Promise.resolve();
 }
 
-// Three panels — each covers the full screen but offset in timing
-const PANEL_COLORS = ["#141414", "#ed6a5a", "#edf1e8"];
+// ─── Grid config ─────────────────────────────────────────────────────────────
+const COLS = 8;
+const ROWS = 6;
+const TILE_COLOR = "#000"; // brand yellow from preloader
+const DOT_COLOR  = "#fff";
 
 export default function Transition() {
-  const panelsRef = useRef([]);
+  const gridRef      = useRef(null);
+  const tilesRef     = useRef([]);
+  const pathname     = usePathname();
+  const isFirstMount = useRef(true);
+  const clickOrigin  = useRef({ x: 0, y: 0 });
 
+  // Build tiles once on mount
   useEffect(() => {
-    const panels = panelsRef.current;
+    const grid = gridRef.current;
+    if (!grid) return;
 
-    // ── Mount reveal: panels are covering the screen, peel them off upward ──
-    gsap.set(panels, { yPercent: 0 });
+    const tiles = [];
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        const tile = document.createElement("div");
+        tile.style.cssText = `
+          position: absolute;
+          top:    ${(r / ROWS) * 100}%;
+          left:   ${(c / COLS) * 100}%;
+          width:  ${100 / COLS}%;
+          height: ${100 / ROWS}%;
+          background: ${TILE_COLOR};
+          transform-origin: center;
+          will-change: transform, opacity;
+        `;
 
-    gsap.to(panels, {
-      yPercent: -100,
-      duration: 0.7,
-      stagger: 0.08,
-      ease: "power4.inOut",
-    });
+        // Tiny dot in center of each tile for texture
+        const dot = document.createElement("span");
+        dot.style.cssText = `
+          position: absolute;
+          top: 50%; left: 50%;
+          transform: translate(-50%, -50%);
+          width: 4px; height: 4px;
+          border-radius: 50%;
+          background: ${DOT_COLOR};
+          opacity: 0.25;
+        `;
+        tile.appendChild(dot);
+        grid.appendChild(tile);
+        tiles.push(tile);
+      }
+    }
+    tilesRef.current = tiles;
 
-    // ── Imperative trigger for link navigation ──
-    _animateTransition = () =>
+    // Hide all tiles initially
+    gsap.set(tiles, { scale: 0, opacity: 1 });
+
+    // ── Register imperative trigger ──
+    _trigger = (cx, cy) =>
       new Promise((resolve) => {
-        // Reset panels below the screen
-        gsap.set(panels, { yPercent: 100 });
+        clickOrigin.current = { x: cx, y: cy };
 
-        gsap.to(panels, {
-          yPercent: 0,
-          duration: 0.65,
-          stagger: 0.08,
-          ease: "power4.inOut",
-          onComplete: resolve,
+        const W = window.innerWidth;
+        const H = window.innerHeight;
+
+        // Sort tiles by distance from click origin — nearest animates first
+        const sorted = [...tiles].sort((a, b) => {
+          const distA = distFromClick(a, cx, cy, W, H);
+          const distB = distFromClick(b, cx, cy, W, H);
+          return distA - distB;
+        });
+
+        // Kill any leftover tweens
+        gsap.killTweensOf(tiles);
+
+        // Phase 1: tiles scale in from click origin outward
+        gsap.set(tiles, { scale: 0, opacity: 1 });
+        gsap.to(sorted, {
+          scale: 1,
+          duration: 0.45,
+          ease: "power3.inOut",
+          stagger: {
+            each: 0.018,
+            from: 0, // already sorted by distance
+          },
+          onComplete: resolve, // resolve when last tile is fully in
         });
       });
 
     return () => {
-      _animateTransition = null;
+      _trigger = null;
+      tiles.forEach((t) => t.remove());
+      tilesRef.current = [];
     };
   }, []);
 
+  // ── Reveal new page: scatter tiles outward from origin ──
+  useEffect(() => {
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
+
+    const tiles = tilesRef.current;
+    if (!tiles.length) return;
+
+    const { x: cx, y: cy } = clickOrigin.current;
+    const W = window.innerWidth;
+    const H = window.innerHeight;
+
+    const sorted = [...tiles].sort((a, b) => {
+      const distA = distFromClick(a, cx, cy, W, H);
+      const distB = distFromClick(b, cx, cy, W, H);
+      return distA - distB;
+    });
+
+    // Short pause so new page has time to mount, then scatter outward
+    gsap.delayedCall(0.05, () => {
+      gsap.to(sorted, {
+        scale: 0,
+        duration: 0.4,
+        ease: "power3.inOut",
+        stagger: {
+          each: 0.015,
+          from: sorted.length - 1, // reverse — furthest first on exit
+        },
+      });
+    });
+  }, [pathname]);
+
   return (
-    <div className="fixed inset-0 z-100000 pointer-events-none overflow-hidden">
-      {PANEL_COLORS.map((color, i) => (
-        <div
-          key={i}
-          ref={(el) => (panelsRef.current[i] = el)}
-          className="absolute inset-0 will-change-transform"
-          style={{ backgroundColor: color }}
-        />
-      ))}
-    </div>
+    <div
+      ref={gridRef}
+      className="fixed inset-0 pointer-events-none"
+      style={{ zIndex: 99999 }}
+    />
   );
+}
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+function distFromClick(tileEl, cx, cy, W, H) {
+  const rect = tileEl.getBoundingClientRect();
+  // Tile center in viewport coords
+  const tx = rect.left + rect.width  / 2;
+  const ty = rect.top  + rect.height / 2;
+  return Math.hypot(tx - cx, ty - cy);
 }

@@ -1,6 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import HamburgerMenu from "@/components/HamburgerMenu";
+import Transition from "@/components/Transition";
 
 const font1 = localFont({
   src: "./fonts/font1.ttf",
@@ -44,6 +46,8 @@ export default function RootLayout({ children }) {
       className={`${font1.variable} ${font2.variable} ${font3.variable} ${font4.variable} ${font5.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-black">
+        <Transition />
+        <HamburgerMenu />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

@@ -2,7 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import gsap from "gsap";
+import { animateTransition } from "./Transition";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -11,7 +13,7 @@ const links = [
   { title: "Agency", href: "/" },
   { title: "Expertise", href: "/" },
   { title: "Careers", href: "/" },
-  { title: "Contact", href: "/" },
+  { title: "Contact", href: "/contact" },
 ];
 
 const footerLinks = [
@@ -54,7 +56,6 @@ const CLOSE_W = 160;
 const CLOSE_H = 44;
 const EASE = "power3.inOut";
 
-// Returns open width capped to viewport width minus a small margin
 function getOpenWidth() {
   if (typeof window === "undefined") return 480;
   return Math.min(480, window.innerWidth - 46);
@@ -62,10 +63,11 @@ function getOpenWidth() {
 
 // ─── Nav (inner content) ─────────────────────────────────────────────────────
 
-function Nav() {
+function Nav({ onNavigate }) {
   const linkRefs = useRef([]);
   const footerRefs = useRef([]);
   const dividerRef = useRef(null);
+  const router = useRouter();
 
   useEffect(() => {
     gsap.set(dividerRef.current, {
@@ -98,6 +100,13 @@ function Nav() {
     };
   }, []);
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    onNavigate(); // close menu
+    // Pass click coordinates so the ripple originates from where the user clicked
+    animateTransition(e.clientX, e.clientY).then(() => router.push(href));
+  };
+
   return (
     <div
       className="flex flex-col justify-between box-border"
@@ -112,13 +121,14 @@ function Nav() {
               className="will-change-transform overflow-hidden"
               style={{ transformStyle: "preserve-3d" }}
             >
-              <Link
+              <a
                 href={href}
+                onClick={(e) => handleNavClick(e, href)}
                 className="block no-underline py-1 text-4xl sm:text-5xl
-                           text-white/70 hover:text-white transition-colors duration-300"
+                           text-white/70 hover:text-white transition-colors duration-300 cursor-pointer"
               >
                 {title}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
@@ -138,13 +148,14 @@ function Nav() {
               ref={(el) => (footerRefs.current[i] = el)}
               className="will-change-transform"
             >
-              <Link
+              <a
                 href={href}
+                onClick={(e) => handleNavClick(e, href)}
                 className="no-underline font-medium tracking-wide
-                           text-white/35 hover:text-white/80 transition-colors duration-250"
+                           text-white/35 hover:text-white/80 transition-colors duration-250 cursor-pointer"
               >
                 {title}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
@@ -155,10 +166,27 @@ function Nav() {
 
 // ─── Button ──────────────────────────────────────────────────────────────────
 
-function Button({ isActive, toggleMenu }) {
+function Button({ isActive, toggleMenu, resetRef }) {
   const labelRef = useRef(null);
   const labelWrapRef = useRef(null);
   const plusRef = useRef(null);
+
+  // Expose a reset function so external close (click-outside) can restore button state
+  useEffect(() => {
+    if (resetRef) {
+      resetRef.current = () => {
+        gsap.killTweensOf(labelRef.current);
+        gsap.killTweensOf(labelWrapRef.current);
+        gsap.killTweensOf(plusRef.current);
+        // Restore label text
+        if (labelRef.current) labelRef.current.textContent = "Menu";
+        // Animate back to closed positions
+        gsap.to(labelRef.current, { yPercent: 0, opacity: 1, duration: 0.22, ease: "power2.out" });
+        gsap.to(labelWrapRef.current, { x: 0, duration: 0.4, ease: "power3.out" });
+        gsap.to(plusRef.current, { rotation: 0, duration: 0.4, ease: "power3.out" });
+      };
+    }
+  }, [resetRef]);
 
   const handleClick = () => {
     const opening = !isActive;
@@ -236,11 +264,34 @@ export default function HamburgerMenu() {
   const [isActive, setIsActive] = useState(false);
   const [navMounted, setNavMounted] = useState(false);
   const panelRef = useRef(null);
+  const wrapperRef = useRef(null);
   const isAnimating = useRef(false);
+  const buttonResetRef = useRef(null); // receives reset fn from Button
 
   useEffect(() => {
     gsap.set(panelRef.current, { width: CLOSE_W, height: CLOSE_H });
   }, []);
+
+  // ─── Close on outside click ───────────────────────────────────────────────
+  useEffect(() => {
+    if (!isActive) return;
+
+    const handleOutsideClick = (e) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+        closeMenu();
+      }
+    };
+
+    // Delay so the toggle click itself doesn't immediately trigger this
+    const timer = setTimeout(() => {
+      document.addEventListener("mousedown", handleOutsideClick);
+    }, 0);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [isActive]);
 
   const openMenu = () => {
     isAnimating.current = true;
@@ -258,8 +309,11 @@ export default function HamburgerMenu() {
   };
 
   const closeMenu = () => {
+    if (isAnimating.current) return;
     isAnimating.current = true;
     setIsActive(false);
+    // Reset button label + position regardless of how close was triggered
+    if (buttonResetRef.current) buttonResetRef.current();
     gsap.to(panelRef.current, {
       width: CLOSE_W,
       height: CLOSE_H,
@@ -279,7 +333,7 @@ export default function HamburgerMenu() {
   };
 
   return (
-    <div className="fixed top-3 right-3 md:top-6 md:right-6 z-50">
+    <div ref={wrapperRef} className="fixed top-3 right-3 md:top-6 md:right-6 z-50">
       {/* Gradient border shell */}
       <div
         className="p-1 rounded-[7px]"
@@ -302,10 +356,10 @@ export default function HamburgerMenu() {
         >
           {/* Button pinned top-right */}
           <div className="absolute top-0 right-0 z-10">
-            <Button isActive={isActive} toggleMenu={toggle} />
+            <Button isActive={isActive} toggleMenu={toggle} resetRef={buttonResetRef} />
           </div>
 
-          {navMounted && <Nav />}
+          {navMounted && <Nav onNavigate={closeMenu} />}
         </div>
       </div>
     </div>
