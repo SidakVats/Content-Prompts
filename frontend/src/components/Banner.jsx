@@ -22,8 +22,8 @@ const Banner = () => {
             </div>
 
             <div className="w-full md:w-1/2">
-              <p className="text-[0.9rem] md:text-[1.25rem] font-normal leading-tight tracking-[0.1rem]">
-                We create for the ecosystem of the modern mind, where attention is won and memory is made. Our content lives on the screens you stare at, built with a contemporary rhythm and depth that doesn't just capture the moment, but lives on in it long after.
+              <p className="text-[0.9rem] md:text-[1.25rem] leading-tight tracking-[0.1rem]">
+                We create for the ecosystem of the modern mind, where attention is won and memory is made. 
               </p>
             </div>
           </div>

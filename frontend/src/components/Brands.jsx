@@ -108,7 +108,7 @@ function InfiniteMarquee({ items, speed = "slow", pauseOnHover = true }) {
     >
       <div
         ref={scrollerRef}
-        className={`flex items-center gap-10 md:gap-14 w-max ${ready ? "animate-marquee" : ""}`}
+        className={`flex items-center gap-0 md:gap-14 w-max ${ready ? "animate-marquee" : ""}`}
       >
         {/* Render the list twice inside the scroller for seamless loop */}
         {[...items, ...items].map((item, idx) => (

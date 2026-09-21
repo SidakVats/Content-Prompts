@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -107,53 +107,93 @@ const cardsData = [
 
 const PARALLAX_STRENGTH = 40;
 
-// Card dimensions — single source of truth used for both styles and GSAP math
+// Card dimensions — desktop
 const W = 370; // card width  (px)
 const H = 430; // card height (px)
 const D = 340; // card depth  (px)
 
-function FaceContent({ tag, title, description, price, thumbImg }) {
+// Card dimensions — mobile (compact)
+const W_M = 300;
+const H_M = 340;
+const D_M = 260;
+
+function getIsMobile() {
+  if (typeof window === "undefined") return false;
+  return window.innerWidth < 640;
+}
+
+function FaceContent({ tag, title, description, price, thumbImg, compact }) {
   return (
     <>
-      {/* Thumbnail — original position preserved */}
+      {/* Thumbnail */}
       <img
         src={thumbImg}
         alt={title}
-        className="self-end w-40 h-50 mb-auto object-cover block rounded-xl"
+        className={
+          compact
+            ? "self-end w-full h-40 mb-1 object-cover block rounded-lg"
+            : "self-end w-40 h-50 mb-auto object-cover block rounded-xl"
+        }
       />
 
       {/* Tag */}
-      <span className="text-[0.6rem] font-medium tracking-[0.15em] text-neutral-400 mb-1 block">
+      <span
+        className={`font-medium tracking-[0.15em] text-neutral-400 mb-1 block ${
+          compact ? "text-[0.55rem]" : "text-[0.6rem]"
+        }`}
+      >
         {tag}
       </span>
 
       {/* Title */}
-      <h2 className="text-[1.7rem] font-bold leading-tight mb-1.5">
+      <h2
+        className={`font-bold leading-tight mb-1 ${
+          compact ? "text-[1.25rem]" : "text-[1.7rem] mb-1.5"
+        }`}
+      >
         {title}
       </h2>
 
       {/* Description */}
-      <p className="text-[0.8rem] text-neutral-600 leading-relaxed mb-3">
+      <p
+        className={`text-neutral-600 leading-relaxed ${
+          compact ? "mb-2 line-clamp-3" : "text-[0.8rem] mb-3"
+        }`}
+      >
         {description}
       </p>
 
       {/* Divider */}
-      <div className="h-px bg-neutral-200 mb-3" />
+      <div className={`h-px bg-neutral-200 ${compact ? "mb-2" : "mb-3"}`} />
 
       {/* Price row */}
       <div className="flex items-end justify-between">
         <div>
-          <p className="text-[0.7rem]  tracking-widest text-neutral-400 mb-0.5">
+          <p
+            className={`tracking-widest text-neutral-400 mb-0.5 ${
+              compact ? "text-[0.6rem]" : "text-[0.7rem]"
+            }`}
+          >
             Starting from
           </p>
-          <p className="text-[0.95rem] font-semibold tracking-tight text-black">
+          <p
+            className={`font-semibold tracking-tight text-black ${
+              compact ? "text-[0.82rem]" : "text-[0.95rem]"
+            }`}
+          >
             {price}
           </p>
         </div>
         {/* Arrow */}
-        <div className="w-7 h-7 rounded bg-black flex items-center justify-center shrink-0">
+        <div
+          className={`rounded bg-black flex items-center justify-center shrink-0 ${
+            compact ? "w-6 h-6" : "w-7 h-7"
+          }`}
+        >
           <svg
-            className="w-3 h-3 text-white"
+            className={
+              compact ? "w-2.5 h-2.5 text-white" : "w-3 h-3 text-white"
+            }
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -173,9 +213,14 @@ function FaceContent({ tag, title, description, price, thumbImg }) {
 function Card({ tag, title, description, price, thumbImg, index }) {
   const cubeRef = useRef(null);
   const wrapperRef = useRef(null);
+  const isMobile = useRef(false);
+  const [mobile, setMobile] = useState(false);
 
   // ── Reveal animation ──────────────────────────────────
   useEffect(() => {
+    const m = getIsMobile();
+    isMobile.current = m;
+    setMobile(m);
     const el = wrapperRef.current;
     if (!el) return;
 
@@ -187,13 +232,13 @@ function Card({ tag, title, description, price, thumbImg, index }) {
         y: 0,
         duration: 0.7,
         ease: "power3.out",
-        delay: (index % 4) * 0.08, // subtle row-based stagger
+        delay: (index % 4) * 0.08,
         scrollTrigger: {
           trigger: el,
           start: "top 88%",
           once: true,
         },
-      }
+      },
     );
 
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -203,6 +248,11 @@ function Card({ tag, title, description, price, thumbImg, index }) {
     const cube = cubeRef.current;
     if (!cube) return;
 
+    const mobile = getIsMobile();
+    const cardD = mobile ? D_M : D;
+    const cardW = mobile ? W_M : W;
+    const cardH = mobile ? H_M : H;
+
     const rotation = { flip: 0, tiltX: 0, tiltY: 0 };
     let isFlipped = false;
 
@@ -210,7 +260,7 @@ function Card({ tag, title, description, price, thumbImg, index }) {
       gsap.set(cube, {
         rotationX: rotation.flip + rotation.tiltX,
         rotationY: rotation.tiltY,
-        z: -D / 2,
+        z: -cardD / 2,
       });
     }
     render();
@@ -272,38 +322,35 @@ function Card({ tag, title, description, price, thumbImg, index }) {
     };
   }, []);
 
+  const cardW = mobile ? W_M : W;
+  const cardH = mobile ? H_M : H;
+  const cardD = mobile ? D_M : D;
+
   return (
     /* Perspective wrapper */
     <div
       ref={wrapperRef}
-      style={{ width: W, height: H, perspective: "2000px", opacity: 0 }}
+      className="w-full sm:w-auto"
+      style={{
+        width: mobile ? undefined : cardW,
+        height: cardH,
+        perspective: "2000px",
+        opacity: 0,
+      }}
     >
-      {/* Cube — preserve-3d via .otsuka-cube in globals.css */}
+      {/* Cube */}
       <div
         ref={cubeRef}
         className="otsuka-cube relative w-full h-full cursor-pointer"
       >
         {/* Front */}
         <div
-          className="otsuka-face absolute bg-white flex flex-col p-4 rounded-2xl border border-slate-200"
-          style={{ width: W, height: H, transform: `translateZ(${D / 2}px)` }}
-        >
-          <FaceContent
-            tag={tag}
-            title={title}
-            description={description}
-            price={price}
-            thumbImg={thumbImg}
-          />
-        </div>
-
-        {/* Back */}
-        <div
-          className="otsuka-face absolute bg-white flex flex-col p-6 rounded-2xl border border-slate-200"
+          className="otsuka-face absolute bg-white flex flex-col rounded-2xl border border-slate-200"
           style={{
-            width: W,
-            height: H,
-            transform: `rotateX(180deg) translateZ(${D / 2}px)`,
+            width: mobile ? "100%" : cardW,
+            height: cardH,
+            padding: mobile ? "8px" : "16px",
+            transform: `translateZ(${cardD / 2}px)`,
           }}
         >
           <FaceContent
@@ -312,6 +359,27 @@ function Card({ tag, title, description, price, thumbImg, index }) {
             description={description}
             price={price}
             thumbImg={thumbImg}
+            compact={mobile}
+          />
+        </div>
+
+        {/* Back */}
+        <div
+          className="otsuka-face absolute bg-white flex flex-col rounded-2xl border border-slate-200"
+          style={{
+            width: mobile ? "100%" : cardW,
+            height: cardH,
+            padding: mobile ? "8px" : "24px",
+            transform: `rotateX(180deg) translateZ(${cardD / 2}px)`,
+          }}
+        >
+          <FaceContent
+            tag={tag}
+            title={title}
+            description={description}
+            price={price}
+            thumbImg={thumbImg}
+            compact={mobile}
           />
         </div>
 
@@ -319,10 +387,10 @@ function Card({ tag, title, description, price, thumbImg, index }) {
         <div
           className="otsuka-face absolute bg-[#bcbcbc] rounded-2xl"
           style={{
-            width: D,
-            height: H,
-            left: (W - D) / 2,
-            transform: `rotateY(90deg) translateZ(${W / 2}px)`,
+            width: cardD,
+            height: cardH,
+            left: (cardW - cardD) / 2,
+            transform: `rotateY(90deg) translateZ(${cardW / 2}px)`,
           }}
         />
 
@@ -330,10 +398,10 @@ function Card({ tag, title, description, price, thumbImg, index }) {
         <div
           className="otsuka-face absolute bg-[#bcbcbc] rounded-2xl"
           style={{
-            width: D,
-            height: H,
-            left: (W - D) / 2,
-            transform: `rotateY(-90deg) translateZ(${W / 2}px)`,
+            width: cardD,
+            height: cardH,
+            left: (cardW - cardD) / 2,
+            transform: `rotateY(-90deg) translateZ(${cardW / 2}px)`,
           }}
         />
 
@@ -341,10 +409,10 @@ function Card({ tag, title, description, price, thumbImg, index }) {
         <div
           className="otsuka-face absolute bg-[#999999] rounded-2xl"
           style={{
-            width: W,
-            height: D,
-            top: (H - D) / 2,
-            transform: `rotateX(90deg) translateZ(${H / 2}px)`,
+            width: cardW,
+            height: cardD,
+            top: (cardH - cardD) / 2,
+            transform: `rotateX(90deg) translateZ(${cardH / 2}px)`,
           }}
         />
 
@@ -352,10 +420,10 @@ function Card({ tag, title, description, price, thumbImg, index }) {
         <div
           className="otsuka-face absolute bg-[#999999] rounded-2xl"
           style={{
-            width: W,
-            height: D,
-            top: (H - D) / 2,
-            transform: `rotateX(-90deg) translateZ(${H / 2}px)`,
+            width: cardW,
+            height: cardD,
+            top: (cardH - cardD) / 2,
+            transform: `rotateX(-90deg) translateZ(${cardH / 2}px)`,
           }}
         />
       </div>
@@ -365,8 +433,8 @@ function Card({ tag, title, description, price, thumbImg, index }) {
 
 export default function OtsukaCards() {
   return (
-    <section className="relative w-full bg-[#edeee8] py-20 px-8 2xl:px-30 overflow-hidden">
-      <div className="grid grid-cols-1 gap-y-8 justify-items-center sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+    <section className="relative w-full bg-[#edeee8] py-10 sm:py-20 px-4 sm:px-8 2xl:px-30 overflow-hidden">
+      <div className="grid grid-cols-1 gap-y-4 sm:gap-y-8 justify-items-center sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {cardsData.map((card, i) => (
           <Card key={i} index={i} {...card} />
         ))}

@@ -49,11 +49,16 @@ const slideIn = {
 
 // ─── Panel dimensions ────────────────────────────────────────────────────────
 
-const OPEN_W = 480;
 const OPEN_H = 560;
 const CLOSE_W = 160;
 const CLOSE_H = 44;
 const EASE = "power3.inOut";
+
+// Returns open width capped to viewport width minus a small margin
+function getOpenWidth() {
+  if (typeof window === "undefined") return 480;
+  return Math.min(480, window.innerWidth - 46);
+}
 
 // ─── Nav (inner content) ─────────────────────────────────────────────────────
 
@@ -96,10 +101,10 @@ function Nav() {
   return (
     <div
       className="flex flex-col justify-between box-border"
-      style={{ height: "100%", padding: "56px 20px 20px" }}
+      style={{ height: "100%", padding: "56px 16px 16px" }}
     >
       <nav>
-        <ul className="list-none mt-10 p-0">
+        <ul className="list-none mt-8 p-0">
           {links.map(({ title, href }, i) => (
             <li
               key={title}
@@ -109,7 +114,7 @@ function Nav() {
             >
               <Link
                 href={href}
-                className="block no-underline py-1.5 text-5xl
+                className="block no-underline py-1 text-4xl sm:text-5xl
                            text-white/70 hover:text-white transition-colors duration-300"
               >
                 {title}
@@ -242,7 +247,7 @@ export default function HamburgerMenu() {
     setNavMounted(true);
     setIsActive(true);
     gsap.to(panelRef.current, {
-      width: OPEN_W,
+      width: getOpenWidth(),
       height: OPEN_H,
       duration: 0.75,
       ease: EASE,
