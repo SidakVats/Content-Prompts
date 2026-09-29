@@ -60,7 +60,7 @@ const From = () => {
   }, []);
 
   return (
-    <section className="split-element relative w-full h-[40vh] overflow-hidden lg:h-screen">
+    <section className="split-element bg-black relative w-full h-[40vh] overflow-hidden lg:h-screen">
       <div
         className="absolute top-1/2 left-1/2 w-full h-full flex justify-center items-center -translate-x-1/2 -translate-y-1/2"
         style={{ clipPath: "polygon(0 0, 100% 0, 100% 50%, 0 50%)" }}
@@ -69,7 +69,7 @@ const From = () => {
           ref={splitTopRef}
           src="/from.png"
           alt=""
-          className="w-full h-[48%] object-contain scale-150 max-md:w-[60%] "
+          className="w-full h-[38%] object-contain scale-150 max-md:w-[60%] "
           style={{ willChange: "transform" }}
         />
       </div>
@@ -82,7 +82,7 @@ const From = () => {
           ref={splitBottomRef}
           src="/from.png"
           alt=""
-          className="w-full h-[48%] object-contain scale-[2] max-md:w-[60%]"
+          className="w-full h-[40%] object-contain scale-[2] max-md:w-[60%]"
           style={{ willChange: "transform" }}
         />
       </div>

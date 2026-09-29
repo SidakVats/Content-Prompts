@@ -2,11 +2,7 @@ import React from 'react'
 import ContactHeader from '@/components/ContactHeader'
 
 const page = () => {
-  return (
-    <div>
-      <ContactHeader />
-    </div>
-  )
+  return <ContactHeader />
 }
 
 export default page
