@@ -238,7 +238,7 @@ const ContactHeader = () => {
           Got a bold idea? Need content that actually converts? Or just want to
           talk strategy — we're all ears. The inbox is open, the team is sharp,
           and we're very much{" "}
-          <span className="text-[#0f0f0f] font-semibold uppercase tracking-wide">ready.</span>
+          <span className="text-[#0f0f0f] font-medium tracking-tighter uppercase">ready.</span>
           {" "}Drop us a line at{" "}
           <a
             href="mailto:svantaraa@gmail.com"

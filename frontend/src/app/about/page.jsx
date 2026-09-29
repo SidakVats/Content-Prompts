@@ -1,9 +1,14 @@
-import React from 'react'
+import Stats from "@/components/Stats/Stats";
+import Testimonials from "@/components/Testimonials/Testimonials";
+import React from "react";
 
 const page = () => {
   return (
-    <div>page</div>
-  )
-}
+    <div>
+      <Stats />
+      <Testimonials />
+    </div>
+  );
+};
 
-export default page
+export default page;
