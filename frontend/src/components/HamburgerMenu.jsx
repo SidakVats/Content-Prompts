@@ -53,8 +53,8 @@ const slideIn = {
 
 const OPEN_H = 560;
 const CLOSE_W = 160;
-const CLOSE_H = 56;   // panel height: button 44px + 6px top + 6px bottom
-const BTN_H   = 44;   // actual button height
+const CLOSE_H = 44;
+const BTN_H   = 44;
 const EASE = "power3.inOut";
 
 function getOpenWidth() {
@@ -180,7 +180,7 @@ function Button({ isActive, toggleMenu, resetRef }) {
     gsap.set(btnRef.current,        { backgroundColor: "transparent" });
     gsap.set(menuLabelRef.current,  { y: 0,  opacity: 1 });
     gsap.set(closeLabelRef.current, { y: 20, opacity: 0 });
-    gsap.set(plusRef.current,       { rotation: 0 });
+    gsap.set(plusRef.current,       { rotation: 0, color: "#ffffff" });
 
     if (resetRef) {
       resetRef.current = () => {
@@ -191,7 +191,7 @@ function Button({ isActive, toggleMenu, resetRef }) {
         gsap.to(btnRef.current,        { backgroundColor: "transparent", duration: 0.5, ease: "power3.inOut" });
         gsap.to(menuLabelRef.current,  { y: 0,  opacity: 1, duration: 0.3, ease: "power2.out" });
         gsap.to(closeLabelRef.current, { y: 20, opacity: 0, duration: 0.3, ease: "power2.out" });
-        gsap.to(plusRef.current,       { rotation: 0, duration: 0.4, ease: "power3.out" });
+        gsap.to(plusRef.current,       { rotation: 0, color: "#ffffff", duration: 0.4, ease: "power3.out" });
       };
     }
   }, [resetRef]);
@@ -201,12 +201,12 @@ function Button({ isActive, toggleMenu, resetRef }) {
     if (opening) {
       gsap.to(menuLabelRef.current,  { y: -20, opacity: 0, duration: 0.2, ease: "power2.in" });
       gsap.to(closeLabelRef.current, { y: 0,   opacity: 1, duration: 0.2, ease: "power2.out", delay: 0.1 });
-      gsap.to(plusRef.current,       { rotation: 45, duration: 0.4, ease: "power3.out" });
+      gsap.to(plusRef.current,       { rotation: 45, color: "#0f0f0f", duration: 0.4, ease: "power3.out" });
       gsap.to(btnRef.current,        { backgroundColor: "#ffffff", duration: 0.6, ease: "power3.inOut" });
     } else {
       gsap.to(closeLabelRef.current, { y: 20,  opacity: 0, duration: 0.2, ease: "power2.in" });
       gsap.to(menuLabelRef.current,  { y: 0,   opacity: 1, duration: 0.2, ease: "power2.out", delay: 0.1 });
-      gsap.to(plusRef.current,       { rotation: 0, duration: 0.4, ease: "power3.out" });
+      gsap.to(plusRef.current,       { rotation: 0, color: "#ffffff", duration: 0.4, ease: "power3.out" });
       gsap.to(btnRef.current,        { backgroundColor: "transparent", duration: 0.6, ease: "power3.inOut" });
     }
     toggleMenu();
@@ -216,10 +216,10 @@ function Button({ isActive, toggleMenu, resetRef }) {
     <button
       ref={btnRef}
       onClick={handleClick}
-      className="cursor-pointer border-none outline-none rounded-sm"
+      className="cursor-pointer border-none outline-none rounded-[5px]"
       style={{
-        width: CLOSE_W - 12,  // CLOSE_W minus 6px left+right gap
-        height: BTN_H,
+        width: CLOSE_W,
+        height: CLOSE_H,
         padding: "0 16px",
         backgroundColor: "transparent",
         display: "flex",
@@ -227,8 +227,8 @@ function Button({ isActive, toggleMenu, resetRef }) {
         justifyContent: "space-between",
       }}
     >
-      {/* Label area — clipped vertically for slide animation, full height for centering */}
-      <span style={{ position: "relative", overflow: "hidden", height: BTN_H, display: "flex", alignItems: "center" }}>
+      {/* Label area */}
+      <span style={{ position: "relative", overflow: "hidden", height: CLOSE_H, display: "flex", alignItems: "center" }}>
         <span
           ref={menuLabelRef}
           className="menu-label text-xs font-medium uppercase"
@@ -264,6 +264,7 @@ export default function HamburgerMenu() {
   const [navMounted, setNavMounted] = useState(false);
   const panelRef = useRef(null);
   const wrapperRef = useRef(null);
+  const btnWrapperRef = useRef(null);
   const isAnimating = useRef(false);
   const buttonResetRef = useRef(null);
 
@@ -287,6 +288,8 @@ export default function HamburgerMenu() {
     isAnimating.current = true;
     setNavMounted(true);
     setIsActive(true);
+    // Slide button inward as panel opens
+    gsap.to(btnWrapperRef.current, { top: 6, right: 6, duration: 0.75, ease: EASE });
     gsap.to(panelRef.current, {
       width: getOpenWidth(), height: OPEN_H, duration: 0.75, ease: EASE,
       onComplete: () => { isAnimating.current = false; },
@@ -298,6 +301,8 @@ export default function HamburgerMenu() {
     isAnimating.current = true;
     setIsActive(false);
     if (buttonResetRef.current) buttonResetRef.current();
+    // Slide button back to flush position as panel closes
+    gsap.to(btnWrapperRef.current, { top: 0, right: 0, duration: 0.75, delay: 0.35, ease: EASE });
     gsap.to(panelRef.current, {
       width: CLOSE_W, height: CLOSE_H, duration: 0.75, delay: 0.35, ease: EASE,
       onComplete: () => { setNavMounted(false); isAnimating.current = false; },
@@ -325,11 +330,11 @@ export default function HamburgerMenu() {
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
             width: CLOSE_W,
-            height: CLOSE_H,   // 56px = button 44 + 6 top + 6 bottom
+            height: CLOSE_H,
           }}
         >
-          {/* Button pinned top-right, 6px from panel edges */}
-          <div style={{ position: "absolute", top: 6, right: 6, zIndex: 10 }}>
+          {/* Button — at top:0,right:0 when closed; GSAP moves to top:6,right:6 when open */}
+          <div ref={btnWrapperRef} style={{ position: "absolute", top: 0, right: 0, zIndex: 10 }}>
             <Button isActive={isActive} toggleMenu={toggle} resetRef={buttonResetRef} />
           </div>
 
