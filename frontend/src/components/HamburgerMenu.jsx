@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { animateTransition } from "./Transition";
@@ -11,7 +10,7 @@ import { animateTransition } from "./Transition";
 const links = [
  { title: "Index", href: "/" },
  { title: "About Us", href: "/about" },
-  { title: "The Good Stuff", href: "/services" },
+  { title: "The CP Journal", href: "/blogs" },
   // { title: "Our Work", href: "/work" },
   { title: "Slide In", href: "/contact" },
 ];

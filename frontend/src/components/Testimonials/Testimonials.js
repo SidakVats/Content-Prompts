@@ -352,17 +352,17 @@ export default function Testimonials() {
       <h2
         ref={headingRef}
         className="w-full text-center text-[clamp(2rem,5vw,5.5rem)] tracking-tight leading-[0.9] z-10
-                   md:text-[6vh]
+                  md:text-[4vh] lg:text-[6vh]
                    lg:absolute lg:top-[15%] lg:left-1/2 lg:-translate-x-1/2 lg:w-max lg:max-w-[calc(100%-2rem)] lg:pointer-events-none uppercase"
       >
         Proof We Play Well With Others
       </h2>
 
-      {/* Cards — stacked on mobile, fan on desktop */}
+      {/* Cards — stacked on mobile, 2-col grid on tablet, fan on desktop */}
       <div
-        className="w-full flex flex-col items-center gap-4 -mt-15
-                   md:gap-5
-                   lg:absolute lg:top-[60%] lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:w-0 lg:h-0 lg:flex-none lg:gap-20"
+        className="w-full flex flex-col items-center gap-4
+                   md:grid md:grid-cols-2 md:items-start md:gap-5 lg:-mt-15
+                   lg:absolute lg:block! lg:top-[60%] lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:w-0 lg:h-0 lg:gap-20"
       >
         {TESTIMONIALS.map((item, i) => (
           <article
@@ -373,8 +373,8 @@ export default function Testimonials() {
             className={[
               // mobile base
               "relative w-full min-h-80 flex flex-col justify-between gap-5 p-5 rounded-xl cursor-default will-change-transform",
-              // md
-              "md:w-[min(100%,380px)] md:min-h-85 md:p-6",
+              // md — full width inside 2-col grid cell
+              "md:w-full md:min-h-85 md:p-6",
               // lg — absolute positioning for fan layout
               "lg:absolute lg:top-0 lg:left-0 lg:w-75 lg:h-105 lg:min-h-0 lg:p-[1.6rem] lg:rounded-[0.6rem] lg:cursor-pointer lg:gap-[1.35rem]",
               // 2xl

@@ -199,7 +199,7 @@ export default function Stats() {
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0f0f0f] to-transparent pointer-events-none" />
               <div className="relative z-10 flex flex-col">
                 <p className="mono text-lg tracking-wide">
                   Things we&apos;ve drawn
@@ -244,12 +244,12 @@ export default function Stats() {
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-[rgba(15,15,15,0.9)] via-[rgba(15,15,15,0.25)] to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-b from-[rgba(15,15,15,0.9)] via-[rgba(15,15,15,0.25)] to-transparent pointer-events-none" />
               <div className="relative z-10 flex flex-col gap-1 lg:gap-[0.4rem]">
                 <p className="mono text-sm lg:text-base tracking-wide">
                   On the table right now
                 </p>
-                <h3 className="text-3xl md:text-4xl lg:text-[7vw] 2xl:text-[8vw] font5">
+                <h3 className="text-[30vw] md:text-4xl lg:text-[7vw] 2xl:text-[8vw] font5">
                   14
                 </h3>
               </div>
@@ -259,7 +259,7 @@ export default function Stats() {
               ref={setCardRef(4)}
               className="relative rounded-2xl transform-3d backface-hidden will-change-transform min-h-64 w-full md:w-[82%] md:self-start flex flex-col justify-between p-4 bg-[#ff8356] text-black overflow-visible"
             >
-              <h6 className="text-3xl md:text-[3rem] lg:text-[3rem] leading-[0.85]">
+              <h6 className="text-3xl md:text-[2.5rem] lg:text-[2.5rem] leading-[0.85]">
                 Friends of the studio
               </h6>
               <ul className="list-none self-end text-right mt-6">
