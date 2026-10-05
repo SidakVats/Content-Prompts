@@ -14,6 +14,8 @@ const cardsData = [
       "Dominate search rankings with data-driven SEO strategies tailored to your industry. Keyword research, on-page optimisation, technical audits, and back-link building to drive organic traffic.",
     price: "₹8,000 – ₹15,000/mo",
     thumbImg: "/img1.jpg",
+    // Forest green → teal — SEO growth feel
+    sideGradient: "linear-gradient(135deg, #2d6a4f 0%, #40916c 50%, #52b788 100%)",
   },
   {
     tag: "Evergreen",
@@ -22,6 +24,8 @@ const cardsData = [
       "Words that inform, engage, and convert. SEO-optimised blogs, website copy, product descriptions, and long-form articles that speak your brand voice.",
     price: "₹500 – ₹2,000",
     thumbImg: "/img2.jpg",
+    // Warm amber → ochre — editorial, warmth
+    sideGradient: "linear-gradient(135deg, #b5451b 0%, #d4793a 50%, #e8a45a 100%)",
   },
   {
     tag: "Video Growth",
@@ -30,6 +34,8 @@ const cardsData = [
       "From channel setup and optimisation to scripting, thumbnail strategy, and growth tactics. We manage your YouTube presence end to end.",
     price: "₹10,000 – ₹50,000/mo",
     thumbImg: "/img3.jpg",
+    // YouTube red gradient
+    sideGradient: "linear-gradient(135deg, #9b0000 0%, #cc0000 45%, #ff4444 100%)",
   },
   {
     tag: "B2B Leads",
@@ -38,6 +44,8 @@ const cardsData = [
       "Build a powerful professional brand on LinkedIn. Thought leadership posts, company pages, targeted B2B campaigns, and high-quality lead generation.",
     price: "₹8,000 – ₹20,000/mo",
     thumbImg: "/img4.jpg",
+    // LinkedIn blue gradient
+    sideGradient: "linear-gradient(135deg, #003f72 0%, #0077b5 50%, #00a0dc 100%)",
   },
   {
     tag: "Most Reach",
@@ -46,6 +54,8 @@ const cardsData = [
       "Reach billions of potential customers with precision-targeted Facebook campaigns — page management, content calendars, audience research, and paid ad creatives.",
     price: "₹8,000 – ₹18,000/mo",
     thumbImg: "/img1.jpg",
+    // Facebook deep blue gradient
+    sideGradient: "linear-gradient(135deg, #1a3a6b 0%, #1877f2 50%, #4298f5 100%)",
   },
   {
     tag: "Visual Brand",
@@ -54,6 +64,8 @@ const cardsData = [
       "Trending Reels, Stories, carousels, and feed posts aligned with your brand aesthetic — driving engagement, discoverability, and conversions.",
     price: "₹7,000 – ₹18,000/mo",
     thumbImg: "/img2.jpg",
+    // Instagram purple → pink → orange
+    sideGradient: "linear-gradient(135deg, #833ab4 0%, #c13584 35%, #e1306c 65%, #fd5949 100%)",
   },
   {
     tag: "Done For You",
@@ -62,6 +74,8 @@ const cardsData = [
       "Full-service management across all platforms — content planning, scheduling, community engagement, comment moderation, and monthly performance reporting.",
     price: "₹12,000 – ₹35,000/mo",
     thumbImg: "/img3.jpg",
+    // Indigo → violet — all-in-one, depth
+    sideGradient: "linear-gradient(135deg, #2b2d7e 0%, #5b4fcf 50%, #8b7ff0 100%)",
   },
   {
     tag: "Ad Creatives",
@@ -70,6 +84,8 @@ const cardsData = [
       "Thumb-stopping static banners, animated ads, and video creatives sized for all platforms — Meta, Google Display, YouTube, and LinkedIn.",
     price: "₹5,000 – ₹10,000/mo",
     thumbImg: "/img4.jpg",
+    // Magenta → coral — creative energy
+    sideGradient: "linear-gradient(135deg, #9d0063 0%, #d4006c 45%, #f4527a 100%)",
   },
   {
     tag: "Marketplace",
@@ -78,6 +94,8 @@ const cardsData = [
       "Listing optimisation, A+ content, keyword targeting, sponsored ads, inventory management, and account health monitoring to grow your sales.",
     price: "₹15,000 – ₹50,000/mo",
     thumbImg: "/img1.jpg",
+    // Amazon orange gradient
+    sideGradient: "linear-gradient(135deg, #8a4800 0%, #e47911 50%, #f7a940 100%)",
   },
   {
     tag: "Full Store",
@@ -86,6 +104,8 @@ const cardsData = [
       "End-to-end management of your online store across Shopify, WooCommerce, Meesho, or Flipkart — uploads, pricing, reviews, and promotional campaigns.",
     price: "₹12,000 – ₹35,000/mo",
     thumbImg: "/img2.jpg",
+    // Shopify green gradient
+    sideGradient: "linear-gradient(135deg, #1b4332 0%, #2d6a4f 45%, #40916c 100%)",
   },
   {
     tag: "Custom UI",
@@ -94,6 +114,8 @@ const cardsData = [
       "Beautiful, responsive websites that reflect your brand identity and convert visitors into customers — landing pages, business sites, and portfolios.",
     price: "₹5,000 – ₹60,000",
     thumbImg: "/img3.jpg",
+    // Slate blue → periwinkle — clean, digital craft
+    sideGradient: "linear-gradient(135deg, #1e3a5f 0%, #2d6096 50%, #5b9bd5 100%)",
   },
   {
     tag: "Custom Build",
@@ -102,6 +124,8 @@ const cardsData = [
       "From WordPress and Shopify builds to custom React or full-stack development — clean code, solid backends, and seamless integrations to power your digital business.",
     price: "₹15,000 – ₹1,50,000",
     thumbImg: "/img4.jpg",
+    // Dark charcoal → cool graphite — technical precision
+    sideGradient: "linear-gradient(135deg, #1a1a2e 0%, #2d3561 50%, #4a5494 100%)",
   },
 ];
 
@@ -210,7 +234,7 @@ function FaceContent({ tag, title, description, price, thumbImg, compact }) {
   );
 }
 
-function Card({ tag, title, description, price, thumbImg, index }) {
+function Card({ tag, title, description, price, thumbImg, index, sideGradient }) {
   const cubeRef = useRef(null);
   const wrapperRef = useRef(null);
   const isMobile = useRef(false);
@@ -333,7 +357,9 @@ function Card({ tag, title, description, price, thumbImg, index }) {
       className="w-full sm:w-auto"
       style={{
         width: mobile ? undefined : cardW,
-        height: cardH,
+        height: cardH + cardD, // extra room top+bottom for 3D depth during flip
+        paddingTop: cardD / 2,
+        paddingBottom: cardD / 2,
         perspective: "2000px",
         opacity: 0,
       }}
@@ -385,44 +411,48 @@ function Card({ tag, title, description, price, thumbImg, index }) {
 
         {/* Right */}
         <div
-          className="otsuka-face absolute bg-[#bcbcbc] rounded-2xl"
+          className="otsuka-face absolute rounded-2xl"
           style={{
             width: cardD,
             height: cardH,
             left: (cardW - cardD) / 2,
+            background: sideGradient,
             transform: `rotateY(90deg) translateZ(${cardW / 2}px)`,
           }}
         />
 
         {/* Left */}
         <div
-          className="otsuka-face absolute bg-[#bcbcbc] rounded-2xl"
+          className="otsuka-face absolute rounded-2xl"
           style={{
             width: cardD,
             height: cardH,
             left: (cardW - cardD) / 2,
+            background: sideGradient,
             transform: `rotateY(-90deg) translateZ(${cardW / 2}px)`,
           }}
         />
 
         {/* Top */}
         <div
-          className="otsuka-face absolute bg-[#999999] rounded-2xl"
+          className="otsuka-face absolute rounded-2xl"
           style={{
             width: cardW,
             height: cardD,
             top: (cardH - cardD) / 2,
+            background: sideGradient,
             transform: `rotateX(90deg) translateZ(${cardH / 2}px)`,
           }}
         />
 
         {/* Bottom */}
         <div
-          className="otsuka-face absolute bg-[#999999] rounded-2xl"
+          className="otsuka-face absolute rounded-2xl"
           style={{
             width: cardW,
             height: cardD,
             top: (cardH - cardD) / 2,
+            background: sideGradient,
             transform: `rotateX(-90deg) translateZ(${cardH / 2}px)`,
           }}
         />
@@ -433,8 +463,8 @@ function Card({ tag, title, description, price, thumbImg, index }) {
 
 export default function OtsukaCards() {
   return (
-    <section className="relative w-full bg-[#edeee8] py-10 sm:py-20 px-4 sm:px-8 2xl:px-30 overflow-hidden">
-      <div className="grid grid-cols-1 gap-y-4 sm:gap-y-8 justify-items-center sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+    <section className="relative w-full bg-[#edeee8] py-16 sm:py-28 px-6 sm:px-16 2xl:px-32 overflow-hidden">
+      <div className="grid grid-cols-1 gap-x-12 gap-y-24 sm:gap-y-32 justify-items-center sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {cardsData.map((card, i) => (
           <Card key={i} index={i} {...card} />
         ))}

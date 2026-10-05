@@ -29,9 +29,9 @@ export default function PreloaderHero() {
       setPreloaderDone(true);
       // Defer SplitText calls until after React has committed the DOM
       const raf = requestAnimationFrame(() => {
-        const titleEl    = document.querySelector(".hero-title h1");
+        const titleEl = document.querySelector(".hero-title h1");
         const subtitleEl = document.querySelector(".hero-subtitle h3");
-        const menuEl     = document.querySelector(".menu-label");
+        const menuEl = document.querySelector(".menu-label");
 
         const splitCopy = (el, type, className) => {
           if (!el) return { [type]: [] };
@@ -42,11 +42,13 @@ export default function PreloaderHero() {
           });
         };
 
-        const titleChars    = splitCopy(titleEl,    "chars", "char").chars;
+        const titleChars = splitCopy(titleEl, "chars", "char").chars;
         const subtitleLines = splitCopy(subtitleEl, "lines", "line").lines;
-        const menuWord      = menuEl ? splitCopy(menuEl, "words", "word").words : [];
+        const menuWord = menuEl ? splitCopy(menuEl, "words", "word").words : [];
 
-        const targets = [...titleChars, ...subtitleLines, ...menuWord].filter(Boolean);
+        const targets = [...titleChars, ...subtitleLines, ...menuWord].filter(
+          Boolean,
+        );
         if (targets.length) gsap.set(targets, { y: "0%" });
       });
       return () => cancelAnimationFrame(raf);
@@ -86,10 +88,10 @@ export default function PreloaderHero() {
     const centerColumn = Math.floor(totalColumns / 2);
     const tileAtColumn = (column) => tiles[middleRow * totalColumns + column];
 
-    const firstStop  = tileAtColumn(centerColumn - (isDesktop ? 5 : 2));
+    const firstStop = tileAtColumn(centerColumn - (isDesktop ? 5 : 2));
     const secondStop = tileAtColumn(centerColumn + (isDesktop ? 3 : 1));
-    const thirdStop  = tileAtColumn(centerColumn + (isDesktop ? 5 : 2));
-    const finalStop  = tileAtColumn(centerColumn);
+    const thirdStop = tileAtColumn(centerColumn + (isDesktop ? 5 : 2));
+    const finalStop = tileAtColumn(centerColumn);
 
     const markerStops = [firstStop, secondStop, thirdStop, finalStop];
     markerStops.forEach((tile) => {
@@ -101,18 +103,18 @@ export default function PreloaderHero() {
     gsap.set(fadeInTiles, { opacity: 0 });
     gsap.set(progressMarker, { width: tileSize, height: tileSize });
 
-    const gridWidth  = totalColumns * tileSize;
+    const gridWidth = totalColumns * tileSize;
     const gridHeight = totalRows * tileSize;
-    const gridLeft   = (preloader.offsetWidth  - gridWidth)  / 2;
-    const gridTop    = (preloader.offsetHeight - gridHeight) / 2;
+    const gridLeft = (preloader.offsetWidth - gridWidth) / 2;
+    const gridTop = (preloader.offsetHeight - gridHeight) / 2;
 
     const getTileOffset = (tile) => {
       const tileIndex = tiles.indexOf(tile);
-      const tileCol   = tileIndex % totalColumns;
-      const tileRow   = Math.floor(tileIndex / totalColumns);
+      const tileCol = tileIndex % totalColumns;
+      const tileRow = Math.floor(tileIndex / totalColumns);
       return {
         left: gridLeft + tileCol * tileSize,
-        top:  gridTop  + tileRow * tileSize,
+        top: gridTop + tileRow * tileSize,
       };
     };
 
@@ -132,15 +134,19 @@ export default function PreloaderHero() {
       const child = progressMarker.querySelector("p, img");
       if (child) child.outerHTML = html;
       if (!isDev) {
-        const flipAnim = Flip.from(startState, { duration: 1, ease: "power1.out" });
+        const flipAnim = Flip.from(startState, {
+          duration: 1,
+          ease: "power1.out",
+        });
         flipAnimations.push(flipAnim);
       }
     }
 
     const splitCopy = (selector, type, className) => {
-      const el = typeof selector === "string"
-        ? document.querySelector(selector)
-        : selector;
+      const el =
+        typeof selector === "string"
+          ? document.querySelector(selector)
+          : selector;
       if (!el) return { chars: [], lines: [], words: [] };
       return SplitText.create(el, {
         type,
@@ -149,11 +155,13 @@ export default function PreloaderHero() {
       });
     };
 
-    const titleChars    = splitCopy(".hero-title h1",   "chars", "char").chars;
+    const titleChars = splitCopy(".hero-title h1", "chars", "char").chars;
     const subtitleLines = splitCopy(".hero-subtitle h3", "lines", "line").lines;
-    const menuWord      = splitCopy(".menu-label",       "words", "word").words;
+    const menuWord = splitCopy(".menu-label", "words", "word").words;
 
-    const splitTargets = [...titleChars, ...subtitleLines, ...menuWord].filter(Boolean);
+    const splitTargets = [...titleChars, ...subtitleLines, ...menuWord].filter(
+      Boolean,
+    );
     if (splitTargets.length) gsap.set(splitTargets, { y: "100%" });
 
     const timeline = gsap.timeline({ delay: 1 });
@@ -179,12 +187,13 @@ export default function PreloaderHero() {
 
     // Phase 3 — progress marker moves (Flip — nodes must still be in DOM)
     timeline.add(() => moveMarkerTo(secondStop, "<p>50</p>"), 0.25);
-    timeline.add(() => moveMarkerTo(thirdStop,  "<p>75</p>"), 1.5);
+    timeline.add(() => moveMarkerTo(thirdStop, "<p>75</p>"), 1.5);
     timeline.add(
-      () => moveMarkerTo(
-        finalStop,
-        `<img src="/logo.png" alt="" style="width:50%;height:50%;object-fit:contain;" />`,
-      ),
+      () =>
+        moveMarkerTo(
+          finalStop,
+          `<img src="/logo.png" alt="" style="width:50%;height:50%;object-fit:contain;" />`,
+        ),
       2.75,
     );
 
@@ -310,7 +319,7 @@ export default function PreloaderHero() {
       </section>
 
       {/* <Brands /> */}
-      <About/>
+      <About />
     </>
   );
 }
