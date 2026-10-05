@@ -357,9 +357,7 @@ function Card({ tag, title, description, price, thumbImg, index, sideGradient })
       className="w-full sm:w-auto"
       style={{
         width: mobile ? undefined : cardW,
-        height: cardH + cardD, // extra room top+bottom for 3D depth during flip
-        paddingTop: cardD / 2,
-        paddingBottom: cardD / 2,
+        height: cardH,
         perspective: "2000px",
         opacity: 0,
       }}
@@ -463,8 +461,8 @@ function Card({ tag, title, description, price, thumbImg, index, sideGradient })
 
 export default function OtsukaCards() {
   return (
-    <section className="relative w-full bg-[#edeee8] py-16 sm:py-28 px-6 sm:px-16 2xl:px-32 overflow-hidden">
-      <div className="grid grid-cols-1 gap-x-12 gap-y-24 sm:gap-y-32 justify-items-center sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+    <section className="relative w-full bg-[#edeee8] py-16 sm:py-24 px-6 sm:px-16 2xl:px-32 overflow-hidden">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:gap-y-10 justify-items-center sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {cardsData.map((card, i) => (
           <Card key={i} index={i} {...card} />
         ))}
