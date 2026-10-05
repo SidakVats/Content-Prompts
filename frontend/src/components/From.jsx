@@ -12,7 +12,6 @@ const From = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     const initSplitAnimation = () => {
-      console.log("SplitText initializing...");
       if (splitTriggerRef.current) {
         splitTriggerRef.current.kill();
       }
@@ -40,13 +39,10 @@ const From = () => {
 
     const handleResize = () => {
       initSplitAnimation();
-      ScrollTrigger.refresh();
     };
 
-    // Add delay for device compatibility
     setTimeout(() => {
       initSplitAnimation();
-      ScrollTrigger.refresh();
     }, 300);
 
     window.addEventListener("resize", handleResize);

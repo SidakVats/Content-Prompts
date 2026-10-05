@@ -15,7 +15,8 @@ const cardsData = [
     price: "₹8,000 – ₹15,000/mo",
     thumbImg: "/img1.jpg",
     // Forest green → teal — SEO growth feel
-    sideGradient: "linear-gradient(135deg, #2d6a4f 0%, #40916c 50%, #52b788 100%)",
+    sideGradient:
+      "linear-gradient(135deg, #2d6a4f 0%, #40916c 50%, #52b788 100%)",
   },
   {
     tag: "Evergreen",
@@ -25,7 +26,8 @@ const cardsData = [
     price: "₹500 – ₹2,000",
     thumbImg: "/img2.jpg",
     // Warm amber → ochre — editorial, warmth
-    sideGradient: "linear-gradient(135deg, #b5451b 0%, #d4793a 50%, #e8a45a 100%)",
+    sideGradient:
+      "linear-gradient(135deg, #b5451b 0%, #d4793a 50%, #e8a45a 100%)",
   },
   {
     tag: "Video Growth",
@@ -35,7 +37,8 @@ const cardsData = [
     price: "₹10,000 – ₹50,000/mo",
     thumbImg: "/img3.jpg",
     // YouTube red gradient
-    sideGradient: "linear-gradient(135deg, #9b0000 0%, #cc0000 45%, #ff4444 100%)",
+    sideGradient:
+      "linear-gradient(135deg, #9b0000 0%, #cc0000 45%, #ff4444 100%)",
   },
   {
     tag: "B2B Leads",
@@ -45,7 +48,8 @@ const cardsData = [
     price: "₹8,000 – ₹20,000/mo",
     thumbImg: "/img4.jpg",
     // LinkedIn blue gradient
-    sideGradient: "linear-gradient(135deg, #003f72 0%, #0077b5 50%, #00a0dc 100%)",
+    sideGradient:
+      "linear-gradient(135deg, #003f72 0%, #0077b5 50%, #00a0dc 100%)",
   },
   {
     tag: "Most Reach",
@@ -55,7 +59,8 @@ const cardsData = [
     price: "₹8,000 – ₹18,000/mo",
     thumbImg: "/img1.jpg",
     // Facebook deep blue gradient
-    sideGradient: "linear-gradient(135deg, #1a3a6b 0%, #1877f2 50%, #4298f5 100%)",
+    sideGradient:
+      "linear-gradient(135deg, #1a3a6b 0%, #1877f2 50%, #4298f5 100%)",
   },
   {
     tag: "Visual Brand",
@@ -65,7 +70,8 @@ const cardsData = [
     price: "₹7,000 – ₹18,000/mo",
     thumbImg: "/img2.jpg",
     // Instagram purple → pink → orange
-    sideGradient: "linear-gradient(135deg, #833ab4 0%, #c13584 35%, #e1306c 65%, #fd5949 100%)",
+    sideGradient:
+      "linear-gradient(135deg, #833ab4 0%, #c13584 35%, #e1306c 65%, #fd5949 100%)",
   },
   {
     tag: "Done For You",
@@ -75,7 +81,8 @@ const cardsData = [
     price: "₹12,000 – ₹35,000/mo",
     thumbImg: "/img3.jpg",
     // Indigo → violet — all-in-one, depth
-    sideGradient: "linear-gradient(135deg, #2b2d7e 0%, #5b4fcf 50%, #8b7ff0 100%)",
+    sideGradient:
+      "linear-gradient(135deg, #2b2d7e 0%, #5b4fcf 50%, #8b7ff0 100%)",
   },
   {
     tag: "Ad Creatives",
@@ -85,7 +92,8 @@ const cardsData = [
     price: "₹5,000 – ₹10,000/mo",
     thumbImg: "/img4.jpg",
     // Magenta → coral — creative energy
-    sideGradient: "linear-gradient(135deg, #9d0063 0%, #d4006c 45%, #f4527a 100%)",
+    sideGradient:
+      "linear-gradient(135deg, #9d0063 0%, #d4006c 45%, #f4527a 100%)",
   },
   {
     tag: "Marketplace",
@@ -95,7 +103,8 @@ const cardsData = [
     price: "₹15,000 – ₹50,000/mo",
     thumbImg: "/img1.jpg",
     // Amazon orange gradient
-    sideGradient: "linear-gradient(135deg, #8a4800 0%, #e47911 50%, #f7a940 100%)",
+    sideGradient:
+      "linear-gradient(135deg, #8a4800 0%, #e47911 50%, #f7a940 100%)",
   },
   {
     tag: "Full Store",
@@ -105,7 +114,8 @@ const cardsData = [
     price: "₹12,000 – ₹35,000/mo",
     thumbImg: "/img2.jpg",
     // Shopify green gradient
-    sideGradient: "linear-gradient(135deg, #1b4332 0%, #2d6a4f 45%, #40916c 100%)",
+    sideGradient:
+      "linear-gradient(135deg, #1b4332 0%, #2d6a4f 45%, #40916c 100%)",
   },
   {
     tag: "Custom UI",
@@ -115,7 +125,8 @@ const cardsData = [
     price: "₹5,000 – ₹60,000",
     thumbImg: "/img3.jpg",
     // Slate blue → periwinkle — clean, digital craft
-    sideGradient: "linear-gradient(135deg, #1e3a5f 0%, #2d6096 50%, #5b9bd5 100%)",
+    sideGradient:
+      "linear-gradient(135deg, #1e3a5f 0%, #2d6096 50%, #5b9bd5 100%)",
   },
   {
     tag: "Custom Build",
@@ -125,7 +136,8 @@ const cardsData = [
     price: "₹15,000 – ₹1,50,000",
     thumbImg: "/img4.jpg",
     // Dark charcoal → cool graphite — technical precision
-    sideGradient: "linear-gradient(135deg, #1a1a2e 0%, #2d3561 50%, #4a5494 100%)",
+    sideGradient:
+      "linear-gradient(135deg, #1a1a2e 0%, #2d3561 50%, #4a5494 100%)",
   },
 ];
 
@@ -149,20 +161,20 @@ function getIsMobile() {
 function FaceContent({ tag, title, description, price, thumbImg, compact }) {
   return (
     <>
-      {/* Thumbnail */}
+      {/* Thumbnail — fixed height, never grows */}
       <img
         src={thumbImg}
         alt={title}
         className={
           compact
-            ? "self-end w-full h-40 mb-1 object-cover block rounded-lg"
-            : "self-end w-40 h-50 mb-auto object-cover block rounded-xl"
+            ? "self-end w-full h-32 mb-1 object-cover block rounded-lg shrink-0"
+            : "self-end w-40 h-44 mb-2 object-cover block rounded-xl shrink-0"
         }
       />
 
       {/* Tag */}
       <span
-        className={`font-medium tracking-[0.15em] text-neutral-400 mb-1 block ${
+        className={`font-medium tracking-[0.15em] text-neutral-400 mb-1 block shrink-0 ${
           compact ? "text-[0.55rem]" : "text-[0.6rem]"
         }`}
       >
@@ -171,27 +183,31 @@ function FaceContent({ tag, title, description, price, thumbImg, compact }) {
 
       {/* Title */}
       <h2
-        className={`font-bold leading-tight mb-1 ${
-          compact ? "text-[1.25rem]" : "text-[1.7rem] mb-1.5"
+        className={`font-bold leading-tight shrink-0 ${
+          compact ? "text-[1.25rem] mb-1" : "text-[1.5rem] mb-1.5"
         }`}
       >
         {title}
       </h2>
 
-      {/* Description */}
+      {/* Description — clamp so it never overflows the card */}
       <p
-        className={`text-neutral-600 leading-relaxed ${
-          compact ? "mb-2 line-clamp-3" : "text-[0.8rem] mb-3"
+        className={`text-neutral-600 leading-relaxed flex-1 overflow-hidden ${
+          compact
+            ? "mb-2 line-clamp-3 text-[0.72rem]"
+            : "text-[0.78rem] mb-3 line-clamp-4"
         }`}
       >
         {description}
       </p>
 
-      {/* Divider */}
-      <div className={`h-px bg-neutral-200 ${compact ? "mb-2" : "mb-3"}`} />
+      {/* Divider — always visible, never pushed off */}
+      <div
+        className={`h-px bg-neutral-200 shrink-0 ${compact ? "mb-2" : "mb-3"}`}
+      />
 
       {/* Price row */}
-      <div className="flex items-end justify-between">
+      <div className="flex items-end justify-between shrink-0">
         <div>
           <p
             className={`tracking-widest text-neutral-400 mb-0.5 ${
@@ -210,13 +226,16 @@ function FaceContent({ tag, title, description, price, thumbImg, compact }) {
         </div>
         {/* Arrow */}
         <div
-          className={`rounded bg-black flex items-center justify-center shrink-0 ${
-            compact ? "w-6 h-6" : "w-7 h-7"
+          className={`rounded bg-black text-white flex gap-1.5 items-center justify-center shrink-0 w-24 text-sm ${
+            compact ? "h-6" : "h-7"
           }`}
         >
+          Reach Us
           <svg
             className={
-              compact ? "w-2.5 h-2.5 text-white" : "w-3 h-3 text-white"
+              compact
+                ? "w-2.5 h-2.5 text-white"
+                : "w-3 h-3 text-white -rotate-40"
             }
             viewBox="0 0 24 24"
             fill="none"
@@ -234,7 +253,15 @@ function FaceContent({ tag, title, description, price, thumbImg, compact }) {
   );
 }
 
-function Card({ tag, title, description, price, thumbImg, index, sideGradient }) {
+function Card({
+  tag,
+  title,
+  description,
+  price,
+  thumbImg,
+  index,
+  sideGradient,
+}) {
   const cubeRef = useRef(null);
   const wrapperRef = useRef(null);
   const isMobile = useRef(false);
@@ -248,7 +275,7 @@ function Card({ tag, title, description, price, thumbImg, index, sideGradient })
     const el = wrapperRef.current;
     if (!el) return;
 
-    gsap.fromTo(
+    const tween = gsap.fromTo(
       el,
       { opacity: 0, y: 28 },
       {
@@ -265,7 +292,8 @@ function Card({ tag, title, description, price, thumbImg, index, sideGradient })
       },
     );
 
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
+    // Only kill this card's own trigger — never all triggers globally
+    return () => tween.scrollTrigger?.kill();
   }, [index]);
 
   useEffect(() => {
@@ -359,7 +387,6 @@ function Card({ tag, title, description, price, thumbImg, index, sideGradient })
         width: mobile ? undefined : cardW,
         height: cardH,
         perspective: "2000px",
-        opacity: 0,
       }}
     >
       {/* Cube */}
@@ -369,7 +396,7 @@ function Card({ tag, title, description, price, thumbImg, index, sideGradient })
       >
         {/* Front */}
         <div
-          className="otsuka-face absolute bg-white flex flex-col rounded-2xl border border-slate-200"
+          className="otsuka-face absolute bg-white flex flex-col rounded-2xl border border-slate-200 overflow-hidden"
           style={{
             width: mobile ? "100%" : cardW,
             height: cardH,
@@ -387,13 +414,14 @@ function Card({ tag, title, description, price, thumbImg, index, sideGradient })
           />
         </div>
 
-        {/* Back */}
+        {/* Back — backface-visibility:hidden (set in globals.css via .otsuka-face)
+            keeps this invisible until the cube flips to show it */}
         <div
-          className="otsuka-face absolute bg-white flex flex-col rounded-2xl border border-slate-200"
+          className="otsuka-face absolute bg-white flex flex-col rounded-2xl border border-slate-200 overflow-hidden"
           style={{
             width: mobile ? "100%" : cardW,
             height: cardH,
-            padding: mobile ? "8px" : "24px",
+            padding: mobile ? "8px" : "16px",
             transform: `rotateX(180deg) translateZ(${cardD / 2}px)`,
           }}
         >

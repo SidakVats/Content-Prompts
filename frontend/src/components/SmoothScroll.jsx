@@ -25,7 +25,7 @@ export default function SmoothScroll({ children }) {
 
     return () => {
       lenis.destroy();
-      gsap.ticker.remove(tickerFn); // same reference — actually removes it
+      gsap.ticker.remove(tickerFn);
     };
   }, []);
 
