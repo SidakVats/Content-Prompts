@@ -10,34 +10,40 @@ const page = () => {
       <Accordion />
       <AnimeText
         paragraphs={[
-          "We are a creative studio obsessed with building digital experiences that leave a lasting impression.",
-          "Our team blends strategy, design, and technology to craft work that is bold, precise, and purposeful.",
-          "Every brand has a story worth telling. We find it, shape it, and put it in front of the right audience at the right moment.",
-          "We don't do generic. Every word, every visual, every campaign is built around what makes your brand impossible to ignore.",
+          "We are a digital marketing partner obsessed with building growth engines that keep working long after launch.",
+          "Our team blends strategy, storytelling, and analytics to deliver results that are bold, precise, and accountable.",
+          "Every business has a vision worth chasing. We map it, plan for it, and reach the right connections or people through the right channels.",
+          "We don't do generic. Every penny, every creative, every campaign is built around what moves your brand from good to unstoppable.",
         ]}
         keywords={[
-          "creative",
           "digital",
+          "growth",
           "strategy",
-          "design",
-          "technology",
+          "storytelling",
+          "analytics",
           "bold",
-          "story",
-          "brand",
+          "business",
+          "vision",
+          "connections",
+          "people",
           "campaign",
-          "audience",
+          "brand",
+          "unstoppable",
         ]}
         keywordColors={{
-          creative: "#ff8356",
           digital: "#216ad1",
+          growth: "#ff8356",
           strategy: "#ffbab4",
-          design: "#f5f5f5",
-          technology: "#216ad1",
+          storytelling: "#ff8356",
+          analytics: "#216ad1",
           bold: "#ff8356",
-          story: "#ffbab4",
-          brand: "#ff8356",
+          business: "#ffbab4",
+          vision: "#216ad1",
+          connections: "#ff8356",
+          people: "#ff8356",
           campaign: "#216ad1",
-          audience: "#ffbab4",
+          brand: "#ff8356",
+          unstoppable: "#ffbab4",
         }}
         highlightBg="245, 245, 245"
         pinDuration={4}

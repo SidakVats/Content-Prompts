@@ -85,12 +85,12 @@ const From = () => {
 
       <div className="absolute top-1/2 left-0 w-full bg-slate-700 text-white text-center -translate-y-1/2 overflow-hidden">
         <div className="w-full lg:px-5">
-          <p className="w-full flex justify-between text-xs items-center lg:text-lg uppercase max-lg:flex-wrap max-lg:justify-center gap-4 lg:gap-x-8 max-lg:text-center">
-            <span>Bold</span>
-            <span>Vibrant</span>
-            <span>Inclusive</span>
-            <span>Confidence</span>
-            <span>Playful</span>
+          <p className="w-full flex justify-between text-xs items-center lg:text-lg lg:uppercase max-lg:flex-wrap max-lg:justify-center py-0.5 gap-2 lg:gap-x-8 max-lg:text-center">
+            <span>SEO/GEO</span>
+            <span>META & GOOGLE ADS</span>
+            <span>VISIBILITY</span>
+            <span>PERFORMANCE</span>
+            <span>SCALE</span>
           </p>
         </div>
       </div>

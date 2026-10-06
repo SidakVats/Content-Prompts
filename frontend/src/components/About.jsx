@@ -93,27 +93,24 @@ const About = () => {
       <section className="relative flex flex-col justify-center items-center mx-auto! pt-14! 2xl:pt-20! text-center lg:w-[85%]">
         <div className="about-tagline max-w-400 mx-auto! md:px-8!">
           <p className="text-lg md:text-2xl font-medium leading-tight">
-            Big Ideas. Bigger Stories. Biggest Impact.
-          </p>
-          <p className="text-lg md:text-2xl leading-tight mt-1">
-            We are BigFlick.
+            Smart Data. Creative Ideas. Sharper Ads. Higher Performance
           </p>
         </div>
       </section>
 
       {/* ── Big headline ── */}
-      <section className="relative w-full h-full flex justify-center items-center p-8! pb-16! text-center font-medium leading-[0.9] lg:leading-[0.85] lg:p-0!">
-        <h1 className="about-headline font5 relative z-10 w-full pt-5! text-[#331C4F] lg:p-8! text-[19vw] lg:text-[11vw] 2xl:text-[10vw] pointer-events-none uppercase">
-          Flick That Stick
+      <section className="relative w-full h-full flex justify-center items-center p-8! pb-16! text-center font-medium leading-[0.9] lg:leading-[0.85] lg:pt-10!">
+        <h1 className="about-headline font5 relative z-10 w-full pt-5! text-[#331C4F] lg:p-8! text-[18vw] lg:text-[10vw] 2xl:text-[9vw] pointer-events-none uppercase">
+          GROWTH THAT SCALES
         </h1>
       </section>
 
       {/* ── Subheading + CTA ── */}
-      <section className="w-full lg:pt-20!">
+      <section className="w-full lg:pt-0!">
         <div className="max-w-300 mx-auto! px-5! lg:px-8! flex flex-col gap-3 lg:gap-10 2xl:gap-16">
-          <div className="about-subhead lg:w-[90%] uppercase 2xl:w-full mx-auto! text-center text-[6vw] lg:text-[2.2rem] font2 leading-none 2xl:leading-[0.9]">
-            Designed by experts, for creators, brands, and everyone who dares to
-            dream.
+          <div className="about-subhead lg:w-[90%] 2xl:w-full mx-auto! text-center text-[6vw] lg:text-[2.2rem] font2 leading-none ">
+            FULL-FUNNEL DIGITAL MARKETING FOR STARTUPS, D2C BRANDS AND
+            BUSINESSES THAT REFUSE TO STAY SMALL.
           </div>
 
           <div className="flex flex-col gap-16 mx-auto! text-center lg:w-[90%]">
@@ -121,7 +118,7 @@ const About = () => {
               href="/"
               className="about-link text-lg md:text-xl tracking-wide w-max mx-auto! font2 text-[#331C4F] hover:opacity-70 transition-opacity"
             >
-              [ &nbsp;Discover Our Stories&nbsp; ]
+              [ &nbsp;Discover Our Services&nbsp; ]
             </a>
           </div>
         </div>
