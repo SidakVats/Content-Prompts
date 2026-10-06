@@ -184,11 +184,11 @@ const Accordion = ({ items = ACCORDION_ITEMS }) => {
       data-stacked={undefined}
     >
       {/* Header */}
-      <div className="text-center px-8 pb-8 group-data-[stacked=true]/accordion:pb-12">
+      <div className="text-center lg:px-8 pb-8 group-data-[stacked=true]/accordion:pb-12">
         <p className="mb-3 text-xs md:text-sm tracking-widest uppercase text-[#353333] font2">
           Design Pillars
         </p>
-        <h6 className="text-3xl md:text-4xl font-medium text-black max-w-3xl mx-auto tracking-wide leading-8 md:leading-snug">
+        <h6 className="text-4xl md:text-4xl font-medium text-black max-w-3xl mx-auto tracking-wide leading-9.5 md:leading-snug">
           Four principles that guide every build
         </h6>
       </div>
@@ -198,7 +198,7 @@ const Accordion = ({ items = ACCORDION_ITEMS }) => {
         {/* Desktop: horizontal flex | Mobile: stacked column */}
         <div
           className="
-            flex gap-2 h-[60vh] min-h-125 px-6
+            flex gap-2 h-[60vh] min-h-125 px-4
             group-data-[stacked=true]/accordion:flex-col
             group-data-[stacked=true]/accordion:h-auto
             group-data-[stacked=true]/accordion:min-h-0
@@ -213,6 +213,7 @@ const Accordion = ({ items = ACCORDION_ITEMS }) => {
               style={{ willChange: "flex-grow" }}
               className="
                 relative h-full rounded-xl overflow-hidden cursor-pointer min-w-0
+                group-data-[stacked=true]/accordion:rounded-lg
                 group-data-[stacked=true]/accordion:flex-none!
                 group-data-[stacked=true]/accordion:h-auto
                 group-data-[stacked=true]/accordion:cursor-default
@@ -229,7 +230,7 @@ const Accordion = ({ items = ACCORDION_ITEMS }) => {
                   group-data-[stacked=true]/accordion:block
                   group-data-[stacked=true]/accordion:aspect-video
                   group-data-[stacked=true]/accordion:shrink-0
-                  group-data-[stacked=true]/accordion:rounded-xl
+                  group-data-[stacked=true]/accordion:rounded-lg
                 "
                 src={item.image}
                 alt={item.title}
@@ -245,7 +246,7 @@ const Accordion = ({ items = ACCORDION_ITEMS }) => {
                   group-data-[stacked=true]/accordion:left-0
                   group-data-[stacked=true]/accordion:w-full
                   group-data-[stacked=true]/accordion:aspect-video
-                  group-data-[stacked=true]/accordion:rounded-xl
+                  group-data-[stacked=true]/accordion:rounded-lg
                 "
               />
 
@@ -261,23 +262,28 @@ const Accordion = ({ items = ACCORDION_ITEMS }) => {
                   group-data-[stacked=true]/accordion:translate-y-0
                   group-data-[stacked=true]/accordion:items-start
                   group-data-[stacked=true]/accordion:text-left
-                  group-data-[stacked=true]/accordion:px-7
-                  group-data-[stacked=true]/accordion:pt-8
-                  group-data-[stacked=true]/accordion:pb-3
+                  group-data-[stacked=true]/accordion:px-2
+                  group-data-[stacked=true]/accordion:pt-4
+                  group-data-[stacked=true]/accordion:pb-1
                 "
               >
                 <span
                   className="
-                    w-10 h-6 flex items-center justify-center
+                    w-10 h-6 lg:flex items-center justify-center hidden
                     border border-white/15 bg-white/5 backdrop-blur-xl
-                    rounded-[5px] mb-4 text-xs lg:text-white
+                    rounded-[5px] mb-4 text-xs text-white
+                    group-data-[stacked=true]/accordion:border-black/20
+                    group-data-[stacked=true]/accordion:bg-black/8
+                    group-data-[stacked=true]/accordion:backdrop-blur-none
+                    group-data-[stacked=true]/accordion:text-black
                   "
                 >
                   {item.id}
                 </span>
                 <p
-                  className="text-[1.1rem] font-medium leading-tight whitespace-nowrap lg:text-white
+                  className="text-[1.25rem] lg:text-[1.1rem] 2xl:text-[1.4rem] font-medium tracking-wide 2xl:tracking-wider leading-tight whitespace-nowrap text-white
                   group-data-[stacked=true]/accordion:whitespace-normal
+                  group-data-[stacked=true]/accordion:text-black
                 "
                 >
                   {item.title}
@@ -295,13 +301,13 @@ const Accordion = ({ items = ACCORDION_ITEMS }) => {
                   group-data-[stacked=true]/accordion:translate-x-0
                   group-data-[stacked=true]/accordion:w-full
                   group-data-[stacked=true]/accordion:text-left
-                  group-data-[stacked=true]/accordion:px-7
-                  group-data-[stacked=true]/accordion:pb-9
+                  group-data-[stacked=true]/accordion:px-2
+                  group-data-[stacked=true]/accordion:pb-5
                 "
               >
                 <p
                   data-accordion-desc=""
-                  className="text-[0.9rem] font-normal leading-tight lg:text-white"
+                  className="text-[1rem] 2xl:text-[0.9rem] lg:tracking-wide font1 leading-tight lg:text-white"
                   style={{ willChange: "opacity, transform" }}
                 >
                   {item.description}
