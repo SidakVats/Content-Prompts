@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function AnimeText({
   paragraphs = [],
@@ -9,206 +9,217 @@ export default function AnimeText({
   highlightBg = "237, 235, 231",
   pinDuration = 4,
 }) {
-  const containerRef = useRef(null);
-  const triggerRef = useRef(null);
+  const outerRef = useRef(null);   // tall scroll track
+  const stickyRef = useRef(null);  // sticky viewport panel
+  const rafRef = useRef(null);
 
-  // lazy-load gsap and create scroll-pinned word reveal
   useEffect(() => {
-    let cancelled = false;
+    const outer = outerRef.current;
+    const sticky = stickyRef.current;
+    if (!outer || !sticky) return;
 
-    async function init() {
-      const gsapMod = await import("gsap");
-      const stMod = await import("gsap/ScrollTrigger");
+    const words = Array.from(sticky.querySelectorAll(".at-word"));
+    const totalWords = words.length;
 
-      const gsap = gsapMod.default ?? gsapMod.gsap;
-      const { ScrollTrigger } = stMod;
+    function getProgress() {
+      // getBoundingClientRect works correctly regardless of whether the
+      // scroll container is window or a wrapper div — it's always viewport-relative.
+      const { top, height } = outer.getBoundingClientRect();
+      const scrollable = height - window.innerHeight;
+      if (scrollable <= 0) return 0;
+      return Math.min(1, Math.max(0, -top / scrollable));
+    }
 
-      gsap.registerPlugin(ScrollTrigger);
+    function applyProgress(progress) {
+      words.forEach((word, index) => {
+        const wordText = word.querySelector("span");
+        if (!wordText) return;
 
-      const container = containerRef.current;
-      if (!container || cancelled) return;
+        if (progress <= 0.7) {
+          const revealProgress = Math.min(1, progress / 0.7);
+          const overlapWords = 15;
+          const wordStart = index / totalWords;
+          const wordEnd = wordStart + overlapWords / totalWords;
+          const timelineScale =
+            1 /
+            Math.min(
+              1 + overlapWords / totalWords,
+              1 +
+                (totalWords - 1) / totalWords +
+                overlapWords / totalWords,
+            );
+          const adjStart = wordStart * timelineScale;
+          const adjEnd = wordEnd * timelineScale;
+          const duration = adjEnd - adjStart;
+          const wordProgress =
+            revealProgress <= adjStart
+              ? 0
+              : revealProgress >= adjEnd
+                ? 1
+                : (revealProgress - adjStart) / duration;
 
-      const words = Array.from(container.querySelectorAll(".at-word"));
-      const totalWords = words.length;
+          word.style.opacity = wordProgress;
 
-      triggerRef.current = ScrollTrigger.create({
-        trigger: container,
-        pin: container,
-        start: "top top",
-        end: `+=${window.innerHeight * pinDuration}`,
-        pinSpacing: true,
-        onUpdate: (self) => {
-          const progress = self.progress;
+          const bgFade =
+            wordProgress >= 0.9 ? (wordProgress - 0.9) / 0.1 : 0;
+          word.style.backgroundColor = `rgba(${highlightBg}, ${Math.max(0, 1 - bgFade)})`;
 
-          words.forEach((word, index) => {
-            const wordText = word.querySelector("span");
+          const textReveal =
+            wordProgress >= 0.9 ? (wordProgress - 0.9) / 0.1 : 0;
+          wordText.style.opacity = Math.pow(textReveal, 0.5);
+        } else {
+          const reverseProgress = (progress - 0.7) / 0.3;
+          word.style.opacity = 1;
 
-            // forward reveal — words fade in with highlight flash
-            if (progress <= 0.7) {
-              const revealProgress = Math.min(1, progress / 0.7);
-              const overlapWords = 15;
-              const wordStart = index / totalWords;
-              const wordEnd = wordStart + overlapWords / totalWords;
-              const timelineScale =
-                1 /
-                Math.min(
-                  1 + overlapWords / totalWords,
-                  1 + (totalWords - 1) / totalWords + overlapWords / totalWords,
-                );
-              const adjStart = wordStart * timelineScale;
-              const adjEnd = wordEnd * timelineScale;
-              const duration = adjEnd - adjStart;
-              const wordProgress =
-                revealProgress <= adjStart
-                  ? 0
-                  : revealProgress >= adjEnd
-                    ? 1
-                    : (revealProgress - adjStart) / duration;
+          const reverseOverlap = 5;
+          const rStart = index / totalWords;
+          const rEnd = rStart + reverseOverlap / totalWords;
+          const rScale =
+            1 /
+            Math.max(
+              1,
+              (totalWords - 1) / totalWords + reverseOverlap / totalWords,
+            );
+          const rAdjStart = rStart * rScale;
+          const rAdjEnd = rEnd * rScale;
+          const rDur = rAdjEnd - rAdjStart;
+          const rProgress =
+            reverseProgress <= rAdjStart
+              ? 0
+              : reverseProgress >= rAdjEnd
+                ? 1
+                : (reverseProgress - rAdjStart) / rDur;
 
-              word.style.opacity = wordProgress;
-
-              const bgFade =
-                wordProgress >= 0.9 ? (wordProgress - 0.9) / 0.1 : 0;
-              word.style.backgroundColor = `rgba(${highlightBg}, ${Math.max(0, 1 - bgFade)})`;
-
-              const textReveal =
-                wordProgress >= 0.9 ? (wordProgress - 0.9) / 0.1 : 0;
-              wordText.style.opacity = Math.pow(textReveal, 0.5);
-            } else {
-              // reverse fade — highlight returns as text hides
-              const reverseProgress = (progress - 0.7) / 0.3;
-              word.style.opacity = 1;
-
-              const reverseOverlap = 5;
-              const rStart = index / totalWords;
-              const rEnd = rStart + reverseOverlap / totalWords;
-              const rScale =
-                1 /
-                Math.max(
-                  1,
-                  (totalWords - 1) / totalWords + reverseOverlap / totalWords,
-                );
-              const rAdjStart = rStart * rScale;
-              const rAdjEnd = rEnd * rScale;
-              const rDur = rAdjEnd - rAdjStart;
-              const rProgress =
-                reverseProgress <= rAdjStart
-                  ? 0
-                  : reverseProgress >= rAdjEnd
-                    ? 1
-                    : (reverseProgress - rAdjStart) / rDur;
-
-              if (rProgress > 0) {
-                wordText.style.opacity = 1 - rProgress;
-                word.style.backgroundColor = `rgba(${highlightBg}, ${rProgress})`;
-              } else {
-                wordText.style.opacity = 1;
-                word.style.backgroundColor = `rgba(${highlightBg}, 0)`;
-              }
-            }
-          });
-        },
+          if (rProgress > 0) {
+            wordText.style.opacity = 1 - rProgress;
+            word.style.backgroundColor = `rgba(${highlightBg}, ${rProgress})`;
+          } else {
+            wordText.style.opacity = 1;
+            word.style.backgroundColor = `rgba(${highlightBg}, 0)`;
+          }
+        }
       });
     }
 
-    init();
+    // Find the actual scroll container — could be window or a wrapper div
+    // Walk up the DOM to find the nearest scrollable ancestor
+    function getScrollContainer(el) {
+      let parent = el.parentElement;
+      while (parent) {
+        const style = window.getComputedStyle(parent);
+        const overflow = style.overflowY;
+        if ((overflow === "auto" || overflow === "scroll") && parent.scrollHeight > parent.clientHeight) {
+          return parent;
+        }
+        parent = parent.parentElement;
+      }
+      return window;
+    }
+
+    const scrollContainer = getScrollContainer(outer);
+
+    function onScroll() {
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = null;
+        applyProgress(getProgress());
+      });
+    }
+
+    // Seed initial state
+    applyProgress(getProgress());
+
+    scrollContainer.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
-      cancelled = true;
+      scrollContainer.removeEventListener("scroll", onScroll);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
     };
   }, [paragraphs, keywords, highlightBg, pinDuration]);
-
-  // kill scrolltrigger after pinned content unmounts
-  useLayoutEffect(() => {
-    return () => {
-      triggerRef.current?.kill();
-      triggerRef.current = null;
-    };
-  }, []);
 
   const normalise = (w) => w.toLowerCase().replace(/[.,!?;:"]/g, "");
 
   return (
-    <section
-      ref={containerRef}
-      className="relative w-full h-svh p-8 overflow-hidden bg-[#0f0f0f]"
+    <div
+      ref={outerRef}
+      style={{ height: `${(pinDuration + 1) * 100}vh` }}
     >
-      {/* centred flex wrapper */}
-      <div className="w-full h-full flex justify-center items-center text-center">
-        <div className="w-full">
-          {/* text block — 55% wide on desktop, 90% on mobile */}
-          <div className="w-[95%] lg:w-[60%] mx-auto">
-            {paragraphs.map((para, pi) => (
-              <p
-                key={pi}
-                className="mb-6 text-center text-[clamp(1.25rem,2.5vw,4.5rem)] tracking-tight leading-[1.15] text-[#f5f5f5]"
-              >
-                {para
-                  .split(/\s+/)
-                  .filter(Boolean)
-                  .map((word, wi) => {
-                    const norm = normalise(word);
-                    const isKeyword = keywords.includes(norm);
-                    const color = keywordColors[norm];
+      <section
+        ref={stickyRef}
+        className="sticky top-0 w-full h-svh p-8 overflow-hidden bg-[#0f0f0f]"
+      >
+        <div className="w-full h-full flex justify-center items-center text-center">
+          <div className="w-full">
+            <div className="w-[95%] lg:w-[60%] mx-auto">
+              {paragraphs.map((para, pi) => (
+                <p
+                  key={pi}
+                  className="mb-6 text-center text-[clamp(1.25rem,2.5vw,4.5rem)] tracking-tight leading-[1.15] text-[#f5f5f5]"
+                >
+                  {para
+                    .split(/\s+/)
+                    .filter(Boolean)
+                    .map((word, wi) => {
+                      const norm = normalise(word);
+                      const isKeyword = keywords.includes(norm);
+                      const color = keywordColors[norm];
 
-                    return (
-                      <span
-                        key={wi}
-                        className={[
-                          "at-word",
-                          "inline-block relative will-change-[background-color,opacity] opacity-0",
-                          // normal words: just a little side + vertical padding
-                          "mx-[0.15rem] mb-[0.15rem] px-[0.15rem] py-0 rounded-lg",
-                          // keyword wrappers: extra horizontal breathing room to avoid collision
-                          isKeyword ? "mx-[0.35rem]" : "",
-                        ]
-                          .filter(Boolean)
-                          .join(" ")}
-                      >
+                      return (
                         <span
+                          key={wi}
                           className={[
-                            "relative opacity-0",
-                            isKeyword
-                              ? "at-keyword inline-block w-full h-full py-0 px-0 rounded-lg text-[#0f0f0f]"
-                              : "",
+                            "at-word",
+                            "inline-block relative will-change-[background-color,opacity] opacity-0",
+                            "mx-[0.15rem] mb-[0.15rem] px-[0.15rem] py-0 rounded-lg",
+                            isKeyword ? "mx-[0.35rem]" : "",
                           ]
                             .filter(Boolean)
                             .join(" ")}
-                          style={
-                            isKeyword
-                              ? { "--kw-color": color ?? "#f5f5f5" }
-                              : undefined
-                          }
                         >
-                          {word}
+                          <span
+                            className={[
+                              "relative opacity-0",
+                              isKeyword
+                                ? "at-keyword inline-block w-full h-full py-0 px-0 rounded-lg text-[#0f0f0f]"
+                                : "",
+                            ]
+                              .filter(Boolean)
+                              .join(" ")}
+                            style={
+                              isKeyword
+                                ? { "--kw-color": color ?? "#f5f5f5" }
+                                : undefined
+                            }
+                          >
+                            {word}
+                          </span>
                         </span>
-                      </span>
-                    );
-                  })}
-              </p>
-            ))}
+                      );
+                    })}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/*
-        The keyword pill pseudo-element can't be expressed in Tailwind alone,
-        so we keep just these two rules as a minimal scoped style block.
-      */}
-      <style>{`
-        .at-keyword::before {
-          content: "";
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: calc(100% + 0.8rem);
-          height: calc(100% + 0.1rem);
-          background-color: var(--kw-color, #f5f5f5);
-          border-radius: 0.4rem;
-          z-index: -1;
-        }
-      `}</style>
-    </section>
+        <style>{`
+          .at-keyword::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% + 0.8rem);
+            height: calc(100% + 0.1rem);
+            background-color: var(--kw-color, #f5f5f5);
+            border-radius: 0.4rem;
+            z-index: -1;
+          }
+        `}</style>
+      </section>
+    </div>
   );
 }

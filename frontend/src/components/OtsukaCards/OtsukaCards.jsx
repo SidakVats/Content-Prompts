@@ -286,6 +286,15 @@ function Card({
         delay: (index % 4) * 0.08,
         scrollTrigger: {
           trigger: el,
+          scroller: (() => {
+            let p = el.parentElement;
+            while (p) {
+              const oy = window.getComputedStyle(p).overflowY;
+              if ((oy === "auto" || oy === "scroll") && p.scrollHeight > p.clientHeight) return p;
+              p = p.parentElement;
+            }
+            return window;
+          })(),
           start: "top 88%",
           once: true,
         },

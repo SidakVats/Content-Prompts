@@ -147,6 +147,15 @@ export default function Testimonials() {
 
       trigger = ScrollTrigger.create({
         trigger: el,
+        scroller: (() => {
+          let p = el.parentElement;
+          while (p) {
+            const oy = window.getComputedStyle(p).overflowY;
+            if ((oy === "auto" || oy === "scroll") && p.scrollHeight > p.clientHeight) return p;
+            p = p.parentElement;
+          }
+          return window;
+        })(),
         start: "top 90%",
         once: true,
         onEnter: () => tl.play(),
@@ -292,6 +301,15 @@ export default function Testimonials() {
 
     introTrigger = ScrollTrigger.create({
       trigger: section,
+      scroller: (() => {
+        let p = section.parentElement;
+        while (p) {
+          const oy = window.getComputedStyle(p).overflowY;
+          if ((oy === "auto" || oy === "scroll") && p.scrollHeight > p.clientHeight) return p;
+          p = p.parentElement;
+        }
+        return window;
+      })(),
       start: "top 75%",
       once: true,
       onEnter: () => playIntro(),
@@ -346,7 +364,7 @@ export default function Testimonials() {
       className="relative w-full overflow-hidden bg-[#edeee8] text-[#0f0f0f]
                  h-auto min-h-svh py-32 px-4 flex flex-col items-center gap-10
                  md:py-36 md:px-6
-                 lg:h-[110vh] lg:min-h-175 lg:py-0 lg:px-0 lg:block lg:overflow-hidden"
+                 lg:h-[110vh] lg:min-h-175 lg:py-0 lg:px-0 lg:block lg:overflow-visible"
     >
       {/* Heading */}
       <h2

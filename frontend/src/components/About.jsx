@@ -11,6 +11,20 @@ const About = () => {
   const rootRef = useRef(null);
 
   useEffect(() => {
+    // Find the nearest scrollable ancestor (the Lenis wrapper div)
+    function getScroller(el) {
+      let parent = el?.parentElement;
+      while (parent) {
+        const oy = window.getComputedStyle(parent).overflowY;
+        if ((oy === "auto" || oy === "scroll") && parent.scrollHeight > parent.clientHeight) {
+          return parent;
+        }
+        parent = parent.parentElement;
+      }
+      return window;
+    }
+    const scroller = getScroller(rootRef.current);
+
     const ctx = gsap.context(() => {
       // ── 1. Tagline lines — line-by-line clip from bottom ──
       const taglineSplit = SplitText.create(".about-tagline p", {
@@ -21,6 +35,7 @@ const About = () => {
       gsap.from(taglineSplit.lines, {
         scrollTrigger: {
           trigger: ".about-tagline",
+          scroller,
           start: "top 88%",
           once: true,
         },
@@ -39,6 +54,7 @@ const About = () => {
       gsap.from(headlineSplit.words, {
         scrollTrigger: {
           trigger: ".about-headline",
+          scroller,
           start: "top 82%",
           once: true,
         },
@@ -57,6 +73,7 @@ const About = () => {
       gsap.from(subSplit.lines, {
         scrollTrigger: {
           trigger: ".about-subhead",
+          scroller,
           start: "top 85%",
           once: true,
         },
@@ -75,6 +92,7 @@ const About = () => {
       gsap.from(linkSplit.lines, {
         scrollTrigger: {
           trigger: ".about-link",
+          scroller,
           start: "top 92%",
           once: true,
         },

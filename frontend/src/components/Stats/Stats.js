@@ -63,6 +63,16 @@ function SectionFooter({ left, right }) {
 }
 
 // ─── Stats ────────────────────────────────────────────────────────────────────
+function getScroller(el) {
+  let p = el?.parentElement;
+  while (p) {
+    const oy = window.getComputedStyle(p).overflowY;
+    if ((oy === "auto" || oy === "scroll") && p.scrollHeight > p.clientHeight) return p;
+    p = p.parentElement;
+  }
+  return window;
+}
+
 export default function Stats() {
   const sectionRef = useRef(null);
   const gridRef = useRef(null);
@@ -110,6 +120,7 @@ export default function Stats() {
 
       trigger = ScrollTrigger.create({
         trigger: el,
+        scroller: getScroller(el),
         start: "top 90%",
         once: true,
         onEnter: () => tl.play(),
@@ -146,6 +157,7 @@ export default function Stats() {
 
     const trigger = ScrollTrigger.create({
       trigger: grid,
+      scroller: getScroller(grid),
       start: "top 95%",
       once: true,
       onEnter: () => tween.play(),

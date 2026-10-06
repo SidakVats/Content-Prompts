@@ -2,14 +2,15 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import gsap from "gsap";
 import { animateTransition } from "./Transition";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const links = [
- { title: "Index", href: "/" },
- { title: "About Us", href: "/about" },
+  { title: "Index", href: "/" },
+  { title: "About Us", href: "/about" },
   { title: "The CP Journal", href: "/blogs" },
   // { title: "Our Work", href: "/work" },
   { title: "Slide In", href: "/contact" },
@@ -53,7 +54,7 @@ const slideIn = {
 const OPEN_H = 560;
 const CLOSE_W = 160;
 const CLOSE_H = 44;
-const BTN_H   = 44;
+const BTN_H = 44;
 const EASE = "power3.inOut";
 
 function getOpenWidth() {
@@ -170,16 +171,16 @@ function Nav({ onNavigate }) {
 // ─── Button ──────────────────────────────────────────────────────────────────
 
 function Button({ isActive, toggleMenu, resetRef }) {
-  const menuLabelRef  = useRef(null);
+  const menuLabelRef = useRef(null);
   const closeLabelRef = useRef(null);
-  const plusRef       = useRef(null);
-  const btnRef        = useRef(null);
+  const plusRef = useRef(null);
+  const btnRef = useRef(null);
 
   useEffect(() => {
-    gsap.set(btnRef.current,        { backgroundColor: "transparent" });
-    gsap.set(menuLabelRef.current,  { y: 0,  opacity: 1 });
+    gsap.set(btnRef.current, { backgroundColor: "transparent" });
+    gsap.set(menuLabelRef.current, { y: 0, opacity: 1 });
     gsap.set(closeLabelRef.current, { y: 20, opacity: 0 });
-    gsap.set(plusRef.current,       { rotation: 0, color: "#ffffff" });
+    gsap.set(plusRef.current, { rotation: 0, color: "#ffffff" });
 
     if (resetRef) {
       resetRef.current = () => {
@@ -187,10 +188,29 @@ function Button({ isActive, toggleMenu, resetRef }) {
         gsap.killTweensOf(closeLabelRef.current);
         gsap.killTweensOf(plusRef.current);
         gsap.killTweensOf(btnRef.current);
-        gsap.to(btnRef.current,        { backgroundColor: "transparent", duration: 0.5, ease: "power3.inOut" });
-        gsap.to(menuLabelRef.current,  { y: 0,  opacity: 1, duration: 0.3, ease: "power2.out" });
-        gsap.to(closeLabelRef.current, { y: 20, opacity: 0, duration: 0.3, ease: "power2.out" });
-        gsap.to(plusRef.current,       { rotation: 0, color: "#ffffff", duration: 0.4, ease: "power3.out" });
+        gsap.to(btnRef.current, {
+          backgroundColor: "transparent",
+          duration: 0.5,
+          ease: "power3.inOut",
+        });
+        gsap.to(menuLabelRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+        gsap.to(closeLabelRef.current, {
+          y: 20,
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+        gsap.to(plusRef.current, {
+          rotation: 0,
+          color: "#ffffff",
+          duration: 0.4,
+          ease: "power3.out",
+        });
       };
     }
   }, [resetRef]);
@@ -198,15 +218,55 @@ function Button({ isActive, toggleMenu, resetRef }) {
   const handleClick = () => {
     const opening = !isActive;
     if (opening) {
-      gsap.to(menuLabelRef.current,  { y: -20, opacity: 0, duration: 0.2, ease: "power2.in" });
-      gsap.to(closeLabelRef.current, { y: 0,   opacity: 1, duration: 0.2, ease: "power2.out", delay: 0.1 });
-      gsap.to(plusRef.current,       { rotation: 45, color: "#0f0f0f", duration: 0.4, ease: "power3.out" });
-      gsap.to(btnRef.current,        { backgroundColor: "#ffffff", duration: 0.6, ease: "power3.inOut" });
+      gsap.to(menuLabelRef.current, {
+        y: -20,
+        opacity: 0,
+        duration: 0.2,
+        ease: "power2.in",
+      });
+      gsap.to(closeLabelRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.2,
+        ease: "power2.out",
+        delay: 0.1,
+      });
+      gsap.to(plusRef.current, {
+        rotation: 45,
+        color: "#0f0f0f",
+        duration: 0.4,
+        ease: "power3.out",
+      });
+      gsap.to(btnRef.current, {
+        backgroundColor: "#ffffff",
+        duration: 0.6,
+        ease: "power3.inOut",
+      });
     } else {
-      gsap.to(closeLabelRef.current, { y: 20,  opacity: 0, duration: 0.2, ease: "power2.in" });
-      gsap.to(menuLabelRef.current,  { y: 0,   opacity: 1, duration: 0.2, ease: "power2.out", delay: 0.1 });
-      gsap.to(plusRef.current,       { rotation: 0, color: "#ffffff", duration: 0.4, ease: "power3.out" });
-      gsap.to(btnRef.current,        { backgroundColor: "transparent", duration: 0.6, ease: "power3.inOut" });
+      gsap.to(closeLabelRef.current, {
+        y: 20,
+        opacity: 0,
+        duration: 0.2,
+        ease: "power2.in",
+      });
+      gsap.to(menuLabelRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.2,
+        ease: "power2.out",
+        delay: 0.1,
+      });
+      gsap.to(plusRef.current, {
+        rotation: 0,
+        color: "#ffffff",
+        duration: 0.4,
+        ease: "power3.out",
+      });
+      gsap.to(btnRef.current, {
+        backgroundColor: "transparent",
+        duration: 0.6,
+        ease: "power3.inOut",
+      });
     }
     toggleMenu();
   };
@@ -227,28 +287,58 @@ function Button({ isActive, toggleMenu, resetRef }) {
       }}
     >
       {/* Label area */}
-      <span style={{ position: "relative", overflow: "hidden", height: CLOSE_H, display: "flex", alignItems: "center" }}>
+      <span
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          height: CLOSE_H,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <span
           ref={menuLabelRef}
           className="menu-label text-xs font-medium uppercase"
-          style={{ letterSpacing: "0.12em", color: "#ffffff", position: "absolute", whiteSpace: "nowrap" }}
+          style={{
+            letterSpacing: "0.12em",
+            color: "#ffffff",
+            position: "absolute",
+            whiteSpace: "nowrap",
+          }}
         >
           Menu
         </span>
         <span
           ref={closeLabelRef}
           className="text-xs font-medium uppercase"
-          style={{ letterSpacing: "0.12em", color: "#0f0f0f", position: "absolute", whiteSpace: "nowrap" }}
+          style={{
+            letterSpacing: "0.12em",
+            color: "#0f0f0f",
+            position: "absolute",
+            whiteSpace: "nowrap",
+          }}
         >
           Close
         </span>
         {/* Invisible spacer — keeps container wide enough for "Close" */}
-        <span className="text-xs font-medium uppercase invisible" style={{ letterSpacing: "0.12em", whiteSpace: "nowrap" }}>Close</span>
+        <span
+          className="text-xs font-medium uppercase invisible"
+          style={{ letterSpacing: "0.12em", whiteSpace: "nowrap" }}
+        >
+          Close
+        </span>
       </span>
 
       <span
         ref={plusRef}
-        style={{ fontSize: 18, fontWeight: 300, lineHeight: 1, transformOrigin: "center", color: "#ffffff", display: "inline-block" }}
+        style={{
+          fontSize: 18,
+          fontWeight: 300,
+          lineHeight: 1,
+          transformOrigin: "center",
+          color: "#ffffff",
+          display: "inline-block",
+        }}
       >
         +
       </span>
@@ -274,9 +364,13 @@ export default function HamburgerMenu() {
   useEffect(() => {
     if (!isActive) return;
     const handleOutsideClick = (e) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) closeMenu();
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target))
+        closeMenu();
     };
-    const timer = setTimeout(() => document.addEventListener("mousedown", handleOutsideClick), 0);
+    const timer = setTimeout(
+      () => document.addEventListener("mousedown", handleOutsideClick),
+      0,
+    );
     return () => {
       clearTimeout(timer);
       document.removeEventListener("mousedown", handleOutsideClick);
@@ -288,10 +382,20 @@ export default function HamburgerMenu() {
     setNavMounted(true);
     setIsActive(true);
     // Slide button inward as panel opens
-    gsap.to(btnWrapperRef.current, { top: 6, right: 6, duration: 0.75, ease: EASE });
+    gsap.to(btnWrapperRef.current, {
+      top: 6,
+      right: 6,
+      duration: 0.75,
+      ease: EASE,
+    });
     gsap.to(panelRef.current, {
-      width: getOpenWidth(), height: OPEN_H, duration: 0.75, ease: EASE,
-      onComplete: () => { isAnimating.current = false; },
+      width: getOpenWidth(),
+      height: OPEN_H,
+      duration: 0.75,
+      ease: EASE,
+      onComplete: () => {
+        isAnimating.current = false;
+      },
     });
   };
 
@@ -301,10 +405,23 @@ export default function HamburgerMenu() {
     setIsActive(false);
     if (buttonResetRef.current) buttonResetRef.current();
     // Slide button back to flush position as panel closes
-    gsap.to(btnWrapperRef.current, { top: 0, right: 0, duration: 0.75, delay: 0.35, ease: EASE });
+    gsap.to(btnWrapperRef.current, {
+      top: 0,
+      right: 0,
+      duration: 0.75,
+      delay: 0.35,
+      ease: EASE,
+    });
     gsap.to(panelRef.current, {
-      width: CLOSE_W, height: CLOSE_H, duration: 0.75, delay: 0.35, ease: EASE,
-      onComplete: () => { setNavMounted(false); isAnimating.current = false; },
+      width: CLOSE_W,
+      height: CLOSE_H,
+      duration: 0.75,
+      delay: 0.35,
+      ease: EASE,
+      onComplete: () => {
+        setNavMounted(false);
+        isAnimating.current = false;
+      },
     });
   };
 
@@ -314,32 +431,59 @@ export default function HamburgerMenu() {
   };
 
   return (
-    <div ref={wrapperRef} className="fixed top-3 right-3 md:top-6 md:right-6 z-50">
+    <>
+      {/* Logo — fixed top-left, mirrors menu position */}
+      <div className="absolute top-3 left-3 md:top-6 md:left-6 z-50">
+     
+          <Image
+            src="/logo3.png"
+            alt="Logo"
+            width={300}
+            height={50}
+            className="object-contain"
+            priority
+          />
+      </div>
+
+      {/* Menu — fixed top-right */}
       <div
-        className="p-0.75 rounded-[7px]"
-        style={{
-          background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.03) 60%, rgba(255,255,255,0) 100%)",
-        }}
+        ref={wrapperRef}
+        className="fixed top-3 right-3 md:top-6 md:right-6 z-50"
       >
         <div
-          ref={panelRef}
-          className="relative overflow-hidden rounded-[5px] will-change-transform shadow-2xl"
+          className="p-0.75 rounded-[7px]"
           style={{
-            background: "rgba(6,6,6,0.92)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            width: CLOSE_W,
-            height: CLOSE_H,
+            background:
+              "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.03) 60%, rgba(255,255,255,0) 100%)",
           }}
         >
-          {/* Button — at top:0,right:0 when closed; GSAP moves to top:6,right:6 when open */}
-          <div ref={btnWrapperRef} style={{ position: "absolute", top: 0, right: 0, zIndex: 10 }}>
-            <Button isActive={isActive} toggleMenu={toggle} resetRef={buttonResetRef} />
-          </div>
+          <div
+            ref={panelRef}
+            className="relative overflow-hidden rounded-[5px] will-change-transform shadow-2xl"
+            style={{
+              background: "rgba(6,6,6,0.92)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              width: CLOSE_W,
+              height: CLOSE_H,
+            }}
+          >
+            {/* Button — at top:0,right:0 when closed; GSAP moves to top:6,right:6 when open */}
+            <div
+              ref={btnWrapperRef}
+              style={{ position: "absolute", top: 0, right: 0, zIndex: 10 }}
+            >
+              <Button
+                isActive={isActive}
+                toggleMenu={toggle}
+                resetRef={buttonResetRef}
+              />
+            </div>
 
-          {navMounted && <Nav onNavigate={closeMenu} />}
+            {navMounted && <Nav onNavigate={closeMenu} />}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

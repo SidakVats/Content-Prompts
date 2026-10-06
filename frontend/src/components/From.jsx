@@ -16,9 +16,21 @@ const From = () => {
         splitTriggerRef.current.kill();
       }
 
+      const trigger = document.querySelector(".split-element");
+      const scroller = (() => {
+        let p = trigger?.parentElement;
+        while (p) {
+          const oy = window.getComputedStyle(p).overflowY;
+          if ((oy === "auto" || oy === "scroll") && p.scrollHeight > p.clientHeight) return p;
+          p = p.parentElement;
+        }
+        return window;
+      })();
+
       splitTriggerRef.current = ScrollTrigger.create({
         id: "split-text-animation",
         trigger: ".split-element",
+        scroller,
         start: "top bottom",
         end: "bottom top",
         scrub: true,

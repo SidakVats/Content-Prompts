@@ -5,13 +5,16 @@ const Banner = () => {
     <>
       <section
         className="relative w-full h-svh lg:h-[120svh] overflow-hidden"
-        style={{
-          backgroundImage: "url(/hero-bg.jpg)",
-          backgroundAttachment: "fixed",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
       >
+        {/* Background image — fixed via absolute fill so it works inside any scroll container */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: "url(/hero-bg.jpg)",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        />
         <div className="relative w-full h-full">
           {/* Black overlay */}
           <div className="absolute inset-0 bg-black/30 z-0" />
