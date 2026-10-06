@@ -1,0 +1,318 @@
+"use client";
+
+import { useCallback, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(SplitText);
+
+const ACCORDION_ITEMS = [
+  {
+    id: "01",
+    title: "Tension Over Reward",
+    description:
+      "We don't design progression loops that hand players a treat for completing tasks. We design systems where the absence of resolution is the point. The player is always reaching for ground that shifts beneath them. Comfort is the enemy of memorable design.",
+    image: "/img1.jpg",
+  },
+  {
+    id: "02",
+    title: "Atmosphere First",
+    description:
+      "Every project begins with a feeling, not a feature list. We define the emotional signature of a world before we write a single line of code. If we cannot describe how the game makes you feel in one sentence, it is not ready to be built.",
+    image: "/img2.jpg",
+  },
+  {
+    id: "03",
+    title: "Invisible Systems",
+    description:
+      "The best mechanics are the ones players never notice consciously. We build rulesets that shape behavior from underneath, adjusting difficulty, pacing, and environmental cues based on how the player moves and hesitates. The game watches you as much as you watch it.",
+    image: "/img3.jpg",
+  },
+  {
+    id: "04",
+    title: "Restraint as Language",
+    description:
+      "We say more by showing less. Empty rooms carry more weight than crowded ones. A single flickering light communicates more threat than an army of enemies. Every element earns its place through subtraction and what remains is only what absolutely needs to exist.",
+    image: "/img4.jpg",
+  },
+];
+
+const ACCORDION_EXPANDED = 52;
+const ACCORDION_COLLAPSED = 16;
+const ACCORDION_DURATION = 0.6;
+const ACCORDION_EASE = "power3.out";
+const ACCORDION_WORD_STAGGER = 0.015;
+const ACCORDION_DEFAULT_ACTIVE = 1;
+const ACCORDION_MOBILE_BREAKPOINT = 1000;
+
+const Accordion = ({ items = ACCORDION_ITEMS }) => {
+  const accordionRef = useRef(null);
+  const accordionPanelsRef = useRef([]);
+  const accordionSplitsRef = useRef([]);
+  const accordionActiveRef = useRef(ACCORDION_DEFAULT_ACTIVE);
+  const accordionStackedRef = useRef(false);
+
+  // apply horizontal flex or stacked mobile layout
+  const accordionApplyLayout = useCallback((stacked) => {
+    const root = accordionRef.current;
+    if (!root) return;
+
+    if (stacked) {
+      root.dataset.stacked = "true";
+    } else {
+      delete root.dataset.stacked;
+    }
+
+    accordionPanelsRef.current.forEach((panel, i) => {
+      if (!panel) return;
+
+      if (stacked) {
+        gsap.killTweensOf(panel);
+        panel.style.flexGrow = "";
+        panel.style.flexShrink = "";
+        panel.style.flexBasis = "";
+
+        const split = accordionSplitsRef.current[i];
+        if (split?.words?.length) {
+          gsap.set(split.words, { opacity: 1, y: 0 });
+        }
+        return;
+      }
+
+      const isActive = i === accordionActiveRef.current;
+      panel.style.flexGrow = isActive
+        ? ACCORDION_EXPANDED
+        : ACCORDION_COLLAPSED;
+      panel.style.flexShrink = "0";
+      panel.style.flexBasis = "0";
+
+      const split = accordionSplitsRef.current[i];
+      if (split?.words?.length) {
+        gsap.set(split.words, {
+          opacity: isActive ? 1 : 0,
+          y: isActive ? 0 : 6,
+        });
+      }
+    });
+  }, []);
+
+  // expand hovered panel and animate description words
+  const accordionSetActive = useCallback((index) => {
+    if (accordionStackedRef.current) return;
+    if (accordionActiveRef.current === index) return;
+    const prevIndex = accordionActiveRef.current;
+    accordionActiveRef.current = index;
+
+    accordionPanelsRef.current.forEach((panel, i) => {
+      if (!panel) return;
+      const isActive = i === index;
+      gsap.to(panel, {
+        flexGrow: isActive ? ACCORDION_EXPANDED : ACCORDION_COLLAPSED,
+        duration: ACCORDION_DURATION,
+        ease: ACCORDION_EASE,
+      });
+    });
+
+    const prevSplit = accordionSplitsRef.current[prevIndex];
+    if (prevSplit?.words?.length) {
+      gsap.to(prevSplit.words, {
+        opacity: 0,
+        y: 6,
+        duration: 0.2,
+        ease: "power2.in",
+        overwrite: true,
+      });
+    }
+
+    const activeSplit = accordionSplitsRef.current[index];
+    if (activeSplit?.words?.length) {
+      gsap.to(activeSplit.words, {
+        opacity: 1,
+        y: 0,
+        duration: 0.35,
+        stagger: ACCORDION_WORD_STAGGER,
+        ease: "power2.out",
+        delay: 0.2,
+        overwrite: true,
+      });
+    }
+  }, []);
+
+  // split descriptions into words and handle responsive layout
+  useEffect(() => {
+    accordionSplitsRef.current = accordionPanelsRef.current.map((panel) => {
+      if (!panel) return null;
+      const desc = panel.querySelector("[data-accordion-desc]");
+      if (!desc) return null;
+      const split = SplitText.create(desc, { type: "words" });
+      gsap.set(split.words, { opacity: 0, y: 6 });
+      return split;
+    });
+
+    accordionPanelsRef.current.forEach((panel, i) => {
+      if (!panel) return;
+      const isActive = i === ACCORDION_DEFAULT_ACTIVE;
+      panel.style.flexGrow = isActive
+        ? ACCORDION_EXPANDED
+        : ACCORDION_COLLAPSED;
+      panel.style.flexShrink = "0";
+      panel.style.flexBasis = "0";
+    });
+
+    const handleResize = (initial = false) => {
+      const stacked = window.innerWidth < ACCORDION_MOBILE_BREAKPOINT;
+      if (!initial && stacked === accordionStackedRef.current) return;
+      accordionStackedRef.current = stacked;
+      accordionApplyLayout(stacked);
+    };
+
+    handleResize(true);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      accordionSplitsRef.current.forEach((split) => {
+        if (split) split.revert();
+      });
+    };
+  }, [accordionApplyLayout]);
+
+  return (
+    <section
+      ref={accordionRef}
+      className="pb-10 pt-30 md:pt-40 lg:pt-29 2xl:pt-55 bg-[#edeee8] group/accordion"
+      data-stacked={undefined}
+    >
+      {/* Header */}
+      <div className="text-center px-8 pb-8 group-data-[stacked=true]/accordion:pb-12">
+        <p className="mb-3 text-xs md:text-sm tracking-widest uppercase text-[#353333] font2">
+          Design Pillars
+        </p>
+        <h6 className="text-3xl md:text-4xl font-medium text-black max-w-3xl mx-auto tracking-wide leading-8 md:leading-snug">
+          Four principles that guide every build
+        </h6>
+      </div>
+
+      {/* Panels */}
+      <div className="w-full">
+        {/* Desktop: horizontal flex | Mobile: stacked column */}
+        <div
+          className="
+            flex gap-2 h-[60vh] min-h-125 px-6
+            group-data-[stacked=true]/accordion:flex-col
+            group-data-[stacked=true]/accordion:h-auto
+            group-data-[stacked=true]/accordion:min-h-0
+            group-data-[stacked=true]/accordion:gap-5
+          "
+        >
+          {items.map((item, index) => (
+            <div
+              key={item.id}
+              ref={(el) => (accordionPanelsRef.current[index] = el)}
+              onMouseEnter={() => accordionSetActive(index)}
+              style={{ willChange: "flex-grow" }}
+              className="
+                relative h-full rounded-xl overflow-hidden cursor-pointer min-w-0
+                group-data-[stacked=true]/accordion:flex-none!
+                group-data-[stacked=true]/accordion:h-auto
+                group-data-[stacked=true]/accordion:cursor-default
+                group-data-[stacked=true]/accordion:flex
+                group-data-[stacked=true]/accordion:flex-col
+              "
+            >
+              {/* Background image */}
+              <img
+                className="
+                  absolute inset-0 w-full h-full object-cover
+                  group-data-[stacked=true]/accordion:relative
+                  group-data-[stacked=true]/accordion:inset-auto
+                  group-data-[stacked=true]/accordion:block
+                  group-data-[stacked=true]/accordion:aspect-video
+                  group-data-[stacked=true]/accordion:shrink-0
+                  group-data-[stacked=true]/accordion:rounded-xl
+                "
+                src={item.image}
+                alt={item.title}
+              />
+
+              {/* Overlay */}
+              <div
+                className="
+                  absolute inset-0 pointer-events-none
+                  bg-linear-to-b from-[rgba(11,11,11,0.15)] to-[rgba(11,11,11,0.55)]
+                  group-data-[stacked=true]/accordion:inset-auto
+                  group-data-[stacked=true]/accordion:top-0
+                  group-data-[stacked=true]/accordion:left-0
+                  group-data-[stacked=true]/accordion:w-full
+                  group-data-[stacked=true]/accordion:aspect-video
+                  group-data-[stacked=true]/accordion:rounded-xl
+                "
+              />
+
+              {/* Number + Title — centred on desktop, left-aligned on mobile */}
+              <div
+                className="
+                  absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                  flex flex-col items-center text-center pointer-events-none
+                  group-data-[stacked=true]/accordion:relative
+                  group-data-[stacked=true]/accordion:top-auto
+                  group-data-[stacked=true]/accordion:left-auto
+                  group-data-[stacked=true]/accordion:translate-x-0
+                  group-data-[stacked=true]/accordion:translate-y-0
+                  group-data-[stacked=true]/accordion:items-start
+                  group-data-[stacked=true]/accordion:text-left
+                  group-data-[stacked=true]/accordion:px-7
+                  group-data-[stacked=true]/accordion:pt-8
+                  group-data-[stacked=true]/accordion:pb-3
+                "
+              >
+                <span
+                  className="
+                    w-10 h-6 flex items-center justify-center
+                    border border-white/15 bg-white/5 backdrop-blur-xl
+                    rounded-[5px] mb-4 text-xs lg:text-white
+                  "
+                >
+                  {item.id}
+                </span>
+                <p
+                  className="text-[1.1rem] font-medium leading-tight whitespace-nowrap lg:text-white
+                  group-data-[stacked=true]/accordion:whitespace-normal
+                "
+                >
+                  {item.title}
+                </p>
+              </div>
+
+              {/* Description */}
+              <div
+                className="
+                  absolute z-10 top-[58%] left-1/2 -translate-x-1/2
+                  w-96 text-center pointer-events-none
+                  group-data-[stacked=true]/accordion:relative
+                  group-data-[stacked=true]/accordion:top-auto
+                  group-data-[stacked=true]/accordion:left-auto
+                  group-data-[stacked=true]/accordion:translate-x-0
+                  group-data-[stacked=true]/accordion:w-full
+                  group-data-[stacked=true]/accordion:text-left
+                  group-data-[stacked=true]/accordion:px-7
+                  group-data-[stacked=true]/accordion:pb-9
+                "
+              >
+                <p
+                  data-accordion-desc=""
+                  className="text-[0.9rem] font-normal leading-tight lg:text-white"
+                  style={{ willChange: "opacity, transform" }}
+                >
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Accordion;

@@ -343,7 +343,7 @@ export default function Testimonials() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-[#e8e8e2] text-[#0f0f0f]
+      className="relative w-full overflow-hidden bg-[#edeee8] text-[#0f0f0f]
                  h-auto min-h-svh py-32 px-4 flex flex-col items-center gap-10
                  md:py-36 md:px-6
                  lg:h-[110vh] lg:min-h-175 lg:py-0 lg:px-0 lg:block lg:overflow-hidden"
