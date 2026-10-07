@@ -9,9 +9,8 @@ export default function AnimeText({
   highlightBg = "237, 235, 231",
   pinDuration = 4,
 }) {
-  const outerRef = useRef(null);   // tall scroll track
-  const stickyRef = useRef(null);  // sticky viewport panel
-  const rafRef = useRef(null);
+  const outerRef = useRef(null);
+  const stickyRef = useRef(null);
 
   useEffect(() => {
     const outer = outerRef.current;
@@ -21,15 +20,15 @@ export default function AnimeText({
     const words = Array.from(sticky.querySelectorAll(".at-word"));
     const totalWords = words.length;
 
+    // ── Progress: how far the user has scrolled through the outer div ────────
     function getProgress() {
-      // getBoundingClientRect works correctly regardless of whether the
-      // scroll container is window or a wrapper div — it's always viewport-relative.
-      const { top, height } = outer.getBoundingClientRect();
-      const scrollable = height - window.innerHeight;
+      const rect = outer.getBoundingClientRect();
+      const scrollable = rect.height - window.innerHeight;
       if (scrollable <= 0) return 0;
-      return Math.min(1, Math.max(0, -top / scrollable));
+      return Math.min(1, Math.max(0, -rect.top / scrollable));
     }
 
+    // ── Apply progress to every word ─────────────────────────────────────────
     function applyProgress(progress) {
       words.forEach((word, index) => {
         const wordText = word.querySelector("span");
@@ -44,9 +43,7 @@ export default function AnimeText({
             1 /
             Math.min(
               1 + overlapWords / totalWords,
-              1 +
-                (totalWords - 1) / totalWords +
-                overlapWords / totalWords,
+              1 + (totalWords - 1) / totalWords + overlapWords / totalWords,
             );
           const adjStart = wordStart * timelineScale;
           const adjEnd = wordEnd * timelineScale;
@@ -59,13 +56,9 @@ export default function AnimeText({
                 : (revealProgress - adjStart) / duration;
 
           word.style.opacity = wordProgress;
-
-          const bgFade =
-            wordProgress >= 0.9 ? (wordProgress - 0.9) / 0.1 : 0;
+          const bgFade = wordProgress >= 0.9 ? (wordProgress - 0.9) / 0.1 : 0;
           word.style.backgroundColor = `rgba(${highlightBg}, ${Math.max(0, 1 - bgFade)})`;
-
-          const textReveal =
-            wordProgress >= 0.9 ? (wordProgress - 0.9) / 0.1 : 0;
+          const textReveal = wordProgress >= 0.9 ? (wordProgress - 0.9) / 0.1 : 0;
           wordText.style.opacity = Math.pow(textReveal, 0.5);
         } else {
           const reverseProgress = (progress - 0.7) / 0.3;
@@ -101,42 +94,24 @@ export default function AnimeText({
       });
     }
 
-    // Find the actual scroll container — could be window or a wrapper div
-    // Walk up the DOM to find the nearest scrollable ancestor
-    function getScrollContainer(el) {
-      let parent = el.parentElement;
-      while (parent) {
-        const style = window.getComputedStyle(parent);
-        const overflow = style.overflowY;
-        if ((overflow === "auto" || overflow === "scroll") && parent.scrollHeight > parent.clientHeight) {
-          return parent;
-        }
-        parent = parent.parentElement;
-      }
-      return window;
-    }
-
-    const scrollContainer = getScrollContainer(outer);
+    // ── Scroll listener + RAF throttle ───────────────────────────────────────
+    let rafId = null;
 
     function onScroll() {
-      if (rafRef.current) return;
-      rafRef.current = requestAnimationFrame(() => {
-        rafRef.current = null;
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
         applyProgress(getProgress());
       });
     }
 
-    // Seed initial state
+    // Seed on mount, then listen
     applyProgress(getProgress());
-
-    scrollContainer.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
-      scrollContainer.removeEventListener("scroll", onScroll);
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-        rafRef.current = null;
-      }
+      window.removeEventListener("scroll", onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, [paragraphs, keywords, highlightBg, pinDuration]);
 
