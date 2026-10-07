@@ -30,41 +30,41 @@ const BIAS = [
 const TESTIMONIALS = [
   {
     quote:
-      "Content Prompts transformed our brand voice completely. Sharp, strategic, and delivered ahead of schedule.",
-    name: "Ravi Menon",
-    role: "Crumb, Founder",
+      "Excellent website design and development and smart Meta ad strategy. Our online store is fast and easy to shop, and our sales have grown since launch. A reliable marketing team for e-commerce in the UAE.",
+    name: "Souq-Al Deals",
+    role: "Dubai, UAE",
     avatar: "/images/testimonials/testimonial_img_1.jpg",
     tone: "light",
   },
   {
     quote:
-      "They gave our campaigns a personality. Every piece of content feels alive and on-brand, always.",
-    name: "Cleo Baptiste",
-    role: "Nettle, Head of Product",
+      "Sharp creative thinking, refined copywriting, and solid SEO expertise. They played a key role in the experiences we deliver to luxury brands. Dependable, talented, and easy to work with.",
+    name: "Flick Studios",
+    role: "Gurgaon, INDIA",
     avatar: "/images/testimonials/testimonial_img_2.jpg",
     tone: "dark",
   },
   {
     quote:
-      "We came in with scattered ideas and left with a clear content strategy. Fast, fun, and genuinely effective.",
-    name: "Otto Lindqvist",
-    role: "Sludge, Co-Founder",
+      "Stunning creatives, strategic Meta ads, and strong performance marketing. They elevated our brand image and drove growth across our retail outlet and online store. Highly recommended for fashion brands.",
+    name: "Akarshan",
+    role: "Auckland, NEW ZEALAND",
     avatar: "/images/testimonials/testimonial_img_3.jpg",
     tone: "light",
   },
   {
     quote:
-      "From scripts to social, they nailed every format. Smooth process, loud results, would do it all again.",
-    name: "Nadia Karim",
-    role: "Bramble, CMO",
+      "Strategic performance marketing that boosted our sales, visibility, and brand trust. They understood the travel industry and our audience perfectly. Highly recommended for any growing travel business.",
+    name: "Journey Experts",
+    role: "London, UK",
     avatar: "/images/testimonials/testimonial_img_4.jpg",
     tone: "dark",
   },
   {
     quote:
-      "Our LinkedIn presence went from invisible to industry-leading in three months. The copy just clicks every single time.",
-    name: "Arjun Sethi",
-    role: "Vantage, Growth Lead",
+      "Smart marketing funnels, effective lead generation, and seamless CRM integration. They streamlined how we attract and manage clients across mortgages, insurance, and loans. A dependable partner for any finance business in New Zealand.",
+    name: "Simply Mortgages",
+    role: "Auckland, NEW ZEALAND",
     avatar: "/images/testimonials/testimonial_img_1.jpg",
     tone: "light",
   },
@@ -427,13 +427,7 @@ export default function Testimonials() {
 
             {/* Author */}
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full overflow-hidden shrink-0 bg-[#e8e8e2]">
-                <img
-                  src={item.avatar}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </div>
+             
               <div className="flex flex-col gap-[0.15rem] min-w-0">
                 <h6 className="text-lg lg:text-[1.5rem] tracking-normal leading-none">
                   {item.name}

@@ -135,7 +135,7 @@ const ContactHeader = () => {
     { name: "Instagram", url: "#" },
     [
       { name: "Facebook", url: "#" },
-      { name: "Behance", url: "#" },
+      { name: "Youtube", url: "#" },
     ],
     { name: "LinkedIn", url: "#" },
   ];
@@ -238,10 +238,12 @@ const ContactHeader = () => {
           Got a bold idea? Need content that actually converts? Or just want to
           talk strategy — we're all ears. The inbox is open, the team is sharp,
           and we're very much{" "}
-          <span className="text-[#0f0f0f] font-medium tracking-tighter uppercase">ready.</span>
-          {" "}Drop us a line at{" "}
+          <span className="text-[#0f0f0f] font-medium tracking-tighter uppercase">
+            ready.
+          </span>{" "}
+          Drop us a line at{" "}
           <a
-            href="mailto:svantaraa@gmail.com"
+            href="mailto:contentprompts@gmail.com"
             className="text-[#0f0f0f] font-semibold underline underline-offset-3 decoration-[#0f0f0f]/20 hover:decoration-[#0f0f0f] transition-all"
           >
             contentprompts@gmail.com
@@ -251,7 +253,7 @@ const ContactHeader = () => {
         {/* CTAs */}
         <div className="flex items-center gap-6 mt-1">
           <a
-            href="mailto:svantaraa@gmail.com"
+            href="mailto:contentprompts@gmail.com"
             className="no-underline font2 text-[0.85rem] md:text-[1rem] tracking-wide text-[#0f0f0f] hover:opacity-60 transition-opacity duration-300"
           >
             [&nbsp;&nbsp;Start a Project&nbsp;&nbsp;]
@@ -260,10 +262,10 @@ const ContactHeader = () => {
           <span className="text-[#0f0f0f]/20 text-sm">—</span>
 
           <a
-            href="#"
+            href="callto:+919910449552"
             className="no-underline font2 text-[0.85rem] md:text-[1rem] tracking-wide text-[#0f0f0f]/40 hover:text-[#0f0f0f] hover:opacity-60 transition-all duration-300"
           >
-            [&nbsp;&nbsp;Download Deck&nbsp;&nbsp;]
+            [&nbsp;&nbsp;Call Us&nbsp;&nbsp;]
           </a>
         </div>
       </div>

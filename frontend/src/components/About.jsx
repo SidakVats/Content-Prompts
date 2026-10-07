@@ -16,7 +16,10 @@ const About = () => {
       let parent = el?.parentElement;
       while (parent) {
         const oy = window.getComputedStyle(parent).overflowY;
-        if ((oy === "auto" || oy === "scroll") && parent.scrollHeight > parent.clientHeight) {
+        if (
+          (oy === "auto" || oy === "scroll") &&
+          parent.scrollHeight > parent.clientHeight
+        ) {
           return parent;
         }
         parent = parent.parentElement;
@@ -125,10 +128,15 @@ const About = () => {
 
       {/* ── Subheading + CTA ── */}
       <section className="w-full lg:pt-0!">
-        <div className="max-w-300 mx-auto! px-5! lg:px-8! flex flex-col gap-3 lg:gap-10 2xl:gap-16">
-          <div className="about-subhead lg:w-[90%] 2xl:w-full mx-auto! text-center text-[6vw] lg:text-[2.2rem] font2 leading-none ">
+        <div className="max-w-400 mx-auto! px-5! lg:px-8! flex flex-col gap-3 lg:gap-10 2xl:gap-16">
+          <div className="about-subhead lg:w-[90%] 2xl:w-full mx-auto! text-center text-[6vw] md:text-[4vw] lg:text-[2.2rem] font2 leading-none ">
             FULL-FUNNEL DIGITAL MARKETING FOR STARTUPS, D2C BRANDS AND
             BUSINESSES THAT REFUSE TO STAY SMALL.
+          </div>
+
+          <div className="about-subhead uppercase lg:w-[90%] 2xl:w-[80%] mx-auto! text-center text-[5.8vw] md:text-[4vw] lg:text-[2rem] font2 leading-none mt-5 lg:-mt-5">
+            Compelling Narratives. Unstoppable Growth. Customized Strategies.
+            Turn your Brand into Market Success. START WITH SMALLER BUDGET
           </div>
 
           <div className="flex flex-col gap-16 mx-auto! text-center lg:w-[90%]">

@@ -303,10 +303,10 @@ export default function PreloaderHero() {
         </div>
 
         <div className="hero-title relative z-1">
-          <h1 className="text-[#c4d600] uppercase leading-[0.8] font-medium text-[10.5vw] md:text-[7vw] tracking-tight">
+          <h1 className="text-[#e9e8e8] uppercase leading-[0.8] font-medium text-[10.5vw] md:text-[7vw] tracking-tight">
             Content
           </h1>
-          <h1 className="text-[#c4d600] uppercase leading-[0.8] font-medium text-[15vw] md:text-[10vw] tracking-tight">
+          <h1 className="text-[#e9e8e8] uppercase leading-[0.8] font-medium text-[15vw] md:text-[10vw] tracking-tight">
             Prompts
           </h1>
         </div>

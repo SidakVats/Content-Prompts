@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import gsap from "gsap";
 import { animateTransition } from "./Transition";
 
@@ -20,7 +19,7 @@ const footerLinks = [
   { title: "Facebook", href: "/" },
   { title: "LinkedIn", href: "/" },
   { title: "Instagram", href: "/" },
-  { title: "Twitter", href: "/" },
+  { title: "Youtube", href: "/" },
 ];
 
 // ─── Animation configs ───────────────────────────────────────────────────────
@@ -56,6 +55,16 @@ const CLOSE_W = 160;
 const CLOSE_H = 44;
 const BTN_H = 44;
 const EASE = "power3.inOut";
+
+// Responsive closed dimensions (used for GSAP initial set on mobile)
+function getCloseW() {
+  if (typeof window === "undefined") return CLOSE_W;
+  return window.innerWidth < 768 ? 120 : CLOSE_W;
+}
+function getCloseH() {
+  if (typeof window === "undefined") return CLOSE_H;
+  return window.innerWidth < 768 ? 36 : CLOSE_H;
+}
 
 function getOpenWidth() {
   if (typeof window === "undefined") return 480;
@@ -275,7 +284,7 @@ function Button({ isActive, toggleMenu, resetRef }) {
     <button
       ref={btnRef}
       onClick={handleClick}
-      className="cursor-pointer border-none outline-none rounded-[5px]"
+      className="cursor-pointer border-none outline-none rounded-[5px] hamburger-btn"
       style={{
         width: CLOSE_W,
         height: CLOSE_H,
@@ -295,6 +304,7 @@ function Button({ isActive, toggleMenu, resetRef }) {
           display: "flex",
           alignItems: "center",
         }}
+        className="hamburger-label-wrap"
       >
         <span
           ref={menuLabelRef}
@@ -358,7 +368,7 @@ export default function HamburgerMenu() {
   const buttonResetRef = useRef(null);
 
   useEffect(() => {
-    gsap.set(panelRef.current, { width: CLOSE_W, height: CLOSE_H });
+    gsap.set(panelRef.current, { width: getCloseW(), height: getCloseH() });
   }, []);
 
   useEffect(() => {
@@ -413,8 +423,8 @@ export default function HamburgerMenu() {
       ease: EASE,
     });
     gsap.to(panelRef.current, {
-      width: CLOSE_W,
-      height: CLOSE_H,
+      width: getCloseW(),
+      height: getCloseH(),
       duration: 0.75,
       delay: 0.35,
       ease: EASE,
@@ -432,20 +442,7 @@ export default function HamburgerMenu() {
 
   return (
     <>
-      {/* Logo — fixed top-left, mirrors menu position */}
-      <div className="absolute top-3 left-3 md:top-6 md:left-6 z-50">
-     
-          <Image
-            src="/logo3.png"
-            alt="Logo"
-            width={300}
-            height={50}
-            className="object-contain"
-            priority
-          />
-      </div>
-
-      {/* Menu — fixed top-right */}
+      {/* Menu — fixed top-right, always visible */}
       <div
         ref={wrapperRef}
         className="fixed top-3 right-3 md:top-6 md:right-6 z-50"

@@ -9,30 +9,30 @@ gsap.registerPlugin(SplitText);
 const ACCORDION_ITEMS = [
   {
     id: "01",
-    title: "Tension Over Reward",
+    title: "Compelling Narratives",
     description:
-      "We don't design progression loops that hand players a treat for completing tasks. We design systems where the absence of resolution is the point. The player is always reaching for ground that shifts beneath them. Comfort is the enemy of memorable design.",
+      "Customized strategies and powerful stories, creatives that resonate with your audience and build real, lasting connections. Because people don't just buy products, they buy into stories.",
     image: "/img1.jpg",
   },
   {
     id: "02",
-    title: "Atmosphere First",
+    title: "Search to Success",
     description:
-      "Every project begins with a feeling, not a feature list. We define the emotional signature of a world before we write a single line of code. If we cannot describe how the game makes you feel in one sentence, it is not ready to be built.",
+      "Climb the rankings with smart SEO and performance marketing that turns every click into a customer. Be Seen. Be Heard. When customers search, your brand is the one they find.",
     image: "/img2.jpg",
   },
   {
     id: "03",
-    title: "Invisible Systems",
+    title: "Complete Transparency",
     description:
-      "The best mechanics are the ones players never notice consciously. We build rulesets that shape behavior from underneath, adjusting difficulty, pacing, and environmental cues based on how the player moves and hesitates. The game watches you as much as you watch it.",
+      "No hidden fees, no confusing jargon. You get full access to your campaigns and an honest view of your results. You'll always know where your money goes and what it brings back.",
     image: "/img3.jpg",
   },
   {
     id: "04",
-    title: "Restraint as Language",
+    title: "Scale Without Limits",
     description:
-      "We say more by showing less. Empty rooms carry more weight than crowded ones. A single flickering light communicates more threat than an army of enemies. Every element earns its place through subtraction and what remains is only what absolutely needs to exist.",
+      "We find what works, double down on it, and keep pushing further, so your business grows faster and goes further than you expected. Your growth has no ceiling, and neither does our ambition.",
     image: "/img4.jpg",
   },
 ];
@@ -188,8 +188,8 @@ const Accordion = ({ items = ACCORDION_ITEMS }) => {
         <p className="mb-3 text-xs md:text-sm tracking-widest uppercase text-[#353333] font2">
           Design Pillars
         </p>
-        <h6 className="text-4xl md:text-4xl font-medium text-black max-w-3xl mx-auto tracking-wide leading-9.5 md:leading-snug">
-          Four principles that guide every build
+        <h6 className="text-4xl md:text-5xl font-medium text-black max-w-6xl mx-auto tracking-wide leading-9.5 md:leading-snug">
+          Digital Growth That Ranks, Converts and Scales
         </h6>
       </div>
 
@@ -281,7 +281,7 @@ const Accordion = ({ items = ACCORDION_ITEMS }) => {
                   {item.id}
                 </span>
                 <p
-                  className="text-[1.25rem] lg:text-[1.1rem] 2xl:text-[1.4rem] font-medium tracking-wide 2xl:tracking-wider leading-tight whitespace-nowrap text-white
+                  className="text-[1.25rem] lg:text-[1rem] 2xl:text-[1.4rem] font-medium tracking-wide 2xl:tracking-wider leading-tight whitespace-nowrap text-white
                   group-data-[stacked=true]/accordion:whitespace-normal
                   group-data-[stacked=true]/accordion:text-black
                 "
