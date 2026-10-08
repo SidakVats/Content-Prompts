@@ -143,7 +143,7 @@ const ContactHeader = () => {
   return (
     <div className="w-screen h-screen bg-[#edf1e8] flex flex-col overflow-hidden">
       {/* ── Main: eyes ON TOP of text via z-index ── */}
-      <div className="flex-1 relative flex items-center justify-center mt-40 min-h-0">
+      <div className="flex-1 relative flex items-center justify-center mt-30 min-h-0">
         {/* Text — z-0, renders first */}
         <div
           ref={linksWrapperRef}
@@ -159,7 +159,7 @@ const ContactHeader = () => {
                   <a
                     key={i}
                     href={link.url}
-                    className="inline-flex flex-nowrap items-center font-normal text-[9vw] lg:text-[8vw] leading-[1.05] h-[9vw]  lg:h-[8vw] text-[#0f0f0f] uppercase tracking-[-0.04em] cursor-pointer no-underline"
+                    className="inline-flex flex-nowrap items-center font-normal text-[9.5vw] lg:text-[8vw] leading-[1.05] h-[9vw]  lg:h-[8vw] text-[#0f0f0f] uppercase tracking-[-0.04em] cursor-pointer no-underline"
                   >
                     {splitText(link.name)}
                   </a>
@@ -167,7 +167,7 @@ const ContactHeader = () => {
               ) : (
                 <a
                   href={item.url}
-                  className="inline-flex flex-nowrap items-center font-normal text-[9vw] lg:text-[8vw] leading-[1.05] h-[9vw] lg:h-[8vw] text-[#0f0f0f] uppercase tracking-[-0.04em] cursor-pointer no-underline"
+                  className="inline-flex flex-nowrap items-center font-normal text-[9.5vw] lg:text-[8vw] leading-[1.05] h-[9vw] lg:h-[8vw] text-[#0f0f0f] uppercase tracking-[-0.04em] cursor-pointer no-underline"
                 >
                   {splitText(item.name)}
                 </a>
@@ -178,7 +178,7 @@ const ContactHeader = () => {
 
         {/* Eyes — z-10, floats above text */}
         <svg
-          className="absolute inset-0 w-full h-full pointer-events-none z-10 lg:scale-[1.4] origin-center"
+          className="absolute inset-0 w-full h-full pointer-events-none z-10 scale-[0.6] lg:scale-[1.75] 2xl:scale-[1.2] origin-center"
           viewBox="0 0 1000 1000"
           preserveAspectRatio="xMidYMid meet"
         >

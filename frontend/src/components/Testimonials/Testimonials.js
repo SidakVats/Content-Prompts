@@ -151,7 +151,11 @@ export default function Testimonials() {
           let p = el.parentElement;
           while (p) {
             const oy = window.getComputedStyle(p).overflowY;
-            if ((oy === "auto" || oy === "scroll") && p.scrollHeight > p.clientHeight) return p;
+            if (
+              (oy === "auto" || oy === "scroll") &&
+              p.scrollHeight > p.clientHeight
+            )
+              return p;
             p = p.parentElement;
           }
           return window;
@@ -305,7 +309,11 @@ export default function Testimonials() {
         let p = section.parentElement;
         while (p) {
           const oy = window.getComputedStyle(p).overflowY;
-          if ((oy === "auto" || oy === "scroll") && p.scrollHeight > p.clientHeight) return p;
+          if (
+            (oy === "auto" || oy === "scroll") &&
+            p.scrollHeight > p.clientHeight
+          )
+            return p;
           p = p.parentElement;
         }
         return window;
@@ -380,7 +388,7 @@ export default function Testimonials() {
       <div
         className="w-full flex flex-col items-center gap-4
                    md:grid md:grid-cols-2 md:items-start md:gap-5 lg:-mt-15
-                   lg:absolute lg:block! lg:top-[60%] lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:w-0 lg:h-0 lg:gap-20"
+                   lg:absolute lg:block! lg:top-[63%] lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:w-0 lg:h-0 lg:gap-20"
       >
         {TESTIMONIALS.map((item, i) => (
           <article
@@ -427,7 +435,6 @@ export default function Testimonials() {
 
             {/* Author */}
             <div className="flex items-center gap-3">
-             
               <div className="flex flex-col gap-[0.15rem] min-w-0">
                 <h6 className="text-lg lg:text-[1.5rem] tracking-normal leading-none">
                   {item.name}

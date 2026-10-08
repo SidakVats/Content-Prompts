@@ -121,7 +121,7 @@ const About = () => {
 
       {/* ── Big headline ── */}
       <section className="relative w-full h-full flex justify-center items-center p-8! pb-16! text-center font-medium leading-[0.9] lg:leading-[0.85] lg:pt-10!">
-        <h1 className="about-headline font5 relative z-10 w-full pt-5! text-[#331C4F] lg:p-8! text-[18vw] lg:text-[10vw] 2xl:text-[9vw] pointer-events-none uppercase">
+        <h1 className="about-headline relative tracking-tight z-10 w-full pt-5! text-[#331C4F] lg:p-8! text-[18vw] lg:text-[10vw] 2xl:text-[8vw] pointer-events-none uppercase">
           GROWTH THAT SCALES
         </h1>
       </section>
@@ -134,10 +134,10 @@ const About = () => {
             BUSINESSES THAT REFUSE TO STAY SMALL.
           </div>
 
-          <div className="about-subhead uppercase lg:w-[90%] 2xl:w-[80%] mx-auto! text-center text-[5.8vw] md:text-[4vw] lg:text-[2rem] font2 leading-none mt-5 lg:-mt-5">
+          {/* <div className="about-subhead uppercase lg:w-[90%] 2xl:w-[80%] mx-auto! text-center text-[5.8vw] md:text-[4vw] lg:text-[2rem] font2 leading-none mt-5 lg:-mt-5">
             Compelling Narratives. Unstoppable Growth. Customized Strategies.
             Turn your Brand into Market Success. START WITH SMALLER BUDGET
-          </div>
+          </div> */}
 
           <div className="flex flex-col gap-16 mx-auto! text-center lg:w-[90%]">
             <a
