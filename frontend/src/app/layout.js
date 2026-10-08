@@ -3,6 +3,7 @@ import Image from "next/image";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import HamburgerMenu from "@/components/HamburgerMenu";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import Transition from "@/components/Transition";
 
 const font1 = localFont({
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col bg-black">
         <Transition />
         <HamburgerMenu />
+        <WhatsAppButton />
         <SmoothScroll>
           {/* Logo lives here so it's inside the Lenis scroll container
               and scrolls away naturally while the fixed menu button stays put */}
