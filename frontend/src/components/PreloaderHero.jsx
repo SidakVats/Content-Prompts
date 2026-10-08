@@ -16,6 +16,23 @@ export default function PreloaderHero() {
   // Controls React unmount of preloader — never call .remove() on the node directly
   const [preloaderDone, setPreloaderDone] = useState(false);
 
+  // Force video playback — autoplay can silently fail on new devices
+  useEffect(() => {
+    const video = document.querySelector(".hero-video");
+    if (video) {
+      video.play().catch(() => {
+        // Autoplay was blocked — attempt play on first user interaction
+        const playOnInteraction = () => {
+          video.play().catch(() => {});
+          document.removeEventListener("click", playOnInteraction);
+          document.removeEventListener("touchstart", playOnInteraction);
+        };
+        document.addEventListener("click", playOnInteraction, { once: true });
+        document.addEventListener("touchstart", playOnInteraction, { once: true });
+      });
+    }
+  }, []);
+
   useEffect(() => {
     const preloader = preloaderRef.current;
     const preloaderBg = preloaderBgRef.current;
@@ -293,13 +310,15 @@ export default function PreloaderHero() {
       <section className="relative w-full h-svh p-10 max-md:p-4 flex justify-between items-end max-md:flex-col max-md:justify-end max-md:items-start max-md:gap-4 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full">
           <video
-            src="/hero-video.mp4"
             autoPlay
             muted
             loop
             playsInline
-            className="w-full h-full object-cover"
-          />
+            preload="auto"
+            className="hero-video w-full h-full object-cover"
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+          </video>
         </div>
 
         <div className="hero-title relative z-1">
