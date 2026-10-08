@@ -8,12 +8,14 @@ import { SplitText } from "gsap/SplitText";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const PARTNERS = [
-  "Adult Swim",
-  "Vans",
-  "Mailchimp",
-  "Bandcamp",
-  "Spotify",
-  "RedBull",
+  "Meta",
+  "Google",
+  "YouTube",
+  "LinkedIn",
+  "Amazon Ads",
+  "Snapchat",
+  "Pinterest",
+  "TikTok",
 ];
 
 // ─── Callout ──────────────────────────────────────────────────────────────────
@@ -67,7 +69,8 @@ function getScroller(el) {
   let p = el?.parentElement;
   while (p) {
     const oy = window.getComputedStyle(p).overflowY;
-    if ((oy === "auto" || oy === "scroll") && p.scrollHeight > p.clientHeight) return p;
+    if ((oy === "auto" || oy === "scroll") && p.scrollHeight > p.clientHeight)
+      return p;
     p = p.parentElement;
   }
   return window;
@@ -214,9 +217,11 @@ export default function Stats() {
               <div className="absolute inset-0 bg-linear-to-t from-[#0f0f0f] to-transparent pointer-events-none" />
               <div className="relative z-10 flex flex-col">
                 <p className="mono text-lg tracking-wide">
-                  Things we&apos;ve drawn
+                  Ad spend we&apos;ve steered
                 </p>
-                <h4 className="text-6xl lg:text-7xl font5">340+</h4>
+                <h4 className="text-5xl lg:text-5xl 2xl:text-6xl">
+                  $15,000/mo
+                </h4>
               </div>
             </article>
 
@@ -224,24 +229,30 @@ export default function Stats() {
               ref={setCardRef(1)}
               className="relative rounded-2xl overflow-hidden transform-3d backface-hidden will-change-transform aspect-square w-full md:w-[85%] md:self-end flex flex-col justify-between px-3 md:py-1 bg-[#f5f5f5] text-[#0f0f0f]"
             >
-              <h4 className="text-[25vw] lg:text-[7vw] font5 tracking-tight">
-                60+
+              <h4 className="text-[25vw] md:text-[10vw] lg:text-[7vw] -mt-6 2xl:-mt-10 tracking-tight">
+                34+
               </h4>
               <p className="mono text-lg tracking-tight self-end text-right p-3 md:p-2">
-                Brands we&apos;ve drawn for
+                Brands that handed us the keys
               </p>
             </article>
 
             <article
               ref={setCardRef(2)}
-              className="relative rounded-2xl overflow-hidden transform-3d backface-hidden will-change-transform aspect-[0.65/1] min-h-64 lg:min-h-88 flex flex-col p-4 lg:p-[1.15rem] bg-[#216ad1] text-white"
+              className="relative rounded-2xl overflow-hidden transform-3d backface-hidden will-change-transform aspect-[0.65/1] min-h-64 lg:min-h-88 flex flex-col justify-between p-4 lg:p-[1.15rem] bg-[#216ad1] text-white"
             >
-              <p className="mono text-xl tracking-wide">
-                Eyeballs reached
-              </p>
-              <h3 className="text-[20vw] lg:text-[7vw] 2xl:text-6xl -mt-5 md:mt-0">
-                250M+
-              </h3>
+              <h6 className="text-5xl md:text-[2.5rem] lg:text-[3.5rem] leading-[0.9]">
+                Where we make noise
+              </h6>
+              <ul className="list-none self-end text-right">
+                {PARTNERS.map((name) => (
+                  <li key={name}>
+                    <p className="font1 tracking-widest text-lg 2xl:text-xl uppercase">
+                      {name}
+                    </p>
+                  </li>
+                ))}
+              </ul>
             </article>
           </div>
 
@@ -249,7 +260,7 @@ export default function Stats() {
           <div className="flex flex-col gap-[0.85rem] min-w-0 transform-3d">
             <article
               ref={setCardRef(3)}
-              className="relative rounded-2xl overflow-hidden transform-3d backface-hidden will-change-transform aspect-[1/1.85] flex flex-col justify-start p-4 lg:p-[1.15rem] text-[#f5f5f5]"
+              className="relative rounded-2xl overflow-hidden transform-3d backface-hidden will-change-transform aspect-1/1.5 lg:aspect-[1/1.85] flex flex-col justify-start p-4 lg:p-[1.15rem] text-[#f5f5f5]"
             >
               <img
                 src="/img2.jpg"
@@ -258,11 +269,11 @@ export default function Stats() {
               />
               <div className="absolute inset-0 bg-linear-to-b from-[rgba(15,15,15,0.9)] via-[rgba(15,15,15,0.25)] to-transparent pointer-events-none" />
               <div className="relative z-10 flex flex-col gap-1 lg:gap-[0.4rem]">
-                <p className="mono text-sm lg:text-base tracking-wide">
-                  On the table right now
+                <p className="mono text-xl lg:text-base tracking-wide">
+                  Campaigns live right now
                 </p>
-                <h3 className="text-[30vw] md:text-4xl lg:text-[7vw] 2xl:text-[8vw] font5">
-                  14
+                <h3 className="text-[30vw] -mt-5 md:text-[12vw] lg:text-[7vw] 2xl:text-[8vw]">
+                  21+
                 </h3>
               </div>
             </article>
@@ -271,18 +282,12 @@ export default function Stats() {
               ref={setCardRef(4)}
               className="relative rounded-2xl transform-3d backface-hidden will-change-transform min-h-64 w-full md:w-[82%] md:self-start flex flex-col justify-between p-4 bg-[#ff8356] text-black overflow-visible"
             >
-              <h6 className="text-3xl md:text-[2.5rem] lg:text-[2.5rem] leading-[0.85]">
-                Friends of the studio
-              </h6>
-              <ul className="list-none self-end text-right mt-6">
-                {PARTNERS.map((name) => (
-                  <li key={name}>
-                    <p className="font5 tracking-widest text-lg uppercase">
-                      {name}
-                    </p>
-                  </li>
-                ))}
-              </ul>
+              <p className="mono text-xl tracking-wide">
+                Eyeballs we&apos;ve caught
+              </p>
+              <h3 className="text-[20vw] md:text-[8vw] lg:text-[7vw] 2xl:text-6xl -mt-5 md:mt-0 -mb-5">
+                26M+
+              </h3>
             </article>
           </div>
         </div>
