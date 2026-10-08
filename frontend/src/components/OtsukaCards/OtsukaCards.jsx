@@ -167,7 +167,7 @@ function FaceContent({ tag, title, description, price, thumbImg, compact }) {
         alt={title}
         className={
           compact
-            ? "self-end w-full h-32 mb-1 object-cover block rounded-lg shrink-0"
+            ? "self-end w-[45%] h-40 mb-1 object-cover block rounded-lg shrink-0"
             : "self-end w-40 h-44 mb-2 object-cover block rounded-xl shrink-0"
         }
       />
@@ -290,7 +290,11 @@ function Card({
             let p = el.parentElement;
             while (p) {
               const oy = window.getComputedStyle(p).overflowY;
-              if ((oy === "auto" || oy === "scroll") && p.scrollHeight > p.clientHeight) return p;
+              if (
+                (oy === "auto" || oy === "scroll") &&
+                p.scrollHeight > p.clientHeight
+              )
+                return p;
               p = p.parentElement;
             }
             return window;
@@ -391,9 +395,9 @@ function Card({
     /* Perspective wrapper */
     <div
       ref={wrapperRef}
-      className="w-full sm:w-auto"
+      className="w-full"
       style={{
-        width: mobile ? undefined : cardW,
+        maxWidth: mobile ? "100%" : cardW,
         height: cardH,
         perspective: "2000px",
       }}
@@ -407,7 +411,7 @@ function Card({
         <div
           className="otsuka-face absolute bg-white flex flex-col rounded-2xl border border-slate-200 overflow-hidden"
           style={{
-            width: mobile ? "100%" : cardW,
+            width: "100%",
             height: cardH,
             padding: mobile ? "8px" : "16px",
             transform: `translateZ(${cardD / 2}px)`,
@@ -428,7 +432,7 @@ function Card({
         <div
           className="otsuka-face absolute bg-white flex flex-col rounded-2xl border border-slate-200 overflow-hidden"
           style={{
-            width: mobile ? "100%" : cardW,
+            width: "100%",
             height: cardH,
             padding: mobile ? "8px" : "16px",
             transform: `rotateX(180deg) translateZ(${cardD / 2}px)`,
@@ -498,8 +502,8 @@ function Card({
 
 export default function OtsukaCards() {
   return (
-    <section className="relative w-full bg-[#edeee8] py-16 sm:py-24 px-6 sm:px-16 2xl:px-32 overflow-hidden">
-      <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:gap-y-10 justify-items-center sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+    <section className="relative w-full bg-[#edeee8] py-16 sm:py-24 px-5 sm:px-16 2xl:px-32 overflow-hidden">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:gap-y-10 justify-items-center sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {cardsData.map((card, i) => (
           <Card key={i} index={i} {...card} />
         ))}
