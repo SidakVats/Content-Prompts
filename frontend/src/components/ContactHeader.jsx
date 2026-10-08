@@ -132,12 +132,12 @@ const ContactHeader = () => {
   }, []);
 
   const socialLinks = [
-    { name: "Instagram", url: "#" },
+    { name: "Instagram", url: "https://www.instagram.com/contentpromptspro?stkn=MW1lYXhtbGRzdTNmMg%3D%3D" },
     [
-      { name: "Facebook", url: "#" },
-      { name: "Youtube", url: "#" },
+      { name: "Facebook", url: "https://www.facebook.com/people/Content-Prompts/100063965808672/?mibextid=wwXIfr&rdid=EPIHvLTvrRyJl8gR&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1TFcoiKtCW%2F%3Fmibextid%3DwwXIfr" },
+      { name: "Youtube", url: "https://www.youtube.com/@contentprompts" },
     ],
-    { name: "LinkedIn", url: "#" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/company/content-prompts/home/" },
   ];
 
   return (
@@ -159,6 +159,8 @@ const ContactHeader = () => {
                   <a
                     key={i}
                     href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex flex-nowrap items-center font-normal text-[9.5vw] lg:text-[8vw] leading-[1.05] h-[9vw]  lg:h-[8vw] text-[#0f0f0f] uppercase tracking-[-0.04em] cursor-pointer no-underline"
                   >
                     {splitText(link.name)}
@@ -167,6 +169,8 @@ const ContactHeader = () => {
               ) : (
                 <a
                   href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex flex-nowrap items-center font-normal text-[9.5vw] lg:text-[8vw] leading-[1.05] h-[9vw] lg:h-[8vw] text-[#0f0f0f] uppercase tracking-[-0.04em] cursor-pointer no-underline"
                 >
                   {splitText(item.name)}
