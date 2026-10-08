@@ -141,7 +141,7 @@ const ContactHeader = () => {
   ];
 
   return (
-    <div className="w-screen h-screen bg-[#edf1e8] flex flex-col overflow-hidden">
+    <div className="w-screen h-dvh bg-[#edf1e8] flex flex-col overflow-hidden">
       {/* ── Main: eyes ON TOP of text via z-index ── */}
       <div className="flex-1 relative flex items-center justify-center mt-30 min-h-0">
         {/* Text — z-0, renders first */}
