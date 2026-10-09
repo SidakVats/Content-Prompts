@@ -1,10 +1,10 @@
 import localFont from "next/font/local";
-import Image from "next/image";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import HamburgerMenu from "@/components/HamburgerMenu";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Transition from "@/components/Transition";
+import Logo from "@/components/Logo";
 
 const font1 = localFont({
   src: "./fonts/font1.ttf",
@@ -55,15 +55,8 @@ export default function RootLayout({ children }) {
           {/* Logo lives here so it's inside the Lenis scroll container
               and scrolls away naturally while the fixed menu button stays put */}
           <div className="relative">
-            <div className="absolute top-6 left-3 md:top-8 md:left-10 z-40 pointer-events-none">
-              <Image
-                src="/logo3.png"
-                alt="Content Prompts"
-                width={5000}
-                height={5000}
-                className="object-contain w-50 md:w-70"
-                priority
-              />
+            <div className="absolute top-3 left-3 md:top-4 md:left-7 z-40 pointer-events-none">
+              <Logo />
             </div>
             {children}
           </div>

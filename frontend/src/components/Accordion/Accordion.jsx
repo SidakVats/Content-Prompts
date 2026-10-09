@@ -180,7 +180,7 @@ const Accordion = ({ items = ACCORDION_ITEMS }) => {
   return (
     <section
       ref={accordionRef}
-      className="pb-10 pt-30 md:pt-40 lg:pt-29 2xl:pt-55 bg-[#edeee8] group/accordion"
+      className="pb-10 pt-40 md:pt-40 lg:pt-29 2xl:pt-55 bg-[#edeee8] group/accordion"
       data-stacked={undefined}
     >
       {/* Header */}
