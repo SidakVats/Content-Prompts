@@ -124,8 +124,7 @@ export default function AnimeText({
     >
       <section
         ref={stickyRef}
-        className="sticky top-0 w-full p-8 overflow-hidden bg-[#0f0f0f]"
-        style={{ height: "100svh", minHeight: "-webkit-fill-available" }}
+        className="sticky top-0 w-full h-svh p-8 overflow-hidden bg-[#0f0f0f]"
       >
         <div className="w-full h-full flex justify-center items-center text-center">
           <div className="w-full">
