@@ -16,7 +16,7 @@ export default function Logo() {
           alt="Content Prompts"
           width={5000}
           height={5000}
-          className="object-contain w-40 md:hidden"
+          className="object-contain w-35 md:hidden"
           priority
         />
         <Image
@@ -39,7 +39,7 @@ export default function Logo() {
         alt="Content Prompts"
         width={5000}
         height={5000}
-        className="object-contain w-40 md:hidden"
+        className="object-contain w-35 md:hidden"
         priority
       />
       <Image
