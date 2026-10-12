@@ -96,7 +96,7 @@ export default function WhatsAppButton() {
     /* Outer glow-border wrapper — identical to HamburgerMenu outer div */
     <div
       ref={wrapperRef}
-      className="fixed bottom-6 right-6 z-40 shadow-2xl"
+      className="fixed bottom-4.5 right-3 lg:bottom-6 lg:right-5.5 z-40 shadow-2xl"
       style={{ opacity: 0 }} /* starts invisible; GSAP fades in */
     >
       <div

@@ -121,9 +121,8 @@ const About = () => {
 
       {/* ── Big headline ── */}
       <section className="relative w-full h-full flex justify-center items-center p-8! pb-16! text-center font-medium leading-[0.9] lg:leading-[0.85] lg:pt-10!">
-        <h1 className="about-headline relative tracking-tight z-10 w-full pt-5! text-[#331C4F] lg:p-8! text-[18vw] lg:text-[10vw] 2xl:text-[8vw] pointer-events-none">
-          {/* GROWTH THAT SCALES */}
-          Content Prompts
+        <h1 className="about-headline uppercase relative tracking-tight z-10 w-full pt-5! text-[#331C4F] lg:p-8! text-[18vw] lg:text-[10vw] 2xl:text-[8vw] pointer-events-none">
+          GROWTH THAT SCALES
         </h1>
       </section>
 

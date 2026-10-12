@@ -55,7 +55,7 @@ export default function RootLayout({ children }) {
           {/* Logo lives here so it's inside the Lenis scroll container
               and scrolls away naturally while the fixed menu button stays put */}
           <div className="relative">
-            <div className="absolute top-3 left-3 md:top-4 md:left-7 z-40 pointer-events-none">
+            <div className="absolute top-4 left-4 md:top-6 md:left-7 z-40 pointer-events-none">
               <Logo />
             </div>
             {children}
