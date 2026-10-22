@@ -377,9 +377,9 @@ export default function Testimonials() {
       {/* Heading */}
       <h2
         ref={headingRef}
-        className="w-full text-center text-[clamp(2rem,5vw,5.5rem)] tracking-tight leading-[0.9] z-10
-                  md:text-[4vh] lg:text-[6vh]
-                   lg:absolute lg:top-[15%] lg:left-1/2 lg:-translate-x-1/2 lg:w-max lg:max-w-[calc(100%-2rem)] lg:pointer-events-none uppercase"
+        className="w-full text-center text-[5vh] tracking-tighter leading-none lg:leading-22 uppercase font2 z-10
+                  md:text-[4vh] lg:text-[7vh]
+                   lg:absolute lg:top-[15%] lg:left-1/2 lg:-translate-x-1/2 lg:w-max lg:max-w-[calc(100%-2rem)] lg:pointer-events-none"
       >
         Proof We Play Well With Others
       </h2>
