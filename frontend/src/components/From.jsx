@@ -68,7 +68,7 @@ const From = () => {
   }, []);
 
   return (
-    <section className="split-element bg-black relative w-full h-[40vh] overflow-hidden lg:h-screen max-md:hidden">
+    <section className="split-element bg-black relative w-full h-[40vh] overflow-hidden lg:h-screen">
       <div
         className="absolute top-1/2 left-1/2 w-full h-full flex justify-center items-center -translate-x-1/2 -translate-y-1/2"
         style={{ clipPath: "polygon(0 0, 100% 0, 100% 50%, 0 50%)" }}
@@ -100,7 +100,7 @@ const From = () => {
           <p className="w-full flex justify-between text-xs items-center lg:text-lg lg:uppercase max-lg:flex-wrap max-lg:justify-center py-0.5 gap-2 lg:gap-x-8 max-lg:text-center">
             <span>SEO/GEO</span>
             <span>META & GOOGLE ADS</span>
-            <span>VISIBILITY</span>
+            <span className="max-md:hidden">VISIBILITY</span>
             <span>PERFORMANCE</span>
             <span>SCALE</span>
           </p>
