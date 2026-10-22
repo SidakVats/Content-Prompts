@@ -248,7 +248,7 @@ export default function Stats() {
                   />
                 </div>
               </div>
-              <p className="mono text-lg tracking-tight self-end text-right p-3 md:p-2">
+              <p className="mono text-lg tracking-tight self-end text-right p-3 pb-4 md:p-2">
                 Brands that handed us the keys
               </p>
             </article>
@@ -324,7 +324,7 @@ export default function Stats() {
                   <img
                     src="/stats/26M+.png"
                     alt=""
-                    className="w-16 h-16 lg:w-55 lg:h-70 object-contain block rounded-3xl"
+                    className="w-56 h-56 lg:w-55 lg:h-70 object-contain block rounded-3xl"
                   />
                  
                 </div>
