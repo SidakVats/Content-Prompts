@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 
 // ─── Config — change these without touching any other code ───────────────────
@@ -19,7 +20,7 @@ function WhatsAppIcon({ iconRef }) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
-      style={{ width: 15, height: 15, display: "block", flexShrink: 0 }}
+      className="block shrink-0 w-5 h-5 md:w-3.75 md:h-3.75"
       aria-hidden="true"
     >
       {/* Outer bubble */}
@@ -39,9 +40,34 @@ export default function WhatsAppButton() {
   const labelRef  = useRef(null);
   const iconRef   = useRef(null);
 
-  // ── Entry animation on mount ──────────────────────────────────────────────
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  // Tracks whether the user has scrolled past the hero on the home page.
+  const [pastHero, setPastHero] = useState(false);
+
+  // ── Scroll sentinel: show button once user passes the hero section ────────
   useEffect(() => {
+    if (!isHome) return;
+
+    const onScroll = () => {
+      if (window.scrollY > window.innerHeight * 0.5) {
+        setPastHero(true);
+      } else {
+        setPastHero(false);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
+
+  // ── Entry animation — fires on mount (non-home) or when pastHero flips (home) ──
+  useEffect(() => {
+    // On home page wait for scroll trigger; on other pages animate immediately on mount
+    if (isHome && !pastHero) return;
     const el = wrapperRef.current;
+    if (!el) return;
     gsap.fromTo(
       el,
       { opacity: 0, y: 24, scale: 0.92 },
@@ -51,10 +77,13 @@ export default function WhatsAppButton() {
         scale: 1,
         duration: 0.9,
         ease: "power3.out",
-        delay: 0.4,
+        delay: 0.2,
       }
     );
-  }, []);
+  }, [isHome, pastHero]);
+
+  // On home page, hide until scrolled past the hero
+  if (isHome && !pastHero) return null;
 
   // ── Hover: bg flips to white, text/icon flip to dark ─────────────────────
   const handleMouseEnter = () => {
@@ -100,7 +129,7 @@ export default function WhatsAppButton() {
       style={{ opacity: 0 }} /* starts invisible; GSAP fades in */
     >
       <div
-        className="p-0.75 rounded-[7px]"
+        className="p-0.75 rounded-full md:rounded-[7px]"
         style={{
           background:
             "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.03) 60%, rgba(255,255,255,0) 100%)",
@@ -114,23 +143,22 @@ export default function WhatsAppButton() {
           onClick={handleClick}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="rounded-[5px] flex items-center gap-2.5 cursor-pointer no-underline"
+          className="rounded-full md:rounded-[5px] flex items-center justify-center gap-2.5 cursor-pointer no-underline w-11 h-11 md:w-auto md:h-auto md:px-4 md:py-2.5"
           style={{
             backgroundColor: "rgba(6,6,6,0.92)",
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
-            padding: "10px 16px",
             color: "#ffffff",
           }}
           aria-label="Chat with us on WhatsApp"
         >
-          {/* Icon */}
+          {/* Icon — slightly larger on mobile since it's the only element */}
           <WhatsAppIcon iconRef={iconRef} />
 
-          {/* Label */}
+          {/* Label — hidden on mobile, visible md+ */}
           <span
             ref={labelRef}
-            className="text-xs font-medium uppercase"
+            className="hidden md:inline text-xs font-medium uppercase"
             style={{ letterSpacing: "0.12em", color: "#ffffff", whiteSpace: "nowrap" }}
           >
             {LABEL}
