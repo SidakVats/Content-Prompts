@@ -1,9 +1,9 @@
-import React from 'react'
+import StorySlides from "@/components/StorySlides/StorySlides";
 
-const page = () => {
+export default function BlogsPage() {
   return (
-    <div>page</div>
-  )
+    <main>
+      <StorySlides />
+    </main>
+  );
 }
-
-export default page
