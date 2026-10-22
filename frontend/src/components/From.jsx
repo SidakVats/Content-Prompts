@@ -68,7 +68,7 @@ const From = () => {
   }, []);
 
   return (
-    <section className="split-element bg-black relative w-full h-[40vh] overflow-hidden lg:h-screen">
+    <section className="split-element bg-black relative w-full h-[40vh] overflow-hidden lg:h-screen max-md:hidden">
       <div
         className="absolute top-1/2 left-1/2 w-full h-full flex justify-center items-center -translate-x-1/2 -translate-y-1/2"
         style={{ clipPath: "polygon(0 0, 100% 0, 100% 50%, 0 50%)" }}
