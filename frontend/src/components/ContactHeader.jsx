@@ -234,7 +234,7 @@ const ContactHeader = () => {
         {/* Big listening headline */}
         <p className="text-[1.6rem] md:text-[2.5rem] font-medium leading-none tracking-tight text-[#0f0f0f]">
           Content Prompts is{" "}
-          <em className="not-italic text-[#c4d600]">listening.</em>
+          <em className="not-italic text-[#1864d4]">listening.</em>
         </p>
 
         {/* Supporting line */}

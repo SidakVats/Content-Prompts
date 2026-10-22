@@ -229,9 +229,25 @@ export default function Stats() {
               ref={setCardRef(1)}
               className="relative rounded-2xl overflow-hidden transform-3d backface-hidden will-change-transform aspect-square w-full md:w-[85%] md:self-end flex flex-col justify-between px-3 md:py-1 bg-[#f5f5f5] text-[#0f0f0f]"
             >
-              <h4 className="text-[25vw] md:text-[10vw] lg:text-[7vw] -mt-6 2xl:-mt-10 tracking-tight">
-                34+
-              </h4>
+              <div className="flex items-start justify-between">
+                <h4 className="text-[25vw] md:text-[10vw] lg:text-[6.5vw] -mt-6 2xl:-mt-10 tracking-tight">
+                  34+
+                </h4>
+                <div className="relative -mt-3 -mr-3 md:ml-0 md:-mt-1">
+                  <img
+                    src="/stats/34+.png"
+                    alt=""
+                    className="w-56 h-76 lg:w-100 lg:h-60 object-cover block"
+                  />
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        "linear-gradient(to left, transparent 100%, #f5f5f5 100%), linear-gradient(to bottom, transparent 70%, #f5f5f5 100%)",
+                    }}
+                  />
+                </div>
+              </div>
               <p className="mono text-lg tracking-tight self-end text-right p-3 md:p-2">
                 Brands that handed us the keys
               </p>
@@ -239,20 +255,38 @@ export default function Stats() {
 
             <article
               ref={setCardRef(2)}
-              className="relative rounded-2xl overflow-hidden transform-3d backface-hidden will-change-transform aspect-[0.65/1] min-h-64 lg:min-h-88 flex flex-col justify-between p-4 lg:p-[1.15rem] bg-[#216ad1] text-white"
+              className="relative rounded-2xl overflow-hidden transform-3d backface-hidden will-change-transform aspect-[0.65/1] min-h-64 lg:min-h-88 flex flex-col justify-between p-4 lg:p-[1.15rem] text-white"
+              style={{ background: "#1864d4" }}
             >
               <h6 className="text-5xl md:text-[2.5rem] lg:text-[3.5rem] leading-[0.9]">
                 Where we make noise
               </h6>
-              <ul className="list-none self-end text-right">
-                {PARTNERS.map((name) => (
-                  <li key={name}>
-                    <p className="font1 tracking-widest text-lg 2xl:text-xl uppercase">
-                      {name}
-                    </p>
-                  </li>
-                ))}
-              </ul>
+              <div className="flex items-end justify-between">
+                <div className="relative -mb-4 -ml-4 lg:mb-[-1.15rem] lg:ml-[-1.15rem]">
+                  <img
+                    src="/stats/where we make noise.png"
+                    alt=""
+                    className="w-70 h-95 lg:w-50 lg:h-80 2xl:w-80 2xl:h-110 object-cover block"
+                  />
+                  {/* Fade edges into card background */}
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        "linear-gradient(to right, transparent 70%, #1864d4 100%), linear-gradient(to top, transparent 60%, #1864d4 100%)",
+                    }}
+                  />
+                </div>
+                <ul className="list-none text-right">
+                  {PARTNERS.map((name) => (
+                    <li key={name}>
+                      <p className="font1 tracking-widest text-lg 2xl:text-xl uppercase">
+                        {name}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </article>
           </div>
 
@@ -263,7 +297,7 @@ export default function Stats() {
               className="relative rounded-2xl overflow-hidden transform-3d backface-hidden will-change-transform aspect-1/1.5 lg:aspect-[1/1.85] flex flex-col justify-start p-4 lg:p-[1.15rem] text-[#f5f5f5]"
             >
               <img
-                src="/img2.jpg"
+                src="/stats/campaigns.png"
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -280,12 +314,22 @@ export default function Stats() {
 
             <article
               ref={setCardRef(4)}
-              className="relative rounded-2xl transform-3d backface-hidden will-change-transform min-h-64 w-full md:w-[82%] md:self-start flex flex-col justify-between p-4 bg-[#ff8356] text-black overflow-visible"
+              className="relative rounded-2xl transform-3d backface-hidden overflow-hidden will-change-transform min-h-64 w-full md:w-[82%] md:self-start flex flex-col justify-between p-4 bg-[#fd7b45] text-black"
             >
-              <p className="mono text-xl tracking-wide">
-                Eyeballs we&apos;ve caught
-              </p>
-              <h3 className="text-[20vw] md:text-[8vw] lg:text-[7vw] 2xl:text-6xl -mt-5 md:mt-0 -mb-5">
+              <div className="flex items-start justify-between">
+                <p className="mono text-xl tracking-wide">
+                  Eyeballs <br/> we&apos;ve caught
+                </p>
+                <div className="relative -mt-4 -mr-15">
+                  <img
+                    src="/stats/26M+.png"
+                    alt=""
+                    className="w-16 h-16 lg:w-55 lg:h-70 object-contain block rounded-3xl"
+                  />
+                 
+                </div>
+              </div>
+              <h3 className="text-[20vw] md:text-[8vw] lg:text-[7vw] 2xl:text-6xl -mt-5 md:mt-0 -mb-5 lg:-mb-3">
                 26M+
               </h3>
             </article>

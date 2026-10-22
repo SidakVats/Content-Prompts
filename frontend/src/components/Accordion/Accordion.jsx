@@ -12,28 +12,28 @@ const ACCORDION_ITEMS = [
     title: "Compelling Narratives",
     description:
       "Customized strategies and powerful stories, creatives that resonate with your audience and build real, lasting connections. Because people don't just buy products, they buy into stories.",
-    image: "/img1.jpg",
+    image: "/abouthero/compelling narratives.png",
   },
   {
     id: "02",
     title: "Search to Success",
     description:
       "Climb the rankings with smart SEO and performance marketing that turns every click into a customer. Be Seen. Be Heard. When customers search, your brand is the one they find.",
-    image: "/img2.jpg",
+    image: "/abouthero/search to success.png",
   },
   {
     id: "03",
     title: "Complete Transparency",
     description:
       "No hidden fees, no confusing jargon. You get full access to your campaigns and an honest view of your results. You'll always know where your money goes and what it brings back.",
-    image: "/img3.jpg",
+    image: "/abouthero/complete transparency.png",
   },
   {
     id: "04",
     title: "Scale Without Limits",
     description:
       "We find what works, double down on it, and keep pushing further, so your business grows faster and goes further than you expected. Your growth has no ceiling, and neither does our ambition.",
-    image: "/img4.jpg",
+    image: "/abouthero/scale without limits.png",
   },
 ];
 
