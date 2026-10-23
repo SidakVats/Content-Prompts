@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useViewTransition } from "@/hooks/useViewTransition";
@@ -116,6 +116,7 @@ function StoryButton({ href, children, delay = 0 }) {
 /* ── StorySlides ─────────────────────────────────────────────────────────── */
 export default function StorySlides() {
   const containerRef = useRef(null);
+  const [activeStoryIndex, setActiveStoryIndex] = useState(0);
 
   useEffect(() => {
     if (typeof window === "undefined" || !containerRef.current) return;
@@ -218,6 +219,7 @@ export default function StorySlides() {
       const prev = activeStory;
       activeStory = (activeStory + 1) % stories.length;
       const story = stories[activeStory];
+      setActiveStoryIndex(activeStory);
 
       const profilePs = el.querySelectorAll(".story-profile-name p");
       if (profilePs.length)
@@ -455,8 +457,8 @@ export default function StorySlides() {
 
             {/* CTA */}
             <div className="story-btn w-max my-4 py-1 lg:my-8">
-              <StoryButton href={stories[0].linkSrc}>
-                {stories[0].linkLabel}
+              <StoryButton href={stories[activeStoryIndex].linkSrc}>
+                {stories[activeStoryIndex].linkLabel}
               </StoryButton>
             </div>
           </div>
