@@ -123,14 +123,14 @@ export default function ProjectPage({ params }) {
           50svh, flex-col, justify-end, items-center, text-center
       ──────────────────────────────────────────────────────────────────── */}
       <section
-        className="w-screen flex flex-col justify-end items-center gap-6 pb-12 text-center"
+        className="w-screen flex flex-col justify-end items-center gap-6 py-12 text-center"
         style={{ height: "50svh" }}
       >
         <TextReveal eager delay={0.3}>
           <p className="mb-8 uppercase text-sm md:text-base md:tracking-widest">
             {project.projectSubtitle}
           </p>
-          <h1 className="text-[8vh] tracking-wide md:tracking-normal leading-[0.95] font-medium m-0">
+          <h1 className="text-[6vh] md:text-[8vh] tracking-wide md:tracking-normal leading-[0.95] font-medium m-0">
             {project.projectTitle}
           </h1>
         </TextReveal>
