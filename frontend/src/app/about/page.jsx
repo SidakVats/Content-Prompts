@@ -1,6 +1,6 @@
 import Stats from "@/components/Stats/Stats";
 import Testimonials from "@/components/Testimonials/Testimonials";
-import Accordion from "@/components/Accordion/Accordion";
+import AboutHero from "@/components/AboutHero/AboutHero";
 import AnimeText from "@/components/AnimeText/AnimeText";
 import Footer from "@/components/Footer";
 import React from "react";
@@ -8,7 +8,7 @@ import React from "react";
 const page = () => {
   return (
     <div>
-      <Accordion />
+      <AboutHero />
       <AnimeText
         paragraphs={[
           "We are a digital marketing partner obsessed with building growth engines that keep working long after launch.",
