@@ -135,7 +135,7 @@ function ProfileIcon({ name, className = "" }) {
 }
 
 /* ── StoryButton ─────────────────────────────────────────────────────────── */
-function StoryButton({ href, children, delay = 0 }) {
+function StoryButton({ hrefRef, children, delay = 0 }) {
   const { navigateWithTransition } = useViewTransition();
   const labelRef = useRef(null);
   const iconRef = useRef(null);
@@ -191,9 +191,10 @@ function StoryButton({ href, children, delay = 0 }) {
 
   return (
     <a
-      href={href}
+      href={hrefRef?.current}
       onClick={(e) => {
         e.stopPropagation();
+        const href = hrefRef?.current;
         if (!href) return;
         e.preventDefault();
         navigateWithTransition(href);
@@ -225,6 +226,8 @@ function StoryButton({ href, children, delay = 0 }) {
 export default function StorySlides() {
   const containerRef = useRef(null);
   const [activeStoryIndex, setActiveStoryIndex] = useState(0);
+  // Always holds the href of the CURRENTLY DISPLAYED story
+  const currentLinkRef = useRef(stories[0].linkSrc);
 
   useEffect(() => {
     if (typeof window === "undefined" || !containerRef.current) return;
@@ -327,7 +330,9 @@ export default function StorySlides() {
       const prev = activeStory;
       activeStory = (activeStory + 1) % stories.length;
       const story = stories[activeStory];
-      setActiveStoryIndex(activeStory);
+      // Note: setActiveStoryIndex and currentLinkRef are updated AFTER
+      // the transition (inside the setTimeout) so the button href stays
+      // correct for the story that is visually displayed.
 
       const profilePs = el.querySelectorAll(".story-profile-name p");
       if (profilePs.length)
@@ -410,6 +415,12 @@ export default function StorySlides() {
 
         resetIndexHighlight(prev);
         animateIndexHighlight(activeStory);
+
+        // Update React state and the link ref AFTER the visual swap —
+        // this keeps the button href in sync with what's actually shown.
+        setActiveStoryIndex(activeStory);
+        currentLinkRef.current = story.linkSrc;
+
         cleanUp();
 
         clearTimeout(storyTimeout);
@@ -559,7 +570,7 @@ export default function StorySlides() {
 
             {/* CTA */}
             <div className="story-btn w-max my-4 py-1 lg:my-8">
-              <StoryButton href={stories[activeStoryIndex].linkSrc}>
+              <StoryButton hrefRef={currentLinkRef}>
                 {stories[activeStoryIndex].linkLabel}
               </StoryButton>
             </div>
