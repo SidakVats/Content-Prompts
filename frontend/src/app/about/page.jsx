@@ -2,6 +2,7 @@ import Stats from "@/components/Stats/Stats";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import Accordion from "@/components/Accordion/Accordion";
 import AnimeText from "@/components/AnimeText/AnimeText";
+import Footer from "@/components/Footer";
 import React from "react";
 
 const page = () => {
@@ -50,6 +51,7 @@ const page = () => {
       />
       <Testimonials />
       <Stats />
+      <Footer />
     </div>
   );
 };
