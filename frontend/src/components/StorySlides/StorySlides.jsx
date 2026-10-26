@@ -27,6 +27,113 @@ function LightningIcon() {
   );
 }
 
+/* ── Profile SVG Icons ───────────────────────────────────────────────────── */
+function ProfileIcon({ name, className = "" }) {
+  const n = (name || "").toLowerCase();
+
+  if (n.includes("seo")) {
+    // Magnifying glass / search
+    return (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#1a1a2e" />
+        <circle cx="17.5" cy="17.5" r="7" stroke="#a78bfa" strokeWidth="2.5" />
+        <line x1="22.5" y1="22.5" x2="29" y2="29" stroke="#a78bfa" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="14" y1="17.5" x2="21" y2="17.5" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" />
+        <line x1="17.5" y1="14" x2="17.5" y2="21" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (n.includes("instagram")) {
+    // Instagram camera outline
+    return (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#1a0533" />
+        <rect x="10" y="12" width="20" height="16" rx="4" stroke="url(#ig-grad)" strokeWidth="2.2" />
+        <circle cx="20" cy="20" r="4.5" stroke="url(#ig-grad)" strokeWidth="2" />
+        <circle cx="26.5" cy="13.5" r="1.2" fill="#f472b6" />
+        <defs>
+          <linearGradient id="ig-grad" x1="10" y1="12" x2="30" y2="28" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#f9a825" />
+            <stop offset="50%" stopColor="#e91e8c" />
+            <stop offset="100%" stopColor="#7c3aed" />
+          </linearGradient>
+        </defs>
+      </svg>
+    );
+  }
+
+  if (n.includes("paid") || n.includes("ads")) {
+    // Target / bullseye
+    return (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#0d1b2a" />
+        <circle cx="20" cy="20" r="9" stroke="#60a5fa" strokeWidth="2.2" />
+        <circle cx="20" cy="20" r="5" stroke="#3b82f6" strokeWidth="2.2" />
+        <circle cx="20" cy="20" r="2" fill="#93c5fd" />
+        <line x1="20" y1="8" x2="20" y2="11" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" />
+        <line x1="20" y1="29" x2="20" y2="32" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" />
+        <line x1="8" y1="20" x2="11" y2="20" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" />
+        <line x1="29" y1="20" x2="32" y2="20" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (n.includes("linkedin")) {
+    // LinkedIn "in" mark
+    return (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#0a1628" />
+        <rect x="11" y="17" width="4" height="12" rx="1" fill="#0ea5e9" />
+        <circle cx="13" cy="13" r="2.2" fill="#0ea5e9" />
+        <path d="M19 17h3.5v2s1-2.5 4-2.5c3.5 0 3.5 3 3.5 5v7h-4v-6c0-1.5-.5-2.5-1.8-2.5-1.5 0-2.2 1-2.2 2.5v6H19V17Z" fill="#38bdf8" />
+      </svg>
+    );
+  }
+
+  if (n.includes("content")) {
+    // Pen / feather
+    return (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#1a1a0d" />
+        <path d="M28 11C28 11 22 14 18 18C14 22 13 27 13 27L16 28L17 25L20 24L21 27L22 24C22 24 27 21 29 15C31 9 28 11 28 11Z" fill="#fde68a" stroke="#f59e0b" strokeWidth="1.2" />
+        <line x1="13" y1="27" x2="11" y2="29" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="21.5" cy="18.5" r="1.5" fill="#fbbf24" />
+      </svg>
+    );
+  }
+
+  if (n.includes("email")) {
+    // Envelope
+    return (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#0f1f0f" />
+        <rect x="9" y="13" width="22" height="14" rx="3" stroke="#4ade80" strokeWidth="2" />
+        <path d="M9 15L20 22L31 15" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (n.includes("video") || n.includes("youtube")) {
+    // Play button
+    return (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#1a0000" />
+        <circle cx="20" cy="20" r="10" fill="#ef4444" />
+        <polygon points="17,15 28,20 17,25" fill="white" />
+      </svg>
+    );
+  }
+
+  // Default: generic sparkle / brand icon
+  return (
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+      <circle cx="20" cy="20" r="20" fill="#1a1a1a" />
+      <path d="M20 10 L21.5 18.5 L30 20 L21.5 21.5 L20 30 L18.5 21.5 L10 20 L18.5 18.5 Z" fill="#e5e5e5" />
+    </svg>
+  );
+}
+
 /* ── StoryButton ─────────────────────────────────────────────────────────── */
 function StoryButton({ href, children, delay = 0 }) {
   const { navigateWithTransition } = useViewTransition();
@@ -86,6 +193,7 @@ function StoryButton({ href, children, delay = 0 }) {
     <a
       href={href}
       onClick={(e) => {
+        e.stopPropagation();
         if (!href) return;
         e.preventDefault();
         navigateWithTransition(href);
@@ -307,11 +415,6 @@ export default function StorySlides() {
         clearTimeout(storyTimeout);
         storyTimeout = setTimeout(changeStory, STORY_DURATION);
       }, 500);
-
-      setTimeout(() => {
-        const icon = el.querySelector(".story-profile-icon img");
-        if (icon) icon.src = story.profileImg;
-      }, 600);
     }
 
     function handleClick() {
@@ -425,10 +528,9 @@ export default function StorySlides() {
             </div>
             <div className="w-full flex items-center gap-4 h-15">
               <div className="story-profile-icon relative w-10 h-10 rounded-full overflow-hidden shrink-0">
-                <img
-                  src={stories[0].profileImg}
-                  alt=""
-                  className="w-full h-full object-cover"
+                <ProfileIcon
+                  name={stories[activeStoryIndex].profileName}
+                  className="w-full h-full"
                 />
               </div>
               <div className="story-profile-name relative w-50 h-4.5 overflow-hidden [clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]">
