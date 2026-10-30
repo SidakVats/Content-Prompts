@@ -79,6 +79,67 @@ function ProfileIcon({ name, className = "" }) {
     );
   }
 
+  if (n.includes("b2b")) {
+    // Handshake / deal icon
+    return (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#0a1628" />
+        <path d="M10 22 L15 17 L19 19 L21 17 L25 19 L30 22" stroke="#38bdf8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M15 17 L15 14 M25 19 L25 16" stroke="#0ea5e9" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="15" cy="13" r="2" fill="#0ea5e9" />
+        <circle cx="25" cy="15" r="2" fill="#38bdf8" />
+        <path d="M10 22 C10 26 14 28 20 28 C26 28 30 26 30 22" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (n.includes("phygital")) {
+    // QR code / bridge icon
+    return (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#0d1a0d" />
+        <rect x="10" y="10" width="8" height="8" rx="1.5" stroke="#4ade80" strokeWidth="2" />
+        <rect x="22" y="10" width="8" height="8" rx="1.5" stroke="#4ade80" strokeWidth="2" />
+        <rect x="10" y="22" width="8" height="8" rx="1.5" stroke="#4ade80" strokeWidth="2" />
+        <rect x="12.5" y="12.5" width="3" height="3" rx="0.5" fill="#4ade80" />
+        <rect x="24.5" y="12.5" width="3" height="3" rx="0.5" fill="#4ade80" />
+        <rect x="12.5" y="24.5" width="3" height="3" rx="0.5" fill="#4ade80" />
+        <path d="M22 22 L25 22 L25 25 L28 25 L28 22 M25 25 L25 28 L28 28" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
+  if (n.includes("social commerce") || n.includes("commerce")) {
+    // Shopping bag with play arrow
+    return (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#1a0533" />
+        <path d="M14 16 L12 28 L28 28 L26 16 Z" stroke="url(#sc-grad)" strokeWidth="2.2" strokeLinejoin="round" />
+        <path d="M16 16 C16 12 24 12 24 16" stroke="url(#sc-grad)" strokeWidth="2.2" strokeLinecap="round" />
+        <polygon points="17,20 17,25 23,22.5" fill="#f472b6" />
+        <defs>
+          <linearGradient id="sc-grad" x1="12" y1="12" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#f9a825" />
+            <stop offset="100%" stopColor="#e91e8c" />
+          </linearGradient>
+        </defs>
+      </svg>
+    );
+  }
+
+  if (n.includes("small business") || n.includes("service business") || n.includes("service")) {
+    // Storefront / shop icon
+    return (
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#1a1000" />
+        <rect x="11" y="20" width="18" height="10" rx="1" stroke="#fbbf24" strokeWidth="2" />
+        <path d="M9 20 L11 14 L29 14 L31 20 Z" stroke="#fbbf24" strokeWidth="2" strokeLinejoin="round" />
+        <path d="M9 20 C9 22.5 11.5 24 13.5 22 C15.5 20 16.5 20 18.5 22 C20.5 24 21.5 24 23.5 22 C25.5 20 27.5 20.5 31 20" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" />
+        <rect x="17" y="23" width="6" height="7" rx="1" fill="#fbbf24" />
+      </svg>
+    );
+  }
+
   if (n.includes("linkedin")) {
     // LinkedIn "in" mark
     return (
