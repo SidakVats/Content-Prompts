@@ -6,7 +6,7 @@ export const stories = [
     title: ["Small budget,", "big results for", "your business"],
     linkLabel: "Read Article",
     linkSrc: "/sample-project/small-budget-big-results",
-    storyImg: "/stories/story-1.jpg",
+    storyImg: "/stories/story-1.jpg`09",
 
     projectSubtitle: "Digital Marketing Strategy",
     projectTitle: "Small Budget, Big Results",
