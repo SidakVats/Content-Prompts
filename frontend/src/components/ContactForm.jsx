@@ -13,7 +13,7 @@ export default function ContactForm() {
   const fieldsRef = useRef(null);
   const btnRef = useRef(null);
 
-  const [form, setForm] = useState({ name: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
 
   // ── Entrance animation ─────────────────────────────
@@ -63,7 +63,7 @@ export default function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.name.trim() || !form.phone.trim()) return;
+    if (!form.name.trim() || !form.phone.trim() || !form.email.trim()) return;
 
     setStatus("loading");
 
@@ -86,7 +86,7 @@ export default function ContactForm() {
 
       if (!res.ok) throw new Error("Network response was not ok");
       setStatus("success");
-      setForm({ name: "", phone: "", message: "" });
+      setForm({ name: "", phone: "", email: "", message: "" });
     } catch {
       setStatus("error");
     }
@@ -148,6 +148,19 @@ export default function ContactForm() {
           required
           aria-label="Phone number"
           className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-widest  px-5 py-4 outline-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200"
+          style={{ fontFamily: "var(--font-1, monospace)" }}
+        />
+
+        {/* Email */}
+        <input
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="EMAIL ADDRESS"
+          required
+          aria-label="Email address"
+          className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-widest px-5 py-4 outline-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200"
           style={{ fontFamily: "var(--font-1, monospace)" }}
         />
 
