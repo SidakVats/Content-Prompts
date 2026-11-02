@@ -317,7 +317,7 @@ export default function PreloaderHero() {
             preload="auto"
             className="hero-video w-full h-full object-cover"
           >
-            <source src="/hero-video.mp4" type="video/mp4" />
+            <source src="/hero-footage.mp4" type="video/mp4" />
           </video>
         </div>
 

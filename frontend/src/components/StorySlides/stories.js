@@ -6,12 +6,12 @@ export const stories = [
     title: ["Small budget,", "big results for", "your business"],
     linkLabel: "Read Article",
     linkSrc: "/sample-project/small-budget-big-results",
-    storyImg: "/stories/story-1.jpg`09",
+    storyImg: "/blogs/image2.png",
 
     projectSubtitle: "Digital Marketing Strategy",
     projectTitle: "Small Budget, Big Results",
     publishedDate: "30 October 2026",
-    bannerImg: "/stories/story-1.jpg",
+    bannerImg: "/blogs/image2.png",
 
     intro:
       "Your competitor isn't beating you because they spend more. They're beating you because they're easier to find. Visibility can be built without a huge budget — and here's the playbook small businesses need right now.",
@@ -72,7 +72,7 @@ export const stories = [
     nextIndex: "02 — 05",
     nextSlug: "b2b-buyers-decide-before-they-call",
     nextTitle: "B2B Buyers Decide Before They Call",
-    nextImg: "/stories/story-2.jpg",
+    nextImg: "/blogs/Strategic Outreach in the Spotlight.png",
   },
 
   {
@@ -82,12 +82,12 @@ export const stories = [
     title: ["Your B2B client", "has already decided", "before they call"],
     linkLabel: "Read Article",
     linkSrc: "/sample-project/b2b-buyers-decide-before-they-call",
-    storyImg: "/stories/story-2.jpg",
+    storyImg: "/blogs/image3.png",
 
     projectSubtitle: "B2B Growth Strategy",
     projectTitle: "B2B Buyers Decide Before They Call",
     publishedDate: "30 October 2026",
-    bannerImg: "/stories/story-2.jpg",
+    bannerImg: "/blogs/image3.png",
 
     intro:
       "By the time a B2B buyer fills in your contact form, most of their decision is already made. They've asked ChatGPT for a shortlist, watched a LinkedIn video, and quietly checked your competitors. If your brand didn't show up during that research, you were never in the running.",
@@ -140,7 +140,7 @@ export const stories = [
     nextIndex: "03 — 05",
     nextSlug: "phygital-marketing",
     nextTitle: "Phygital Marketing",
-    nextImg: "/stories/story-3.jpg",
+    nextImg: "/blogs/Augmented Reality Sneaker Shopping.png",
   },
 
   {
@@ -150,12 +150,12 @@ export const stories = [
     title: ["Where your customers", "actually live", "right now"],
     linkLabel: "Read Article",
     linkSrc: "/sample-project/phygital-marketing",
-    storyImg: "/stories/story-3.jpg",
+    storyImg: "/blogs/Augmented Reality Sneaker Shopping.png",
 
     projectSubtitle: "Phygital Experience",
     projectTitle: "Phygital Marketing",
     publishedDate: "30 October 2026",
-    bannerImg: "/stories/story-3.jpg",
+    bannerImg: "/blogs/Augmented Reality Sneaker Shopping.png",
 
     intro:
       "Your customer is standing in your store, holding your product, and checking your competitor's price on their phone. That moment is happening thousands of times a day. Brands that design for it win loyalty that lasts.",
@@ -209,7 +209,7 @@ export const stories = [
     nextIndex: "04 — 05",
     nextSlug: "social-commerce",
     nextTitle: "Social Commerce",
-    nextImg: "/stories/story-4.jpg",
+    nextImg: "/blogs/Golden Social Shopping Moment.png",
   },
 
   {
@@ -219,12 +219,12 @@ export const stories = [
     title: ["Can your posts", "sell themselves?", "The new rules"],
     linkLabel: "Read Article",
     linkSrc: "/sample-project/social-commerce",
-    storyImg: "/stories/story-4.jpg",
+    storyImg: "/blogs/Golden Social Shopping Moment.png",
 
     projectSubtitle: "Social Commerce",
     projectTitle: "Can Your Posts Sell Themselves?",
     publishedDate: "30 October 2026",
-    bannerImg: "/stories/story-4.jpg",
+    bannerImg: "/blogs/Golden Social Shopping Moment.png",
 
     intro:
       "Your customer just bought a product in 14 seconds. They never visited a website, never saw a checkout page and never left the app. They watched a Reel, tapped a tag and bought it. That's social commerce — and it's how a whole generation shops today.",
@@ -277,7 +277,7 @@ export const stories = [
     nextIndex: "05 — 05",
     nextSlug: "service-business-marketing",
     nextTitle: "Service Business Marketing",
-    nextImg: "/stories/story-5.jpg",
+    nextImg: "/blogs/Golden Glow Salon Success.png",
   },
 
   {
@@ -291,12 +291,12 @@ export const stories = [
     ],
     linkLabel: "Read Article",
     linkSrc: "/sample-project/service-business-marketing",
-    storyImg: "/stories/story-5.jpg",
+    storyImg: "/blogs/Golden Glow Salon Success.png",
 
     projectSubtitle: "Local & Service Marketing",
     projectTitle: "Why Customers Choose Your Competitor",
     publishedDate: "30 October 2026",
-    bannerImg: "/stories/story-5.jpg",
+    bannerImg: "/blogs/Golden Glow Salon Success.png",
 
     intro:
       "You do great work. Your clients love you. So why is the salon down the road fully booked while you're waiting for the phone to ring? In service businesses, the best provider doesn't always win. The most visible, most trusted one does.",
@@ -349,6 +349,6 @@ export const stories = [
     nextIndex: "01 — 05",
     nextSlug: "small-budget-big-results",
     nextTitle: "Small Budget, Big Results",
-    nextImg: "/stories/story-1.jpg",
-  },
+    nextImg: "/blogs/Warm Café, Cold Corporate City.png",
+  }
 ];

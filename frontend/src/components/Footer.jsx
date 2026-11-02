@@ -223,10 +223,10 @@ export default function Footer() {
             </h4>
 
             <a
-              href="mailto:hello@contentprompts.in"
+              href="mailto:contentprompts@gmail.com"
               className="text-sm text-[#f5f5f5]/65 hover:text-[#f5f5f5] transition-colors duration-200 mt-1"
             >
-              hello@contentprompts.in
+              contentprompts@gmail.com
             </a>
 
             <div className="h-px bg-[#f5f5f5]/10 my-1" />

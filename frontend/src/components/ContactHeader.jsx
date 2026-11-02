@@ -263,14 +263,14 @@ const ContactHeader = () => {
             [&nbsp;&nbsp;Start a Project&nbsp;&nbsp;]
           </a>
 
-          <span className="text-[#0f0f0f]/20 text-sm">—</span>
+          {/* <span className="text-[#0f0f0f]/20 text-sm">—</span>
 
           <a
             href="callto:+919910449552"
             className="no-underline font2 text-[0.85rem] md:text-[1rem] tracking-wide text-[#0f0f0f]/40 hover:text-[#0f0f0f] hover:opacity-60 transition-all duration-300"
           >
             [&nbsp;&nbsp;Call Us&nbsp;&nbsp;]
-          </a>
+          </a> */}
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import OtsukaCards from "@/components/OtsukaCards/OtsukaCards";
 import Banner from "@/components/Banner";
 import From from "@/components/From";
 import Brands from "@/components/Brands";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Banner/>
       <From/>
       <Brands/>
+      <ContactForm />
       <Footer/>
     </>
   );

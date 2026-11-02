@@ -557,10 +557,10 @@ export default function StorySlides() {
         className="relative w-full h-svh overflow-hidden cursor-pointer select-none"
       >
         {/* Background image */}
-        <div className="story-img-wrap absolute inset-0 overflow-hidden opacity-75">
-          <div className="story-img-inner absolute inset-0">
+        <div className="story-img-wrap absolute inset-0 overflow-hidden">
+          <div className="story-img-inner absolute inset-0 opacity-90">
             <img
-              src="/stories/story-1.jpg"
+              src="/blogs/image2.png"
               alt=""
               className="w-full h-full object-cover will-change-transform"
             />
