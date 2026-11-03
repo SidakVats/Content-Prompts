@@ -21,7 +21,11 @@ const From = () => {
         let p = trigger?.parentElement;
         while (p) {
           const oy = window.getComputedStyle(p).overflowY;
-          if ((oy === "auto" || oy === "scroll") && p.scrollHeight > p.clientHeight) return p;
+          if (
+            (oy === "auto" || oy === "scroll") &&
+            p.scrollHeight > p.clientHeight
+          )
+            return p;
           p = p.parentElement;
         }
         return window;
@@ -75,7 +79,7 @@ const From = () => {
       >
         <img
           ref={splitTopRef}
-          src="/from.png"
+          src="/FROM.svg"
           alt=""
           className="w-full h-[38%] object-contain scale-150 max-md:w-[60%] "
           style={{ willChange: "transform" }}
@@ -88,7 +92,7 @@ const From = () => {
       >
         <img
           ref={splitBottomRef}
-          src="/from.png"
+          src="/FROM.svg"
           alt=""
           className="w-full h-[40%] object-contain scale-[2] max-md:w-[60%]"
           style={{ willChange: "transform" }}

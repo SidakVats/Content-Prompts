@@ -5,67 +5,72 @@ import React, { useEffect, useRef, useState } from "react";
 
 const BRANDS_BASE = [
   {
-    grayscaleImage: "/clientLogos/aditya birla _b&W.png",
-    colorImage: "/clientLogos/aditya birla.png",
-    name: "Aditya Birla",
+    image: "/clientsLogos2/Chrome AKARSHAN Logo with Pink S Flair.png",
+    name: "Akarshan",
   },
   {
-    grayscaleImage: "/clientLogos/cred_b&w.png",
-    colorImage: "/clientLogos/cred.png",
-    name: "CRED",
+    image: "/clientsLogos2/Amritsr_Maharaja_Cuisine_Logo_Transparent.png",
+    name: "Amritsar Maharaja Cuisine",
   },
   {
-    grayscaleImage: "/clientLogos/EVALUESERVE_b&w.png",
-    colorImage: "/clientLogos/EVALUESERVE.png",
-    name: "EValueServe",
+    image: "/clientsLogos2/Fundly Glossy Logo and Tagline.png",
+    name: "Fundly",
   },
   {
-    grayscaleImage: "/clientLogos/indiabulls_b&w.png",
-    colorImage: "/clientLogos/indiabulls.png",
-    name: "Indiabulls",
+    image:
+      "/clientsLogos2/Glossy Amazon India Logo on Transparent Background.png",
+    name: "Amazon India",
   },
   {
-    grayscaleImage: "/clientLogos/intercell_b&w.png",
-    colorImage: "/clientLogos/intercell.png",
-    name: "Intercell",
+    image: "/clientsLogos2/Glossy Collect India Logo.png",
+    name: "Collect India",
   },
   {
-    grayscaleImage: "/clientLogos/luxofy_B&w.png",
-    colorImage: "/clientLogos/luxofy.png",
-    name: "Luxofy",
+    image: "/clientsLogos2/Glossy Flick Studios Logo.png",
+    name: "Flick Studios",
+  },
+  { image: "/clientsLogos2/Glossy LIC Emblem and Text Logo.png", name: "LIC" },
+
+  { image: "/clientsLogos2/Glossy Gold Noon Bilingual Logo.png", name: "Noon" },
+  {
+    image: "/clientsLogos2/Glossy Journey Experts Travel Logo.png",
+    name: "Journey Experts",
+  },
+
+  {
+    image: "/clientsLogos2/Glossy Blue Jain Akshi Logo.png",
+    name: "Jain Akshi",
+  },
+  { image: "/clientsLogos2/Glossy TMF Excellence Badge.png", name: "TMF" },
+  {
+    image: "/clientsLogos2/Koru Loan Glossy Green Spiral Logo.png",
+    name: "Koru Loan",
   },
   {
-    grayscaleImage: "/clientLogos/stasfin_B&W.png",
-    colorImage: "/clientLogos/stasfin.png",
-    name: "Stasfin",
+    image: "/clientsLogos2/Masala_Zone_Logo_Transparent.png",
+    name: "Masala Zone",
   },
   {
-    grayscaleImage: "/clientLogos/tide_b&w.png",
-    colorImage: "/clientLogos/tide.png",
-    name: "Tide",
+    image: "/clientsLogos2/Pastel Scale Wordmark Logo.png",
+    name: "Pastel Scale",
+  },
+  {
+    image: "/clientsLogos2/Simply Mortgages Logo.png",
+    name: "Simply Mortgages",
+  },
+  {
+    image: "/clientsLogos2/SouQ-A-Deals Yellow Shopping Logo.png",
+    name: "SouQ-A-Deals",
   },
 ];
 
-// Duplicate so the seamless loop always fills wide screens
-const BRANDS = [...BRANDS_BASE, ...BRANDS_BASE];
-
 function BrandLogo({ item }) {
   return (
-    <div
-      className="group relative shrink-0 cursor-pointer flex items-center justify-center"
-      style={{ width: "200px", height: "100px" }}
-    >
-      {/* Grayscale */}
+    <div className="group shrink-0 cursor-pointer flex items-center justify-center w-40 h-14 2xl:w-50 2xl:h-18">
       <img
-        src={item.grayscaleImage}
+        src={item.image}
         alt={item.name}
-        className="absolute inset-0 w-full h-full object-contain opacity-50 transition-opacity duration-300 group-hover:opacity-0"
-      />
-      {/* Colour on hover */}
-      <img
-        src={item.colorImage}
-        alt={item.name}
-        className="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="w-full h-full object-contain opacity-70 grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
       />
     </div>
   );
@@ -108,7 +113,7 @@ function InfiniteMarquee({ items, speed = "slow", pauseOnHover = true }) {
     >
       <div
         ref={scrollerRef}
-        className={`flex items-center gap-0 md:gap-14 w-max ${ready ? "animate-marquee" : ""}`}
+        className={`flex items-center gap-5 md:gap-20 w-max ${ready ? "animate-marquee" : ""}`}
       >
         {/* Render the list twice inside the scroller for seamless loop */}
         {[...items, ...items].map((item, idx) => (

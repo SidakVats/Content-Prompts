@@ -100,12 +100,12 @@ export default function ContactForm() {
       {/* ── Big title ── */}
       <div ref={titleRef} className="text-center mb-3">
         <h2
-          className="font3 tracking-tighter  leading-none text-[4vh] text-[#9E9E9E] uppercase"
+          className="font3 leading-none text-[3vh] text-[#9E9E9E] uppercase"
           
         >
           CONTENT
           <br />
-          <span className="text-[7vh] font2">PROMPTS</span>
+          <span className="text-[6vh] tracking-tighter font2">PROMPTS</span>
         </h2>
       </div>
 
@@ -134,8 +134,7 @@ export default function ContactForm() {
           placeholder="YOUR NAME"
           required
           aria-label="Your name"
-          className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-widest px-5 py-4 outline-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200"
-          style={{ fontFamily: "var(--font-1, monospace)" }}
+          className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-wide px-4 py-3.5 outline-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200 rounded font3"
         />
 
         {/* Phone */}
@@ -147,8 +146,7 @@ export default function ContactForm() {
           placeholder="PHONE NUMBER"
           required
           aria-label="Phone number"
-          className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-widest  px-5 py-4 outline-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200"
-          style={{ fontFamily: "var(--font-1, monospace)" }}
+          className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-wide  px-4 py-3.5 outline-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200 rounded font3"
         />
 
         {/* Email */}
@@ -160,8 +158,7 @@ export default function ContactForm() {
           placeholder="EMAIL ADDRESS"
           required
           aria-label="Email address"
-          className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-widest px-5 py-4 outline-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200"
-          style={{ fontFamily: "var(--font-1, monospace)" }}
+          className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-wide px-4 py-3.5 outline-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200 rounded font3"
         />
 
         {/* Message — optional */}
@@ -172,8 +169,7 @@ export default function ContactForm() {
           placeholder="YOUR MESSAGE  ( OPTIONAL )"
           rows={4}
           aria-label="Your message (optional)"
-          className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-widest px-5 py-4 outline-none resize-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200"
-          style={{ fontFamily: "var(--font-1, monospace)" }}
+          className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-wide px-4 py-3.5 outline-none resize-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200 rounded font3"
         />
 
         {/* ── CTA button ── */}
