@@ -48,6 +48,8 @@ export const metadata = {
     "SEO",
     "social media management",
     "content writing",
+    "Web Development",
+    "Website Design",
     "D2C marketing",
     "performance marketing",
     "India",
@@ -72,13 +74,6 @@ export const metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Content Prompts — Digital Marketing Agency",
-    description:
-      "Full-funnel digital marketing for startups, D2C brands, and businesses that refuse to stay small.",
-    images: ["/logo.png"],
-  },
   robots: {
     index: true,
     follow: true,
@@ -99,7 +94,7 @@ export default function RootLayout({ children }) {
           {/* Logo lives here so it's inside the Lenis scroll container
               and scrolls away naturally while the fixed menu button stays put */}
           <div className="relative">
-            <div className="absolute top-4 left-4 md:top-6 md:left-7 z-40 pointer-events-none">
+            <div className="absolute top-4 left-4 md:top-7 md:left-7 z-40 pointer-events-none">
               <Logo />
             </div>
             {children}
