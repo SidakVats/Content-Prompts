@@ -13,7 +13,7 @@ const cardsData = [
     description:
       "Dominate search rankings with data-driven SEO strategies tailored to your industry. Keyword research, on-page optimisation, technical audits, and back-link building to drive organic traffic.",
     price: "₹8,000 – ₹15,000/mo",
-    thumbImg: "/OtsukaCards/SEO Strategy.png",
+    thumbImg: "/OtsukaCards/SEO Strategy.avif",
     // Forest green → teal — SEO growth feel
     sideGradient:
       "linear-gradient(135deg, #2d6a4f 0%, #40916c 50%, #52b788 100%)",
@@ -24,7 +24,7 @@ const cardsData = [
     description:
       "Words that inform, engage, and convert. SEO-optimised blogs, website copy, product descriptions, and long-form articles that speak your brand voice.",
     price: "₹500 – ₹2,000",
-    thumbImg: "/OtsukaCards/Content Writing.png",
+    thumbImg: "/OtsukaCards/Content Writing.avif",
     // Warm amber → ochre — editorial, warmth
     sideGradient:
       "linear-gradient(135deg, #b5451b 0%, #d4793a 50%, #e8a45a 100%)",
@@ -35,7 +35,7 @@ const cardsData = [
     description:
       "From channel setup and optimisation to scripting, thumbnail strategy, and growth tactics. We manage your YouTube presence end to end.",
     price: "₹10,000 – ₹50,000/mo",
-    thumbImg: "/OtsukaCards/YouTube Marketing.png",
+    thumbImg: "/OtsukaCards/YouTube Marketing.avif",
     // YouTube red gradient
     sideGradient:
       "linear-gradient(135deg, #9b0000 0%, #cc0000 45%, #ff4444 100%)",
@@ -46,7 +46,7 @@ const cardsData = [
     description:
       "Build a powerful professional brand on LinkedIn. Thought leadership posts, company pages, targeted B2B campaigns, and high-quality lead generation.",
     price: "₹8,000 – ₹20,000/mo",
-    thumbImg: "/OtsukaCards/LinkedIn Marketing.png",
+    thumbImg: "/OtsukaCards/LinkedIn Marketing.avif",
     // LinkedIn blue gradient
     sideGradient:
       "linear-gradient(135deg, #003f72 0%, #0077b5 50%, #00a0dc 100%)",
@@ -57,7 +57,7 @@ const cardsData = [
     description:
       "Reach billions of potential customers with precision-targeted Facebook campaigns — page management, content calendars, audience research, and paid ad creatives.",
     price: "₹8,000 – ₹18,000/mo",
-    thumbImg: "/OtsukaCards/Facebook Marketing.png",
+    thumbImg: "/OtsukaCards/Facebook Marketing.avif",
     // Facebook deep blue gradient
     sideGradient:
       "linear-gradient(135deg, #1a3a6b 0%, #1877f2 50%, #4298f5 100%)",
@@ -68,7 +68,7 @@ const cardsData = [
     description:
       "Trending Reels, Stories, carousels, and feed posts aligned with your brand aesthetic — driving engagement, discoverability, and conversions.",
     price: "₹7,000 – ₹18,000/mo",
-    thumbImg: "/OtsukaCards/Instagram Marketing.png",
+    thumbImg: "/OtsukaCards/Instagram Marketing.avif",
     // Instagram purple → pink → orange
     sideGradient:
       "linear-gradient(135deg, #833ab4 0%, #c13584 35%, #e1306c 65%, #fd5949 100%)",
@@ -79,7 +79,7 @@ const cardsData = [
     description:
       "Full-service management across all platforms — content planning, scheduling, community engagement, comment moderation, and monthly performance reporting.",
     price: "₹12,000 – ₹35,000/mo",
-    thumbImg: "/OtsukaCards/Social Media Management.png",
+    thumbImg: "/OtsukaCards/Social Media Management.avif",
     // Indigo → violet — all-in-one, depth
     sideGradient:
       "linear-gradient(135deg, #2b2d7e 0%, #5b4fcf 50%, #8b7ff0 100%)",
@@ -90,7 +90,7 @@ const cardsData = [
     description:
       "Thumb-stopping static banners, animated ads, and video creatives sized for all platforms — Meta, Google Display, YouTube, and LinkedIn.",
     price: "₹5,000 – ₹10,000/mo",
-    thumbImg: "/OtsukaCards/Social Media Ad Design.png",
+    thumbImg: "/OtsukaCards/Social Media Ad Design.avif",
     // Magenta → coral — creative energy
     sideGradient:
       "linear-gradient(135deg, #9d0063 0%, #d4006c 45%, #f4527a 100%)",
@@ -101,7 +101,7 @@ const cardsData = [
     description:
       "Listing optimisation, A+ content, keyword targeting, sponsored ads, inventory management, and account health monitoring to grow your sales.",
     price: "₹15,000 – ₹50,000/mo",
-    thumbImg: "/OtsukaCards/Amazon Account Management.png",
+    thumbImg: "/OtsukaCards/Amazon Account Management.avif",
     // Amazon orange gradient
     sideGradient:
       "linear-gradient(135deg, #8a4800 0%, #e47911 50%, #f7a940 100%)",
@@ -112,7 +112,7 @@ const cardsData = [
     description:
       "End-to-end management of your online store across Shopify, WooCommerce, Meesho, or Flipkart — uploads, pricing, reviews, and promotional campaigns.",
     price: "₹12,000 – ₹35,000/mo",
-    thumbImg: "/OtsukaCards/E-Commerce Management.png",
+    thumbImg: "/OtsukaCards/E-Commerce Management.avif",
     // Shopify green gradient
     sideGradient:
       "linear-gradient(135deg, #1b4332 0%, #2d6a4f 45%, #40916c 100%)",
@@ -123,7 +123,7 @@ const cardsData = [
     description:
       "Beautiful, responsive websites that reflect your brand identity and convert visitors into customers — landing pages, business sites, and portfolios.",
     price: "₹5,000 – ₹60,000",
-    thumbImg: "/OtsukaCards/Website Design.png",
+    thumbImg: "/OtsukaCards/Website Design.avif",
     // Slate blue → periwinkle — clean, digital craft
     sideGradient:
       "linear-gradient(135deg, #1e3a5f 0%, #2d6096 50%, #5b9bd5 100%)",
@@ -134,7 +134,7 @@ const cardsData = [
     description:
       "From WordPress and Shopify builds to custom React or full-stack development — clean code, solid backends, and seamless integrations to power your digital business.",
     price: "₹15,000 – ₹1,50,000",
-    thumbImg: "/OtsukaCards/Web Development.png",
+    thumbImg: "/OtsukaCards/Web Development.avif",
     // Dark charcoal → cool graphite — technical precision
     sideGradient:
       "linear-gradient(135deg, #1a1a2e 0%, #2d3561 50%, #4a5494 100%)",

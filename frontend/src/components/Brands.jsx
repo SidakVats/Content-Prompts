@@ -57,11 +57,7 @@ const BRANDS_BASE = [
   {
     image: "/clientsLogos2/Simply Mortgages Logo.png",
     name: "Simply Mortgages",
-  },
-  {
-    image: "/clientsLogos2/SouQ-A-Deals Yellow Shopping Logo.png",
-    name: "SouQ-A-Deals",
-  },
+  }
 ];
 
 function BrandLogo({ item }) {
