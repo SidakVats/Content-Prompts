@@ -131,7 +131,7 @@ export default function ContactForm() {
           name="name"
           value={form.name}
           onChange={handleChange}
-          placeholder="YOUR NAME"
+          placeholder="Your Name"
           required
           aria-label="Your name"
           className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-wide px-4 py-3.5 outline-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200 rounded font3"
@@ -143,7 +143,7 @@ export default function ContactForm() {
           name="phone"
           value={form.phone}
           onChange={handleChange}
-          placeholder="PHONE NUMBER"
+          placeholder="Phone Number"
           required
           aria-label="Phone number"
           className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-wide  px-4 py-3.5 outline-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200 rounded font3"
@@ -155,7 +155,7 @@ export default function ContactForm() {
           name="email"
           value={form.email}
           onChange={handleChange}
-          placeholder="EMAIL ADDRESS"
+          placeholder="Email Address"
           required
           aria-label="Email address"
           className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-wide px-4 py-3.5 outline-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200 rounded font3"
@@ -166,7 +166,7 @@ export default function ContactForm() {
           name="message"
           value={form.message}
           onChange={handleChange}
-          placeholder="YOUR MESSAGE  ( OPTIONAL )"
+          placeholder="Your Message (optional)"
           rows={4}
           aria-label="Your message (optional)"
           className="w-full bg-[#e8e6da] text-black placeholder-[#9b6a4a]/70 text-xs md:text-sm tracking-wide px-4 py-3.5 outline-none resize-none border border-transparent focus:border-[#e8190b]/40 transition-colors duration-200 rounded font3"
