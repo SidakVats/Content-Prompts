@@ -68,7 +68,7 @@ const Banner = () => {
         ref={bgRef}
         className="absolute inset-0 z-0 will-change-transform"
         style={{
-          backgroundImage: "url(/57802.png)",
+          backgroundImage: "url(/57802.avif)",
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
