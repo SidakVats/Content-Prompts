@@ -1,7 +1,10 @@
 ﻿export const metadata = {
-  title: "Terms & Conditions — Content Prompts",
+  title: "Terms & Conditions - Content Prompts",
   description:
     "Terms & Conditions applicable to the website contentprompts.pro and all services provided by Content Prompts.",
+  alternates: {
+    canonical: "https://contentprompts.pro/terms",
+  },
 };
 
 const SECTIONS = [

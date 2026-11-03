@@ -5,6 +5,21 @@ import ScrollRevealText from "@/components/about/ScrollRevealText/ScrollRevealTe
 import Footer from "@/components/shared/Footer/Footer";
 import React from "react";
 
+export const metadata = {
+  title: "About Us - Content Prompts",
+  description:
+    "Meet the team behind Content Prompts. We blend strategy, storytelling, and analytics to build growth engines for startups, D2C brands, and ambitious businesses.",
+  openGraph: {
+    title: "About Us — Content Prompts",
+    description:
+      "We are a digital marketing partner obsessed with building growth engines that keep working long after launch.",
+    url: "https://contentprompts.pro/about",
+  },
+  alternates: {
+    canonical: "https://contentprompts.pro/about",
+  },
+};
+
 const page = () => {
   return (
     <div>

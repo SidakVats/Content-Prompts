@@ -1,12 +1,14 @@
-"use client";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import SampleProjectRedirect from "./SampleProjectRedirect";
 
-// Redirect bare /sample-project → the first project slug
+export const metadata = {
+  title: "Blogs  - Content Prompts",
+  description:
+    "Browse real campaign stories and project breakdowns from Content Prompts — strategy, execution, and results across SEO, social media, and e-commerce.",
+  alternates: {
+    canonical: "https://contentprompts.pro/sample-project",
+  },
+};
+
 export default function SampleProjectRoot() {
-  const router = useRouter();
-  useEffect(() => {
-    router.replace("/sample-project/gunmetal-dream");
-  }, [router]);
-  return null;
+  return <SampleProjectRedirect />;
 }

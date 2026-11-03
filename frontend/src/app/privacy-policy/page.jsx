@@ -1,7 +1,10 @@
 ﻿export const metadata = {
-  title: "Privacy Policy — Content Prompts",
+  title: "Privacy Policy - Content Prompts",
   description:
     "How Content Prompts collects, uses and protects your personal information.",
+  alternates: {
+    canonical: "https://contentprompts.pro/privacy-policy",
+  },
 };
 
 const SECTIONS = [
