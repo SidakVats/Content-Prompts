@@ -122,6 +122,12 @@ function Nav({ onNavigate }) {
   const handleNavClick = (e, href) => {
     e.preventDefault();
     onNavigate(); // close menu
+
+    // If already on this page, skip the transition — pathname won't change
+    // so the reveal useEffect in Transition.jsx would never fire.
+    const currentPath = window.location.pathname;
+    if (currentPath === href) return;
+
     // Pass click coordinates so the ripple originates from where the user clicked
     animateTransition(e.clientX, e.clientY).then(() => router.push(href));
   };
