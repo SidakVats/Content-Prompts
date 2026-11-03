@@ -235,7 +235,7 @@ export default function Stats() {
                 </h4>
                 <div className="relative -mt-3 -mr-3 md:ml-0 md:-mt-1">
                   <img
-                    src="/stats/34+.png"
+                    src="/stats/34+.avif"
                     alt=""
                     className="w-56 h-76 lg:w-100 lg:h-60 object-cover block"
                   />
@@ -264,7 +264,7 @@ export default function Stats() {
               <div className="flex items-end justify-between">
                 <div className="relative -mb-4 -ml-4 lg:mb-[-1.15rem] lg:ml-[-1.15rem]">
                   <img
-                    src="/stats/where we make noise.png"
+                    src="/stats/where we make noise.avif"
                     alt=""
                     className="w-70 h-95 lg:w-50 lg:h-80 2xl:w-80 2xl:h-110 object-cover block"
                   />
@@ -297,7 +297,7 @@ export default function Stats() {
               className="relative rounded-2xl overflow-hidden transform-3d backface-hidden will-change-transform aspect-1/1.5 lg:aspect-[1/1.85] flex flex-col justify-start p-4 lg:p-[1.15rem] text-[#f5f5f5]"
             >
               <img
-                src="/stats/campaigns.png"
+                src="/stats/campaigns.avif"
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -322,7 +322,7 @@ export default function Stats() {
                 </p>
                 <div className="relative -mt-4 -mr-15">
                   <img
-                    src="/stats/26M+.png"
+                    src="/stats/26M+.avif"
                     alt=""
                     className="w-56 h-56 lg:w-55 lg:h-70 object-contain block rounded-3xl"
                   />

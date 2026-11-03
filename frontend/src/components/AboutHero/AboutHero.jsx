@@ -7,30 +7,30 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 /* --- marquee items ------------------------------------------------ */
 const MARQUEE_IMGS = [
-  { src: "/OtsukaCards/SEO Strategy.png", label: "SEO Strategy" },
-  { src: "/OtsukaCards/Content Writing.png", label: "Content Writing" },
-  { src: "/OtsukaCards/YouTube Marketing.png", label: "YouTube Marketing" },
-  { src: "/OtsukaCards/LinkedIn Marketing.png", label: "LinkedIn Marketing" },
-  { src: "/OtsukaCards/Facebook Marketing.png", label: "Facebook Marketing" },
-  { src: "/OtsukaCards/Instagram Marketing.png", label: "Instagram Marketing" },
+  { src: "/OtsukaCards/SEO Strategy.avif", label: "SEO Strategy" },
+  { src: "/OtsukaCards/Content Writing.avif", label: "Content Writing" },
+  { src: "/OtsukaCards/YouTube Marketing.avif", label: "YouTube Marketing" },
+  { src: "/OtsukaCards/LinkedIn Marketing.avif", label: "LinkedIn Marketing" },
+  { src: "/OtsukaCards/Facebook Marketing.avif", label: "Facebook Marketing" },
+  { src: "/OtsukaCards/Instagram Marketing.avif", label: "Instagram Marketing" },
   {
-    src: "/OtsukaCards/Social Media Management.png",
+    src: "/OtsukaCards/Social Media Management.avif",
     label: "Social Media Management",
   },
   {
-    src: "/OtsukaCards/Social Media Ad Design.png",
+    src: "/OtsukaCards/Social Media Ad Design.avif",
     label: "Social Media Ad Design",
   },
   {
-    src: "/OtsukaCards/Amazon Account Management.png",
+    src: "/OtsukaCards/Amazon Account Management.avif",
     label: "Amazon Account Management",
   },
   {
-    src: "/OtsukaCards/E-Commerce Management.png",
+    src: "/OtsukaCards/E-Commerce Management.avif",
     label: "E-Commerce Management",
   },
-  { src: "/OtsukaCards/Website Design.png", label: "Website Design" },
-  { src: "/OtsukaCards/Web Development.png", label: "Web Development" },
+  { src: "/OtsukaCards/Website Design.avif", label: "Website Design" },
+  { src: "/OtsukaCards/Web Development.avif", label: "Web Development" },
 ];
 
 /* --- copy blocks -------------------------------------------------- */
