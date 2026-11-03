@@ -5,57 +5,57 @@ import React, { useEffect, useRef, useState } from "react";
 
 const BRANDS_BASE = [
   {
-    image: "/clientsLogos/Chrome AKARSHAN Logo with Pink S Flair.png",
+    image: "/clients/Chrome AKARSHAN Logo with Pink S Flair.png",
     name: "Akarshan",
   },
   {
-    image: "/clientsLogos/Amritsr_Maharaja_Cuisine_Logo_Transparent.png",
+    image: "/clients/Amritsr_Maharaja_Cuisine_Logo_Transparent.png",
     name: "Amritsar Maharaja Cuisine",
   },
   {
-    image: "/clientsLogos/Fundly Glossy Logo and Tagline.png",
+    image: "/clients/Fundly Glossy Logo and Tagline.png",
     name: "Fundly",
   },
   {
     image:
-      "/clientsLogos/Glossy Amazon India Logo on Transparent Background.png",
+      "/clients/Glossy Amazon India Logo on Transparent Background.png",
     name: "Amazon India",
   },
   {
-    image: "/clientsLogos/Glossy Collect India Logo.png",
+    image: "/clients/Glossy Collect India Logo.png",
     name: "Collect India",
   },
   {
-    image: "/clientsLogos/Glossy Flick Studios Logo.png",
+    image: "/clients/Glossy Flick Studios Logo.png",
     name: "Flick Studios",
   },
-  { image: "/clientsLogos/Glossy LIC Emblem and Text Logo.png", name: "LIC" },
+  { image: "/clients/Glossy LIC Emblem and Text Logo.png", name: "LIC" },
 
-  { image: "/clientsLogos/Glossy Gold Noon Bilingual Logo.png", name: "Noon" },
+  { image: "/clients/Glossy Gold Noon Bilingual Logo.png", name: "Noon" },
   {
-    image: "/clientsLogos/Glossy Journey Experts Travel Logo.png",
+    image: "/clients/Glossy Journey Experts Travel Logo.png",
     name: "Journey Experts",
   },
 
   {
-    image: "/clientsLogos/Glossy Blue Jain Akshi Logo.png",
+    image: "/clients/Glossy Blue Jain Akshi Logo.png",
     name: "Jain Akshi",
   },
-  { image: "/clientsLogos/Glossy TMF Excellence Badge.png", name: "TMF" },
+  { image: "/clients/Glossy TMF Excellence Badge.png", name: "TMF" },
   {
-    image: "/clientsLogos/Koru Loan Glossy Green Spiral Logo.png",
+    image: "/clients/Koru Loan Glossy Green Spiral Logo.png",
     name: "Koru Loan",
   },
   {
-    image: "/clientsLogos/Masala_Zone_Logo_Transparent.png",
+    image: "/clients/Masala_Zone_Logo_Transparent.png",
     name: "Masala Zone",
   },
   {
-    image: "/clientsLogos/Pastel Scale Wordmark Logo.png",
+    image: "/clients/Pastel Scale Wordmark Logo.png",
     name: "Pastel Scale",
   },
   {
-    image: "/clientsLogos/Simply Mortgages Logo.png",
+    image: "/clients/Simply Mortgages Logo.png",
     name: "Simply Mortgages",
   }
 ];

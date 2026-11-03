@@ -159,7 +159,7 @@ export default function Footer() {
 
           <div className="w-70 md:w-70">
             <Image
-              src={"/logo1.svg"}
+              src={"/logos/logo-wordmark-light.svg"}
               width={5000}
               height={5000}
               className="object-contain"

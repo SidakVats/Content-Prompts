@@ -79,7 +79,7 @@ const SplitLogoReveal = () => {
       >
         <img
           ref={splitTopRef}
-          src="/FROM.svg"
+          src="/hero/logo-from.svg"
           alt=""
           className="w-full h-[38%] object-contain scale-150 max-md:w-[60%] "
           style={{ willChange: "transform" }}
@@ -92,7 +92,7 @@ const SplitLogoReveal = () => {
       >
         <img
           ref={splitBottomRef}
-          src="/FROM.svg"
+          src="/hero/logo-from.svg"
           alt=""
           className="w-full h-[40%] object-contain scale-[2] max-md:w-[60%]"
           style={{ willChange: "transform" }}

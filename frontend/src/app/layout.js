@@ -67,7 +67,7 @@ export const metadata = {
       "Full-funnel digital marketing for startups, D2C brands, and businesses that refuse to stay small.",
     images: [
       {
-        url: "/logo.png",
+        url: "/logos/logo-preloader.png",
         width: 1200,
         height: 630,
         alt: "Content Prompts",
@@ -86,7 +86,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${font1.variable} ${font2.variable} ${font3.variable} ${font4.variable} ${font5.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-black">
+      <body className="min-h-full flex flex-col bg-[#edeee8]">
         <Transition />
         <HamburgerMenu />
         <WhatsAppButton />

@@ -197,6 +197,8 @@ export default function PreloaderHero() {
 
     // Reveal firstStop immediately (marker starts there)
     timeline.set(firstStop, { opacity: 1 }, 0);
+    // Reveal the progress marker at the same moment as firstStop
+    timeline.set(progressMarker, { opacity: 1 }, 0);
     // Reveal secondStop just before marker moves to it
     timeline.set(secondStop, { opacity: 1 }, 0.24);
     // Reveal thirdStop just before marker moves to it
@@ -222,7 +224,7 @@ export default function PreloaderHero() {
       () =>
         moveMarkerTo(
           finalStop,
-          `<img src="/logo.png" alt="" style="width:50%;height:50%;object-fit:contain;" />`,
+          `<img src="/logos/logo-preloader.png" alt="" style="width:50%;height:50%;object-fit:contain;" />`,
         ),
       2.75,
     );
@@ -310,6 +312,7 @@ export default function PreloaderHero() {
           <div
             ref={progressMarkerRef}
             className="progress-marker absolute top-0 left-0 z-2 flex items-center justify-center bg-white font-mono font-medium text-[0.85rem] text-black will-change-transform"
+            style={{ opacity: 0 }}
           >
             <p>25</p>
           </div>
@@ -330,7 +333,7 @@ export default function PreloaderHero() {
             preload="auto"
             className="hero-video w-full h-full object-cover"
           >
-            <source src="/hero-footage.mp4" type="video/mp4" />
+            <source src="/hero/hero-footage.mp4" type="video/mp4" />
           </video>
         </div>
 

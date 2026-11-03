@@ -10,9 +10,9 @@ export default function Logo() {
   if (isHome) {
     return (
       <>
-        {/* Mobile: logo5, Desktop: logo3 */}
+        {/* Home page: light/cream logo on dark hero background */}
         <Image
-          src="/logo4.svg"
+          src="/logos/logo-icon-light.svg"
           alt="Content Prompts"
           width={5000}
           height={5000}
@@ -20,7 +20,7 @@ export default function Logo() {
           priority
         />
         <Image
-          src="/logo1.svg"
+          src="/logos/logo-wordmark-light.svg"
           alt="Content Prompts"
           width={5000}
           height={5000}
@@ -33,9 +33,9 @@ export default function Logo() {
 
   return (
     <>
-      {/* Mobile: logo6, Desktop: logo4 */}
+      {/* Other pages: dark logo on light background */}
       <Image
-        src="/logo3.svg"
+        src="/logos/logo-icon-dark.svg"
         alt="Content Prompts"
         width={5000}
         height={5000}
@@ -43,7 +43,7 @@ export default function Logo() {
         priority
       />
       <Image
-        src="/logo2.svg"
+        src="/logos/logo-wordmark-dark.svg"
         alt="Content Prompts"
         width={5000}
         height={5000}

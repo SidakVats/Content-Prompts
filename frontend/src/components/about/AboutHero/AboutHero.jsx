@@ -1,4 +1,4 @@
-ï»¿"use client";
+"use client";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -7,37 +7,37 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 /* --- marquee items ------------------------------------------------ */
 const MARQUEE_IMGS = [
-  { src: "/OtsukaCards/SEO Strategy.avif", label: "SEO Strategy" },
-  { src: "/OtsukaCards/Content Writing.avif", label: "Content Writing" },
-  { src: "/OtsukaCards/YouTube Marketing.avif", label: "YouTube Marketing" },
-  { src: "/OtsukaCards/LinkedIn Marketing.avif", label: "LinkedIn Marketing" },
-  { src: "/OtsukaCards/Facebook Marketing.avif", label: "Facebook Marketing" },
-  { src: "/OtsukaCards/Instagram Marketing.avif", label: "Instagram Marketing" },
+  { src: "/services/SEO Strategy.avif", label: "SEO Strategy" },
+  { src: "/services/Content Writing.avif", label: "Content Writing" },
+  { src: "/services/YouTube Marketing.avif", label: "YouTube Marketing" },
+  { src: "/services/LinkedIn Marketing.avif", label: "LinkedIn Marketing" },
+  { src: "/services/Facebook Marketing.avif", label: "Facebook Marketing" },
+  { src: "/services/Instagram Marketing.avif", label: "Instagram Marketing" },
   {
-    src: "/OtsukaCards/Social Media Management.avif",
+    src: "/services/Social Media Management.avif",
     label: "Social Media Management",
   },
   {
-    src: "/OtsukaCards/Social Media Ad Design.avif",
+    src: "/services/Social Media Ad Design.avif",
     label: "Social Media Ad Design",
   },
   {
-    src: "/OtsukaCards/Amazon Account Management.avif",
+    src: "/services/Amazon Account Management.avif",
     label: "Amazon Account Management",
   },
   {
-    src: "/OtsukaCards/E-Commerce Management.avif",
+    src: "/services/E-Commerce Management.avif",
     label: "E-Commerce Management",
   },
-  { src: "/OtsukaCards/Website Design.avif", label: "Website Design" },
-  { src: "/OtsukaCards/Web Development.avif", label: "Web Development" },
+  { src: "/services/Website Design.avif", label: "Website Design" },
+  { src: "/services/Web Development.avif", label: "Web Development" },
 ];
 
 /* --- copy blocks -------------------------------------------------- */
 const COPY_BLOCKS = [
   "We are a digital marketing partner obsessed with building growth engines that keep working long after launch. Our team blends data-driven strategy, bold storytelling, and sharp analytics to deliver results that are precise, transparent, and accountable from day one.",
-  "We work with D2C brands, funded startups, and businesses that have been stuck at the same number for too long. We map the path, build the funnel, and execute relentlessly â€” performance marketing, content, SEO, paid ads, social.",
-  "The brands we work with don't stay small. They scale. We make sure of it by obsessing over the details that most agencies skip â€” the targeting, the creative, the copy, the conversion rate, the follow-up.",
+  "We work with D2C brands, funded startups, and businesses that have been stuck at the same number for too long. We map the path, build the funnel, and execute relentlessly — performance marketing, content, SEO, paid ads, social.",
+  "The brands we work with don't stay small. They scale. We make sure of it by obsessing over the details that most agencies skip — the targeting, the creative, the copy, the conversion rate, the follow-up.",
 ];
 
 export default function AboutHero() {
@@ -216,7 +216,7 @@ export default function AboutHero() {
           ))}
         </div>
 
-        {/* paragraph progress bars â€” top-center, unchanged */}
+        {/* paragraph progress bars — top-center, unchanged */}
         <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[40%] px-8 flex items-center gap-1.5 z-20">
           {[fill0Ref, fill1Ref, fill2Ref].map((fillRef, i) => (
             <div
