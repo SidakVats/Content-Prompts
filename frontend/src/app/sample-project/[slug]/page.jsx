@@ -6,7 +6,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { stories } from "@/components/StorySlides/stories.js";
+import { stories } from "@/components/blogs/StorySlides/stories.js";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 

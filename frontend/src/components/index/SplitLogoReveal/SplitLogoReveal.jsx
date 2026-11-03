@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const From = () => {
+const SplitLogoReveal = () => {
   const splitTopRef = useRef(null);
   const splitBottomRef = useRef(null);
   const splitTriggerRef = useRef(null);
@@ -114,4 +114,4 @@ const From = () => {
   );
 };
 
-export default From;
+export default SplitLogoReveal;

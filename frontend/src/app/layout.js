@@ -1,10 +1,10 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import SmoothScroll from "@/components/SmoothScroll";
-import HamburgerMenu from "@/components/HamburgerMenu";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import Transition from "@/components/Transition";
-import Logo from "@/components/Logo";
+import SmoothScroll from "@/components/shared/SmoothScroll/SmoothScroll";
+import HamburgerMenu from "@/components/shared/HamburgerMenu/HamburgerMenu";
+import WhatsAppButton from "@/components/shared/WhatsAppButton/WhatsAppButton";
+import Transition from "@/components/shared/Transition/Transition";
+import Logo from "@/components/shared/Logo/Logo";
 
 const font1 = localFont({
   src: "./fonts/font1.ttf",

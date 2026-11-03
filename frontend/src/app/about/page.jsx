@@ -1,15 +1,15 @@
-import Stats from "@/components/Stats/Stats";
-import Testimonials from "@/components/Testimonials/Testimonials";
-import AboutHero from "@/components/AboutHero/AboutHero";
-import AnimeText from "@/components/AnimeText/AnimeText";
-import Footer from "@/components/Footer";
+import Stats from "@/components/about/Stats/Stats";
+import Testimonials from "@/components/about/Testimonials/Testimonials";
+import AboutHero from "@/components/about/AboutHero/AboutHero";
+import ScrollRevealText from "@/components/about/ScrollRevealText/ScrollRevealText";
+import Footer from "@/components/shared/Footer/Footer";
 import React from "react";
 
 const page = () => {
   return (
     <div>
       <AboutHero />
-      <AnimeText
+      <ScrollRevealText
         paragraphs={[
           "We are a digital marketing partner obsessed with building growth engines that keep working long after launch.",
           "Our team blends strategy, storytelling, and analytics to deliver results that are bold, precise, and accountable.",

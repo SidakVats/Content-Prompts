@@ -45,7 +45,7 @@ const ACCORDION_WORD_STAGGER = 0.015;
 const ACCORDION_DEFAULT_ACTIVE = 1;
 const ACCORDION_MOBILE_BREAKPOINT = 1000;
 
-const Accordion = ({ items = ACCORDION_ITEMS }) => {
+const ExpandingPanels = ({ items = ACCORDION_ITEMS }) => {
   const accordionRef = useRef(null);
   const accordionPanelsRef = useRef([]);
   const accordionSplitsRef = useRef([]);
@@ -321,4 +321,4 @@ const Accordion = ({ items = ACCORDION_ITEMS }) => {
   );
 };
 
-export default Accordion;
+export default ExpandingPanels;

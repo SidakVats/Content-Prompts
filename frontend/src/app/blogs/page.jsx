@@ -1,4 +1,4 @@
-import StorySlides from "@/components/StorySlides/StorySlides";
+import StorySlides from "@/components/blogs/StorySlides/StorySlides";
 
 export default function BlogsPage() {
   return (

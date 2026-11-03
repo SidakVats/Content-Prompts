@@ -1,5 +1,5 @@
 import React from 'react'
-import ContactHeader from '@/components/ContactHeader'
+import ContactHeader from '@/components/contact/ContactHeader/ContactHeader'
 
 const page = () => {
   return <ContactHeader />

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-export default function AnimeText({
+export default function ScrollRevealText({
   paragraphs = [],
   keywords = [],
   keywordColors = {},

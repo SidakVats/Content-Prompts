@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import { SplitText } from "gsap/SplitText";
-import About from "./About";
+import GrowthSection from "@/components/index/GrowthSection/GrowthSection";
 
 gsap.registerPlugin(Flip, SplitText);
 
@@ -351,7 +351,7 @@ export default function PreloaderHero() {
       </section>
 
       {/* <Brands /> */}
-      <About />
+      <GrowthSection />
     </>
   );
 }

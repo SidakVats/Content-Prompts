@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import gsap from "gsap";
-import { animateTransition } from "./Transition";
+import { animateTransition } from "@/components/shared/Transition/Transition";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
