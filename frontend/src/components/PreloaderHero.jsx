@@ -94,8 +94,8 @@ export default function PreloaderHero() {
       const tile = document.createElement("div");
       tile.style.width = `${tileSize}px`;
       tile.style.height = `${tileSize}px`;
-      tile.style.backgroundColor = "#c4d600";
-      tile.style.outline = "0.05px solid #c4d600";
+      tile.style.backgroundColor = "#b08968";
+      tile.style.outline = "0.05px solid #b08968";
       tile.style.willChange = "transform, opacity";
       preloaderGrid.appendChild(tile);
       tiles.push(tile);
@@ -113,11 +113,12 @@ export default function PreloaderHero() {
     const markerStops = [firstStop, secondStop, thirdStop, finalStop];
     markerStops.forEach((tile) => {
       tile.style.backgroundColor = "#fff";
-      tile.style.outline = "0.05px solid #fff";
+      tile.style.outline = "none";
     });
 
     const fadeInTiles = tiles.filter((tile) => !markerStops.includes(tile));
     gsap.set(fadeInTiles, { opacity: 0 });
+    gsap.set(markerStops, { opacity: 0 });
     gsap.set(progressMarker, { width: tileSize, height: tileSize });
 
     const gridWidth = totalColumns * tileSize;
@@ -194,11 +195,23 @@ export default function PreloaderHero() {
       0,
     );
 
-    // Phase 2 — marker stops light up
-    timeline.fromTo(
+    // Reveal firstStop immediately (marker starts there)
+    timeline.set(firstStop, { opacity: 1 }, 0);
+    // Reveal secondStop just before marker moves to it
+    timeline.set(secondStop, { opacity: 1 }, 0.24);
+    // Reveal thirdStop just before marker moves to it
+    timeline.set(thirdStop, { opacity: 1 }, 1.49);
+    // Reveal finalStop just before marker moves to it
+    timeline.set(finalStop, { opacity: 1 }, 2.74);
+
+    // Phase 2 — marker stops fade back to tile color
+    timeline.to(
       [firstStop, secondStop, thirdStop],
-      { backgroundColor: "#ffffff" },
-      { backgroundColor: "#C4D600", duration: 0.125, stagger: 0.25 },
+      {
+        backgroundColor: "#b08968",
+        duration: 0.125,
+        stagger: 0.25,
+      },
       2.75,
     );
 
