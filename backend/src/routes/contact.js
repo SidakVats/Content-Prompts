@@ -146,7 +146,7 @@ router.post("/", async (req, res) => {
             <td style="background-color:#1c1c1c;padding:20px 18px;border-radius:3px;">
               <p style="margin:0 0 14px;font-size:14px;font-weight:300;color:#e8e6da;line-height:1.7;font-family:${f};">Hey ${name}, your message reached us.</p>
               <p style="margin:0 0 14px;font-size:13px;font-weight:300;color:#666;line-height:1.7;font-family:${f};">We'll review it and get back to you within one business day. If it's urgent, reply to this email directly.</p>
-              <p style="margin:0;font-size:13px;font-weight:300;color:#444;line-height:1.7;font-family:${f};">Content Prompts is a full-funnel digital marketing agency built for brands that want to grow — not just show up. Strategy, content, SEO, and performance — all under one roof.</p>
+              <p style="margin:0;font-size:13px;font-weight:300;color:#666;line-height:1.7;font-family:${f};">Content Prompts is a full-funnel digital marketing agency built for brands that want to grow — not just show up. Strategy, content, SEO, and performance — all under one roof.</p>
             </td>
           </tr></table>
         </td></tr>
@@ -158,37 +158,29 @@ router.post("/", async (req, res) => {
 
         <!-- Social icons -->
         <tr><td style="padding-top:24px;">
-          <p style="margin:0 0 12px;font-size:9px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:#333;font-family:${f};">Follow Us</p>
+          <p style="margin:0 0 12px;font-size:9px;font-weight:300;letter-spacing:0.1em;text-transform:uppercase;color:#666;font-family:${f};">Follow Us</p>
           <table cellpadding="0" cellspacing="0"><tr>
             <td style="padding-right:8px;">
-              <a href="https://www.linkedin.com/company/content-prompts/home/" style="display:inline-block;width:30px;height:30px;background-color:#1c1c1c;border-radius:50%;text-align:center;line-height:30px;text-decoration:none;" title="LinkedIn">
-                <img src="https://cdn.simpleicons.org/linkedin/555555" width="13" height="13" alt="LinkedIn" style="display:inline-block;vertical-align:middle;margin-top:-1px;" />
-              </a>
+              <a href="https://www.linkedin.com/company/content-prompts/home/" style="display:inline-block;width:32px;height:32px;background-color:#1c1c1c;border-radius:50%;border:1px solid rgba(245,245,245,0.15);text-align:center;line-height:32px;text-decoration:none;font-family:${f};font-size:12px;font-weight:700;color:#777777;" title="LinkedIn">in</a>
             </td>
             <td style="padding-right:8px;">
-              <a href="https://www.facebook.com/people/Content-Prompts/100063965808672/" style="display:inline-block;width:30px;height:30px;background-color:#1c1c1c;border-radius:50%;text-align:center;line-height:30px;text-decoration:none;" title="Facebook">
-                <img src="https://cdn.simpleicons.org/facebook/555555" width="13" height="13" alt="Facebook" style="display:inline-block;vertical-align:middle;margin-top:-1px;" />
-              </a>
+              <a href="https://www.facebook.com/people/Content-Prompts/100063965808672/" style="display:inline-block;width:32px;height:32px;background-color:#1c1c1c;border-radius:50%;border:1px solid rgba(245,245,245,0.15);text-align:center;line-height:32px;text-decoration:none;font-family:${f};font-size:13px;font-weight:700;color:#777777;" title="Facebook">f</a>
             </td>
             <td style="padding-right:8px;">
-              <a href="https://www.instagram.com/contentpromptspro" style="display:inline-block;width:30px;height:30px;background-color:#1c1c1c;border-radius:50%;text-align:center;line-height:30px;text-decoration:none;" title="Instagram">
-                <img src="https://cdn.simpleicons.org/instagram/555555" width="13" height="13" alt="Instagram" style="display:inline-block;vertical-align:middle;margin-top:-1px;" />
-              </a>
+              <a href="https://www.instagram.com/contentpromptspro" style="display:inline-block;width:32px;height:32px;background-color:#1c1c1c;border-radius:50%;border:1px solid rgba(245,245,245,0.15);text-align:center;line-height:32px;text-decoration:none;font-family:${f};font-size:11px;font-weight:700;color:#777777;" title="Instagram">ig</a>
             </td>
             <td>
-              <a href="https://www.youtube.com/@contentprompts" style="display:inline-block;width:30px;height:30px;background-color:#1c1c1c;border-radius:50%;text-align:center;line-height:30px;text-decoration:none;" title="YouTube">
-                <img src="https://cdn.simpleicons.org/youtube/555555" width="13" height="13" alt="YouTube" style="display:inline-block;vertical-align:middle;margin-top:-1px;" />
-              </a>
+              <a href="https://www.youtube.com/@contentprompts" style="display:inline-block;width:32px;height:32px;background-color:#1c1c1c;border-radius:50%;border:1px solid rgba(245,245,245,0.15);text-align:center;line-height:32px;text-decoration:none;font-family:${f};font-size:11px;font-weight:700;color:#777777;" title="YouTube">yt</a>
             </td>
           </tr></table>
         </td></tr>
 
         <!-- Footer -->
         <tr><td style="padding-top:20px;">
-          <p style="margin:0;font-size:10px;font-weight:300;color:#333;letter-spacing:0.06em;font-family:${f};">
-            &copy; ${now.getFullYear()} Content Prompts &nbsp;&middot;&nbsp; <a href="https://contentprompts.pro" style="color:#333;text-decoration:none;">contentprompts.pro</a>
+          <p style="margin:0;font-size:10px;font-weight:300;color:#444;letter-spacing:0.06em;font-family:${f};">
+            &copy; ${now.getFullYear()} Content Prompts &nbsp;&middot;&nbsp; <a href="https://contentprompts.pro" style="color:#444;text-decoration:none;">contentprompts.pro</a>
           </p>
-          <p style="margin:4px 0 0;font-size:10px;font-weight:300;color:#2a2a2a;font-family:${f};">
+          <p style="margin:4px 0 0;font-size:10px;font-weight:300;color:#444;font-family:${f};">
             You're receiving this because you submitted a contact form on our website.
           </p>
         </td></tr>
