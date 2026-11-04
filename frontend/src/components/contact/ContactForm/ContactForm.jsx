@@ -77,8 +77,8 @@ export default function ContactForm() {
     });
 
     try {
-      // Replace with your actual API endpoint
-      const res = await fetch("/api/contact", {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const res = await fetch(`${apiUrl}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
