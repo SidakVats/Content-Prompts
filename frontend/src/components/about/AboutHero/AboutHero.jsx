@@ -36,8 +36,8 @@ const MARQUEE_IMGS = [
 /* --- copy blocks -------------------------------------------------- */
 const COPY_BLOCKS = [
   "We are a digital marketing partner obsessed with building growth engines that keep working long after launch. Our team blends data-driven strategy, bold storytelling, and sharp analytics to deliver results that are precise, transparent, and accountable from day one.",
-  "We work with D2C brands, funded startups, and businesses that have been stuck at the same number for too long. We map the path, build the funnel, and execute relentlessly — performance marketing, content, SEO, paid ads, social.",
-  "The brands we work with don't stay small. They scale. We make sure of it by obsessing over the details that most agencies skip — the targeting, the creative, the copy, the conversion rate, the follow-up.",
+  "We work with D2C brands, funded startups, and businesses that have been stuck at the same number for too long. We map the path, build the funnel, and execute relentlessly â€” performance marketing, content, SEO, paid ads, social.",
+  "The brands we work with don't stay small. They scale. We make sure of it by obsessing over the details that most agencies skip â€” the targeting, the creative, the copy, the conversion rate, the follow-up.",
 ];
 
 export default function AboutHero() {
@@ -216,7 +216,7 @@ export default function AboutHero() {
           ))}
         </div>
 
-        {/* paragraph progress bars — top-center, unchanged */}
+        {/* paragraph progress bars â€” top-center, unchanged */}
         <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[40%] px-8 flex items-center gap-1.5 z-20">
           {[fill0Ref, fill1Ref, fill2Ref].map((fillRef, i) => (
             <div

@@ -207,14 +207,10 @@ export default function Stats() {
           <div className="flex flex-col gap-[0.85rem] min-w-0 transform-3d md:pt-11">
             <article
               ref={setCardRef(0)}
-              className="relative rounded-2xl overflow-hidden transform-3d backface-hidden will-change-transform aspect-3/2 flex flex-col justify-end px-3 py-1 text-[#f5f5f5]"
+              className="relative rounded-2xl bg-[#ffbab4] overflow-hidden transform-3d backface-hidden will-change-transform aspect-3/2 flex flex-col justify-end px-3 py-1 text-black"
             >
-              <img
-                src="/images/images/stats/stats-team.jpg"
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-[#0f0f0f] to-transparent pointer-events-none" />
+             
+              {/* <div className="absolute inset-0 bg-linear-to-t from-[#0f0f0f] to-transparent pointer-events-none" /> */}
               <div className="relative z-10 flex flex-col">
                 <p className="mono text-lg tracking-wide">
                   Ad spend we&apos;ve steered
