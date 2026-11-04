@@ -4,32 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { animateTransition } from "@/components/shared/Transition/Transition";
-
-// ─── Data ────────────────────────────────────────────────────────────────────
-
-const links = [
-  { title: "Index", href: "/" },
-  { title: "About Us", href: "/about" },
-  { title: "The CP Journal", href: "/blogs" },
-  // { title: "Our Work", href: "/work" },
-  { title: "Slide In", href: "/contact" },
-];
-
-const footerLinks = [
-  {
-    title: "Facebook",
-    href: "https://www.facebook.com/people/Content-Prompts/100063965808672/?mibextid=wwXIfr&rdid=EPIHvLTvrRyJl8gR&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1TFcoiKtCW%2F%3Fmibextid%3DwwXIfr",
-  },
-  {
-    title: "LinkedIn",
-    href: "https://www.linkedin.com/company/content-prompts/home/",
-  },
-  {
-    title: "Instagram",
-    href: "https://www.instagram.com/contentpromptspro?stkn=MW1lYXhtbGRzdTNmMg%3D%3D",
-  },
-  { title: "Youtube", href: "https://www.youtube.com/@contentprompts" },
-];
+import { NAV_LINKS, SOCIAL_LINKS } from "@/data/navigation";
 
 // ─── Animation configs ───────────────────────────────────────────────────────
 
@@ -139,7 +114,7 @@ function Nav({ onNavigate }) {
     >
       <nav className="px-4">
         <ul className="list-none mt-8 p-0">
-          {links.map(({ title, href }, i) => (
+          {NAV_LINKS.map(({ title, href }, i) => (
             <li
               key={title}
               ref={(el) => (linkRefs.current[i] = el)}
@@ -170,7 +145,7 @@ function Nav({ onNavigate }) {
 
       <footer className="px-4 pt-4">
         <ul className="list-none m-0 p-0 flex flex-wrap gap-x-4 gap-y-1.5">
-          {footerLinks.map(({ title, href }, i) => (
+          {SOCIAL_LINKS.map(({ title, href }, i) => (
             <li
               key={title}
               ref={(el) => (footerRefs.current[i] = el)}

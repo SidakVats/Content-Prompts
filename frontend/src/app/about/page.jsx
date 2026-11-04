@@ -4,63 +4,23 @@ import AboutHero from "@/components/about/AboutHero/AboutHero";
 import ScrollRevealText from "@/components/about/ScrollRevealText/ScrollRevealText";
 import Footer from "@/components/shared/Footer/Footer";
 import React from "react";
+import {
+  ABOUT_SCROLL_PARAGRAPHS,
+  ABOUT_SCROLL_KEYWORDS,
+  ABOUT_SCROLL_KEYWORD_COLORS,
+} from "@/data/about";
+import { SEO_ABOUT } from "@/data/seo";
 
-export const metadata = {
-  title: "About Us - Content Prompts",
-  description:
-    "Meet the team behind Content Prompts. We blend strategy, storytelling, and analytics to build growth engines for startups, D2C brands, and ambitious businesses.",
-  openGraph: {
-    title: "About Us — Content Prompts",
-    description:
-      "We are a digital marketing partner obsessed with building growth engines that keep working long after launch.",
-    url: "https://contentprompts.pro/about",
-  },
-  alternates: {
-    canonical: "https://contentprompts.pro/about",
-  },
-};
+export const metadata = SEO_ABOUT;
 
 const page = () => {
   return (
     <div>
       <AboutHero />
       <ScrollRevealText
-        paragraphs={[
-          "We are a digital marketing partner obsessed with building growth engines that keep working long after launch.",
-          "Our team blends strategy, storytelling, and analytics to deliver results that are bold, precise, and accountable.",
-          "Every business has a vision worth chasing. We map it, plan for it, and reach the right connections or people through the right channels.",
-          "We don't do generic. Every penny, every creative, every campaign is built around what moves your brand from good to unstoppable.",
-        ]}
-        keywords={[
-          "digital",
-          "growth",
-          "strategy",
-          "storytelling",
-          "analytics",
-          "bold",
-          "business",
-          "vision",
-          "connections",
-          "people",
-          "campaign",
-          "brand",
-          "unstoppable",
-        ]}
-        keywordColors={{
-          digital: "#216ad1",
-          growth: "#ff8356",
-          strategy: "#ffbab4",
-          storytelling: "#ff8356",
-          analytics: "#216ad1",
-          bold: "#ff8356",
-          business: "#ffbab4",
-          vision: "#216ad1",
-          connections: "#ff8356",
-          people: "#ff8356",
-          campaign: "#216ad1",
-          brand: "#ff8356",
-          unstoppable: "#ffbab4",
-        }}
+        paragraphs={ABOUT_SCROLL_PARAGRAPHS}
+        keywords={ABOUT_SCROLL_KEYWORDS}
+        keywordColors={ABOUT_SCROLL_KEYWORD_COLORS}
         highlightBg="245, 245, 245"
         pinDuration={4}
       />

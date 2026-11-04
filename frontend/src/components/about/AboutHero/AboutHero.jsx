@@ -3,42 +3,9 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import { SERVICES_MARQUEE_IMGS } from "@/data/services";
+import { ABOUT_COPY_BLOCKS } from "@/data/about";
 gsap.registerPlugin(ScrollTrigger, SplitText);
-
-/* --- marquee items ------------------------------------------------ */
-const MARQUEE_IMGS = [
-  { src: "/services/SEO Strategy.avif", label: "SEO Strategy" },
-  { src: "/services/Content Writing.avif", label: "Content Writing" },
-  { src: "/services/YouTube Marketing.avif", label: "YouTube Marketing" },
-  { src: "/services/LinkedIn Marketing.avif", label: "LinkedIn Marketing" },
-  { src: "/services/Facebook Marketing.avif", label: "Facebook Marketing" },
-  { src: "/services/Instagram Marketing.avif", label: "Instagram Marketing" },
-  {
-    src: "/services/Social Media Management.avif",
-    label: "Social Media Management",
-  },
-  {
-    src: "/services/Social Media Ad Design.avif",
-    label: "Social Media Ad Design",
-  },
-  {
-    src: "/services/Amazon Account Management.avif",
-    label: "Amazon Account Management",
-  },
-  {
-    src: "/services/E-Commerce Management.avif",
-    label: "E-Commerce Management",
-  },
-  { src: "/services/Website Design.avif", label: "Website Design" },
-  { src: "/services/Web Development.avif", label: "Web Development" },
-];
-
-/* --- copy blocks -------------------------------------------------- */
-const COPY_BLOCKS = [
-  "We are a digital marketing partner obsessed with building growth engines that keep working long after launch. Our team blends data-driven strategy, bold storytelling, and sharp analytics to deliver results that are precise, transparent, and accountable from day one.",
-  "We work with D2C brands, funded startups, and businesses that have been stuck at the same number for too long. We map the path, build the funnel, and execute relentlessly — performance marketing, content, SEO, paid ads, social.",
-  "The brands we work with don't stay small. They scale. We make sure of it by obsessing over the details that most agencies skip — the targeting, the creative, the copy, the conversion rate, the follow-up.",
-];
 
 export default function AboutHero() {
   const containerRef = useRef(null);
@@ -186,7 +153,7 @@ export default function AboutHero() {
   }, []);
 
   const blockRefList = [block0Ref, block1Ref, block2Ref];
-  const doubled = [...MARQUEE_IMGS, ...MARQUEE_IMGS];
+  const doubled = [...SERVICES_MARQUEE_IMGS, ...SERVICES_MARQUEE_IMGS];
 
   return (
     <div
@@ -203,7 +170,7 @@ export default function AboutHero() {
           className="absolute left-0 top-[40%] -translate-y-1/2 w-full
                      px-8 flex flex-col lg:flex-row gap-8 2xl:gap-16"
         >
-          {COPY_BLOCKS.map((text, i) => (
+          {ABOUT_COPY_BLOCKS.map((text, i) => (
             <div key={i} className="flex-1">
               <p
                 ref={blockRefList[i]}

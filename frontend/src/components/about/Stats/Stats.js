@@ -4,19 +4,9 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import { PARTNERS } from "@/data/stats";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
-
-const PARTNERS = [
-  "Meta",
-  "Google",
-  "YouTube",
-  "LinkedIn",
-  "Amazon Ads",
-  "Snapchat",
-  "Pinterest",
-  "TikTok",
-];
 
 // ─── Callout ──────────────────────────────────────────────────────────────────
 function Callout({

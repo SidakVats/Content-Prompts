@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
+import { CONTACT_SOCIAL_LINKS } from "@/data/contact";
 
 const ContactHeader = () => {
   const leftIrisRef = useRef(null);
@@ -131,14 +132,7 @@ const ContactHeader = () => {
     ));
   }, []);
 
-  const socialLinks = [
-    { name: "Instagram", url: "https://www.instagram.com/contentpromptspro?stkn=MW1lYXhtbGRzdTNmMg%3D%3D" },
-    [
-      { name: "Facebook", url: "https://www.facebook.com/people/Content-Prompts/100063965808672/?mibextid=wwXIfr&rdid=EPIHvLTvrRyJl8gR&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1TFcoiKtCW%2F%3Fmibextid%3DwwXIfr" },
-      { name: "Youtube", url: "https://www.youtube.com/@contentprompts" },
-    ],
-    { name: "LinkedIn", url: "https://www.linkedin.com/company/content-prompts/home/" },
-  ];
+  const socialLinks = CONTACT_SOCIAL_LINKS;
 
   return (
     <div className="w-screen h-dvh bg-[#edf1e8] flex flex-col overflow-hidden">
@@ -247,7 +241,7 @@ const ContactHeader = () => {
           </span>{" "}
           Drop us a line at{" "}
           <a
-            href="mailto:contentprompts@gmail.com"
+            href={`mailto:contentprompts@gmail.com`}
             className="text-[#0f0f0f] font-semibold underline underline-offset-3 decoration-[#0f0f0f]/20 hover:decoration-[#0f0f0f] transition-all"
           >
             contentprompts@gmail.com
@@ -257,7 +251,7 @@ const ContactHeader = () => {
         {/* CTAs */}
         <div className="flex items-center gap-6 mt-1">
           <a
-            href="mailto:contentprompts@gmail.com"
+            href={`mailto:contentprompts@gmail.com`}
             className="no-underline font2 text-[0.85rem] md:text-[1rem] tracking-wide text-[#0f0f0f] hover:opacity-60 transition-opacity duration-300"
           >
             [&nbsp;&nbsp;Start a Project&nbsp;&nbsp;]
