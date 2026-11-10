@@ -33,7 +33,7 @@ function AboutHeroMobile() {
       style={{ height: "100svh" }}
     >
       {/* Text — grows to fill remaining space, scrolls internally if needed */}
-      <div className="flex-1 min-h-0 overflow-y-auto px-6 pt-26 pb-4 flex flex-col justify-center gap-5">
+      <div className="flex-1 min-h-0 overflow-y-auto px-6 pt-24 pb-4 flex flex-col justify-center gap-5">
         <p className="text-[1rem] tracking-wide font2 leading-snug text-black">
           {ABOUT_COPY_BLOCKS[0]}
         </p>
@@ -50,9 +50,9 @@ function AboutHeroMobile() {
         >
           {doubled.map(({ src, label, size }, i) => {
             const heightClass =
-              size === "tall"   ? "h-36" :
-              size === "normal" ? "h-26" :
-                                  "h-18";
+              size === "tall"   ? "h-40" :
+              size === "normal" ? "h-30" :
+                                  "h-20";
             return (
               <div
                 key={i}
