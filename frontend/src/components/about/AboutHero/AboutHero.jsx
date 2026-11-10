@@ -52,7 +52,7 @@ function AboutHeroMobile() {
             const heightClass =
               size === "tall"   ? "h-40" :
               size === "normal" ? "h-30" :
-                                  "h-20";
+                                  "h-23";
             return (
               <div
                 key={i}

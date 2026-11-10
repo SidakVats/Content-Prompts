@@ -224,7 +224,7 @@ const ContactHeader = () => {
       </div>
 
       {/* ── Footer ── */}
-      <div className="shrink-0 px-6 md:px-9 pb-7 pt-2 flex flex-col gap-3">
+      <div className="shrink-0 px-4 md:px-9 pb-7 pt-2 flex flex-col gap-3">
         {/* Big listening headline */}
         <p className="text-[1.6rem] md:text-[2.5rem] font-medium leading-none tracking-tight text-[#0f0f0f]">
           Content Prompts is{" "}
