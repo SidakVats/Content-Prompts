@@ -124,30 +124,16 @@ export const SERVICES_CARDS = [
 ];
 
 // ─── Service marquee images (used in AboutHero) ───────────────────────────────
+// size: "tall" | "normal" | "short" — drives piano-key stagger in AboutHero
 
 export const SERVICES_MARQUEE_IMGS = [
-  { src: "/services/SEO Strategy.avif", label: "SEO Strategy" },
-  { src: "/services/Content Writing.avif", label: "Content Writing" },
-  { src: "/services/YouTube Marketing.avif", label: "YouTube Marketing" },
-  { src: "/services/LinkedIn Marketing.avif", label: "LinkedIn Marketing" },
-  { src: "/services/Facebook Marketing.avif", label: "Facebook Marketing" },
-  { src: "/services/Instagram Marketing.avif", label: "Instagram Marketing" },
-  {
-    src: "/services/Social Media Management.avif",
-    label: "Social Media Management",
-  },
-  {
-    src: "/services/Social Media Ad Design.avif",
-    label: "Social Media Ad Design",
-  },
-  {
-    src: "/services/Amazon Account Management.avif",
-    label: "Amazon Account Management",
-  },
-  {
-    src: "/services/E-Commerce Management.avif",
-    label: "E-Commerce Management",
-  },
-  { src: "/services/Website Design.avif", label: "Website Design" },
-  { src: "/services/Web Development.avif", label: "Web Development" },
+  { src: "/abouthero/Vibrant Bims Skincare Glow.png",           label: "Vibrant Bims Skincare Glow",           size: "tall"   },
+  { src: "/abouthero/Kiss Color.png",                           label: "Kiss Color",                           size: "short"  },
+  { src: "/abouthero/Romy_ The New Pump Collection.png",        label: "Romy: The New Pump Collection",        size: "tall"   },
+  { src: "/abouthero/Colorful Saree, Grayscale City.png",       label: "Colorful Saree, Grayscale City",       size: "normal" },
+  { src: "/abouthero/Sunflower Crown Editorial Collage.png",    label: "Sunflower Crown Editorial Collage",    size: "short"  },
+  { src: "/abouthero/Kiss Color(1).png",                        label: "Kiss Color 1",                         size: "tall"   },
+  { src: "/abouthero/The Psychology of Colors.png",             label: "The Psychology of Colors",             size: "normal" },
+  { src: "/abouthero/Kiss Color(2).png",                        label: "Kiss Color 2",                         size: "short"  },
+  { src: "/abouthero/phone.png",                        label: "phone",                         size: "normal"  },
 ];

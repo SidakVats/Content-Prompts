@@ -7,6 +7,74 @@ import { SERVICES_MARQUEE_IMGS } from "@/data/services";
 import { ABOUT_COPY_BLOCKS } from "@/data/about";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
+// ─── Mobile static layout ────────────────────────────────────────────────────
+function AboutHeroMobile() {
+  const trackRef = useRef(null);
+  const doubled = [...SERVICES_MARQUEE_IMGS, ...SERVICES_MARQUEE_IMGS];
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    let marqueePos = 0;
+    const tickerId = gsap.ticker.add(() => {
+      marqueePos -= 0.4;
+      const halfWidth = track.scrollWidth / 2;
+      if (halfWidth > 0 && marqueePos <= -halfWidth) marqueePos = 0;
+      gsap.set(track, { x: marqueePos });
+    });
+
+    return () => gsap.ticker.remove(tickerId);
+  }, []);
+
+  return (
+    <div
+      className="w-full bg-[#edeee8] flex flex-col"
+      style={{ height: "100svh" }}
+    >
+      {/* Text — grows to fill remaining space, scrolls internally if needed */}
+      <div className="flex-1 min-h-0 overflow-y-auto px-6 pt-28 pb-4 flex flex-col justify-center gap-5">
+        <p className="text-[1.05rem] leading-snug text-black">
+          {ABOUT_COPY_BLOCKS[0]}
+        </p>
+        <p className="text-[1.05rem] leading-snug text-black/55">
+          {ABOUT_COPY_BLOCKS[1]}
+        </p>
+      </div>
+
+      {/* Piano marquee — fixed height, always pinned to bottom */}
+      <div className="w-full overflow-hidden shrink-0 pb-5" style={{ height: "12rem" }}>
+        <div
+          ref={trackRef}
+          className="flex gap-2 items-end h-full will-change-transform"
+        >
+          {doubled.map(({ src, label, size }, i) => {
+            const heightClass =
+              size === "tall"   ? "h-36" :
+              size === "normal" ? "h-26" :
+                                  "h-18";
+            return (
+              <div
+                key={i}
+                className={`${heightClass} rounded-md overflow-hidden shrink-0`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={src}
+                  alt={label}
+                  className="h-full w-auto object-cover"
+                  loading={i < 16 ? "eager" : "lazy"}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Desktop scroll-pinned layout ────────────────────────────────────────────
 export default function AboutHero() {
   const containerRef = useRef(null);
   const heroRef = useRef(null);
@@ -17,9 +85,14 @@ export default function AboutHero() {
   const fill0Ref = useRef(null);
   const fill1Ref = useRef(null);
   const fill2Ref = useRef(null);
-  const scrollHintRef = useRef(null); // scroll indicator wrapper
+  const scrollHintRef = useRef(null);
+  const mobileRef = useRef(null);
+  const desktopRef = useRef(null);
 
   useEffect(() => {
+    // Only run scroll animation on md+ screens
+    if (window.innerWidth < 768) return;
+
     const container = containerRef.current;
     const hero = heroRef.current;
     const track = trackRef.current;
@@ -77,7 +150,6 @@ export default function AboutHero() {
       });
     }
 
-    /* --- dot bounce animation inside mouse icon --- */
     const dot = scrollHint?.querySelector(".scroll-dot");
     let dotAnim = null;
     if (dot) {
@@ -98,12 +170,10 @@ export default function AboutHero() {
       onUpdate: (self) => {
         const prog = self.progress;
 
-        /* fade out scroll hint as soon as user starts scrolling */
         if (scrollHint) {
           scrollHint.style.opacity = String(Math.max(0, 1 - prog * 8));
         }
 
-        /* story-bar fills */
         fills.forEach((fill, i) => {
           if (!fill) return;
           const start  = i / 3;
@@ -112,7 +182,6 @@ export default function AboutHero() {
           fill.style.transform = `scaleX(${scaleX})`;
         });
 
-        /* text transitions */
         if (prog <= 0.5) {
           animateBlock(splits[0], splits[1], prog / 0.5);
         } else {
@@ -122,7 +191,6 @@ export default function AboutHero() {
       },
     });
 
-    /* velocity-boosted marquee */
     let marqueePos = 0;
     let lastScroll = scroller === window ? window.scrollY : scroller.scrollTop;
     let rawVel = 0;
@@ -156,95 +224,100 @@ export default function AboutHero() {
   const doubled = [...SERVICES_MARQUEE_IMGS, ...SERVICES_MARQUEE_IMGS];
 
   return (
-    <div
-      ref={containerRef}
-      className="relative w-full"
-      style={{ height: "800vh" }}
-    >
+    <>
+      {/* ── Mobile: static, no scroll pinning ── */}
+      <div className="block md:hidden">
+        <AboutHeroMobile />
+      </div>
+
+      {/* ── Desktop: scroll-pinned animation ── */}
       <div
-        ref={heroRef}
-        className="fixed top-0 left-0 w-full h-svh overflow-hidden bg-[#edeee8]"
+        ref={containerRef}
+        className="relative w-full hidden md:block"
+        style={{ height: "800vh" }}
       >
-        {/* copy blocks */}
         <div
-          className="absolute left-0 top-[40%] -translate-y-1/2 w-full
-                     px-8 flex flex-col lg:flex-row gap-8 2xl:gap-16"
+          ref={heroRef}
+          className="fixed top-0 left-0 w-full h-svh overflow-hidden bg-[#edeee8]"
         >
-          {ABOUT_COPY_BLOCKS.map((text, i) => (
-            <div key={i} className="flex-1">
-              <p
-                ref={blockRefList[i]}
-                className="text-[1.2rem] md:text-[1.2rem] 2xl:text-[1.5rem]
-                          leading-snug 2xl:tracking-tighter text-black"
-              >
-                {text}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* paragraph progress bars — top-center, unchanged */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[40%] px-8 flex items-center gap-1.5 z-20">
-          {[fill0Ref, fill1Ref, fill2Ref].map((fillRef, i) => (
-            <div
-              key={i}
-              className="relative flex-1 h-0.75 rounded-full overflow-hidden bg-[#0f0f0f]/15"
-            >
-              <div
-                ref={fillRef}
-                className="absolute inset-0 bg-[#331C4F] origin-left will-change-transform"
-                style={{ transform: "scaleX(0)" }}
-              />
-            </div>
-          ))}
-        </div>
-        <div
-          ref={scrollHintRef}
-          className="absolute left-1/2 -translate-x-1/2 bottom-75 2xl:bottom-80
-                     flex flex-col items-center gap-2 z-20 pointer-events-none will-change-[opacity]"
-          style={{ opacity: 1 }}
-        >
-          {/* Mouse outline */}
-          <div className="w-5.5 h-8.5 rounded-[11px] border border-[#0f0f0f]/30 flex justify-center pt-1.5">
-            <div className="scroll-dot w-1.25 h-1.5 rounded-full bg-[#331C4F]/50 will-change-transform" />
-          </div>
-          {/* Label */}
-          <span
-            className="font2 uppercase text-[#353333]/40"
-            style={{ fontSize: "0.55rem", letterSpacing: "0.2em" }}
+          {/* copy blocks */}
+          <div
+            className="absolute left-0 top-[40%] -translate-y-1/2 w-full
+                       px-8 flex flex-col lg:flex-row gap-8 2xl:gap-16"
           >
-            Scroll
-          </span>
-        </div>
-
-        {/* marquee */}
-        <div className="absolute left-0 bottom-2 2xl:bottom-5 w-full h-70 overflow-hidden flex items-center">
-          <div ref={trackRef} className="flex gap-4 will-change-transform">
-            {doubled.map(({ src, label }, i) => (
-              <div
-                key={i}
-                className="relative w-50 2xl:w-60 h-60 2xl:h-70 rounded-md overflow-hidden shrink-0"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={src}
-                  alt={label}
-                  className="w-full h-full object-cover"
-                  loading={i < 12 ? "eager" : "lazy"}
-                />
-                <div className="absolute inset-x-0 bottom-0 px-3 py-2 bg-linear-to-t from-black/70 to-transparent">
-                  <span
-                    className="text-white 2xl:tracking-wider leading-none"
-                    style={{ fontSize: "0.85rem" }}
-                  >
-                    {label}
-                  </span>
-                </div>
+            {ABOUT_COPY_BLOCKS.map((text, i) => (
+              <div key={i} className="flex-1">
+                <p
+                  ref={blockRefList[i]}
+                  className="text-[1.2rem] md:text-[1.2rem] 2xl:text-[1.5rem]
+                            leading-snug 2xl:tracking-tighter text-black"
+                >
+                  {text}
+                </p>
               </div>
             ))}
           </div>
+
+          {/* paragraph progress bars */}
+          <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[40%] px-8 flex items-center gap-1.5 z-20">
+            {[fill0Ref, fill1Ref, fill2Ref].map((fillRef, i) => (
+              <div
+                key={i}
+                className="relative flex-1 h-0.75 rounded-full overflow-hidden bg-[#0f0f0f]/15"
+              >
+                <div
+                  ref={fillRef}
+                  className="absolute inset-0 bg-[#331C4F] origin-left will-change-transform"
+                  style={{ transform: "scaleX(0)" }}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div
+            ref={scrollHintRef}
+            className="absolute left-1/2 -translate-x-1/2 bottom-75 2xl:bottom-80
+                       flex flex-col items-center gap-2 z-20 pointer-events-none will-change-[opacity]"
+            style={{ opacity: 1 }}
+          >
+            <div className="w-5.5 h-8.5 rounded-[11px] border border-[#0f0f0f]/30 flex justify-center pt-1.5">
+              <div className="scroll-dot w-1.25 h-1.5 rounded-full bg-[#331C4F]/50 will-change-transform" />
+            </div>
+            <span
+              className="font2 uppercase text-[#353333]/40"
+              style={{ fontSize: "0.55rem", letterSpacing: "0.2em" }}
+            >
+              Scroll
+            </span>
+          </div>
+
+          {/* marquee */}
+          <div className="absolute left-0 bottom-2 2xl:bottom-5 w-full overflow-hidden" style={{ height: "17rem" }}>
+            <div ref={trackRef} className="flex gap-3 items-end h-full will-change-transform">
+              {doubled.map(({ src, label, size }, i) => {
+                const heightClass =
+                  size === "tall"   ? "h-64 2xl:h-[17rem]" :
+                  size === "normal" ? "h-48 2xl:h-56"      :
+                                      "h-36 2xl:h-40";
+                return (
+                  <div
+                    key={i}
+                    className={`${heightClass} rounded-md overflow-hidden shrink-0`}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={src}
+                      alt={label}
+                      className="h-full w-auto object-cover"
+                      loading={i < 16 ? "eager" : "lazy"}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
