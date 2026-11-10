@@ -136,4 +136,6 @@ export const SERVICES_MARQUEE_IMGS = [
   { src: "/abouthero/The Psychology of Colors.png",             label: "The Psychology of Colors",             size: "normal" },
   { src: "/abouthero/Kiss Color(2).png",                        label: "Kiss Color 2",                         size: "short"  },
   { src: "/abouthero/phone.png",                        label: "phone",                         size: "normal"  },
+  { src: "/abouthero/stories.png",                        label: "stories",                         size: "short"  },
+  { src: "/abouthero/pizza.png",                        label: "pizza",                         size: "normal"  },
 ];
