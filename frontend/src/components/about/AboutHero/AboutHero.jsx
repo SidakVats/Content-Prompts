@@ -33,11 +33,11 @@ function AboutHeroMobile() {
       style={{ height: "100svh" }}
     >
       {/* Text — grows to fill remaining space, scrolls internally if needed */}
-      <div className="flex-1 min-h-0 overflow-y-auto px-6 pt-28 pb-4 flex flex-col justify-center gap-5">
-        <p className="text-[1.05rem] leading-snug text-black">
+      <div className="flex-1 min-h-0 overflow-y-auto px-6 pt-26 pb-4 flex flex-col justify-center gap-5">
+        <p className="text-[1rem] tracking-wide font2 leading-snug text-black">
           {ABOUT_COPY_BLOCKS[0]}
         </p>
-        <p className="text-[1.05rem] leading-snug text-black/55">
+        <p className="text-[1rem] leading-snug tracking-wide font2 text-black">
           {ABOUT_COPY_BLOCKS[1]}
         </p>
       </div>
