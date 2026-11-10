@@ -1,4 +1,4 @@
- // ─── Client brand logos (used in Brands infinite marquee) ─────────────────────
+// ─── Client brand logos (used in Brands infinite marquee) ─────────────────────
 
 export const BRANDS = [
   {
@@ -59,6 +59,14 @@ export const BRANDS = [
   },
   {
     image: "/clients/Simply Mortgages Logo.png",
+    name: "Simply Mortgages",
+  },
+  {
+    image: "/clients/EMI Essential Mortgages & Insurance Logo.png",
+    name: "Simply Mortgages",
+  },
+  {
+    image: "/clients/Essential Mortgages & Insurance Logo.png",
     name: "Simply Mortgages",
   },
 ];
