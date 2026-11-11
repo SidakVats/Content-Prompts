@@ -127,15 +127,15 @@ export const SERVICES_CARDS = [
 // size: "tall" | "normal" | "short" — drives piano-key stagger in AboutHero
 
 export const SERVICES_MARQUEE_IMGS = [
-  { src: "/abouthero/Vibrant Bims Skincare Glow.png",           label: "Vibrant Bims Skincare Glow",           size: "tall"   },
-  { src: "/abouthero/Kiss Color.png",                           label: "Kiss Color",                           size: "short"  },
-  { src: "/abouthero/Romy_ The New Pump Collection.png",        label: "Romy: The New Pump Collection",        size: "tall"   },
-  { src: "/abouthero/Colorful Saree, Grayscale City.png",       label: "Colorful Saree, Grayscale City",       size: "normal" },
-  { src: "/abouthero/Sunflower Crown Editorial Collage.png",    label: "Sunflower Crown Editorial Collage",    size: "short"  },
-  { src: "/abouthero/Kiss Color(1).png",                        label: "Kiss Color 1",                         size: "tall"   },
-  { src: "/abouthero/The Psychology of Colors.png",             label: "The Psychology of Colors",             size: "normal" },
-  { src: "/abouthero/Kiss Color(2).png",                        label: "Kiss Color 2",                         size: "short"  },
-  { src: "/abouthero/phone.png",                        label: "phone",                         size: "normal"  },
-  { src: "/abouthero/stories.png",                        label: "stories",                         size: "short"  },
-  { src: "/abouthero/pizza.png",                        label: "pizza",                         size: "normal"  },
+  { src: "/abouthero/Vibrant Bims Skincare Glow.avif",           label: "Vibrant Bims Skincare Glow",           size: "tall"   },
+  { src: "/abouthero/Kiss Color.avif",                           label: "Kiss Color",                           size: "short"  },
+  { src: "/abouthero/Romy_ The New Pump Collection.avif",        label: "Romy: The New Pump Collection",        size: "tall"   },
+  { src: "/abouthero/Colorful Saree, Grayscale City.avif",       label: "Colorful Saree, Grayscale City",       size: "normal" },
+  { src: "/abouthero/Sunflower Crown Editorial Collage.avif",    label: "Sunflower Crown Editorial Collage",    size: "short"  },
+  { src: "/abouthero/Kiss Color(1).avif",                        label: "Kiss Color 1",                         size: "tall"   },
+  { src: "/abouthero/The Psychology of Colors.avif",             label: "The Psychology of Colors",             size: "normal" },
+  { src: "/abouthero/Kiss Color(2).avif",                        label: "Kiss Color 2",                         size: "short"  },
+  { src: "/abouthero/phone.avif",                        label: "phone",                         size: "normal"  },
+  { src: "/abouthero/stories.avif",                        label: "stories",                         size: "short"  },
+  { src: "/abouthero/pizza.avif",                        label: "pizza",                         size: "normal"  },
 ];
