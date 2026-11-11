@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
@@ -220,10 +221,13 @@ export default function Stats() {
                   34+
                 </h4>
                 <div className="relative -mt-3 -mr-3 md:ml-0 md:-mt-1">
-                  <img
+                  <Image
                     src="/images/stats/34+.avif"
                     alt=""
+                    width={741}
+                    height={1162}
                     className="w-56 h-76 lg:w-100 lg:h-60 object-cover block"
+                    sizes="(max-width: 1024px) 224px, 400px"
                   />
                   <div
                     className="absolute inset-0 pointer-events-none"
@@ -249,10 +253,13 @@ export default function Stats() {
               </p>
               <div className="flex items-end justify-between">
                 <div className="relative -mb-4 -ml-4 lg:mb-[-1.15rem] lg:ml-[-1.15rem]">
-                  <img
+                  <Image
                     src="/images/stats/where we make noise.avif"
                     alt=""
+                    width={941}
+                    height={1549}
                     className="w-70 h-95 lg:w-50 lg:h-80 2xl:w-80 2xl:h-110 object-cover block"
+                    sizes="(max-width: 1024px) 280px, 320px"
                   />
                   {/* Fade edges into card background */}
                   <div
@@ -282,10 +289,13 @@ export default function Stats() {
               ref={setCardRef(3)}
               className="relative rounded-2xl overflow-hidden transform-3d backface-hidden will-change-transform aspect-1/1.5 lg:aspect-[1/1.85] flex flex-col justify-start p-4 lg:p-[1.15rem] text-[#f5f5f5]"
             >
-              <img
+              <Image
                 src="/images/stats/campaigns.avif"
                 alt=""
+                width={903}
+                height={1672}
                 className="absolute inset-0 w-full h-full object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-linear-to-b from-[rgba(15,15,15,0.9)] via-[rgba(15,15,15,0.25)] to-transparent pointer-events-none" />
               <div className="relative z-10 flex flex-col gap-1 lg:gap-[0.4rem]">
@@ -307,10 +317,13 @@ export default function Stats() {
                   Eyeballs <br/> we&apos;ve caught
                 </p>
                 <div className="relative -mt-4 -mr-15">
-                  <img
+                  <Image
                     src="/images/stats/26M+.avif"
                     alt=""
+                    width={919}
+                    height={968}
                     className="w-56 h-56 lg:w-55 lg:h-70 object-contain block rounded-3xl"
+                    sizes="(max-width: 1024px) 224px, 220px"
                   />
                  
                 </div>

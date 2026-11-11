@@ -316,7 +316,7 @@ export default function AboutHero() {
                       width={1122}
                       height={1402}
                       className="h-full w-auto object-cover"
-                      sizes="(max-width: 1280px) 200px, 280px"
+                      sizes="(max-width: 1280px) 192px, 256px"
                       loading={i < 16 ? "eager" : "lazy"}
                     />
                   </div>
