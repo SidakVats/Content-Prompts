@@ -327,26 +327,19 @@ export default function Testimonials() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-[#edeee8] text-[#0f0f0f]
-                 h-auto min-h-svh py-32 px-4 flex flex-col items-center gap-10
-                 md:py-36 md:px-6
-                 lg:h-[110vh] lg:min-h-175 lg:py-0 lg:px-0 lg:block lg:overflow-visible"
+      className="relative w-full overflow-hidden bg-[#edeee8] text-[#0f0f0f] h-auto min-h-svh py-32 px-4 flex flex-col items-center gap-10 md:py-36 md:px-6 lg:h-[110vh] lg:min-h-175 lg:py-0 lg:px-0 lg:block lg:overflow-visible"
     >
       {/* Heading */}
       <h2
         ref={headingRef}
-        className="w-full text-center text-[5vh] tracking-tighter leading-none lg:leading-22 uppercase font2 z-10
-                  md:text-[4vh] lg:text-[7vh]
-                   lg:absolute lg:top-[15%] lg:left-1/2 lg:-translate-x-1/2 lg:w-max lg:max-w-[calc(100%-2rem)] lg:pointer-events-none"
+        className="w-full text-center text-[5vh] tracking-tighter leading-none lg:leading-22 uppercase font2 z-10 md:text-[4vh] lg:text-[7vh] lg:absolute lg:top-[15%] lg:left-1/2 lg:-translate-x-1/2 lg:w-max lg:max-w-[calc(100%-2rem)] lg:pointer-events-none"
       >
         Proof We Play Well With Others
       </h2>
 
       {/* Cards — stacked on mobile, 2-col grid on tablet, fan on desktop */}
       <div
-        className="w-full flex flex-col items-center gap-4
-                   md:grid md:grid-cols-2 md:items-start md:gap-5 lg:-mt-15
-                   lg:absolute lg:block! lg:top-[63%] lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:w-0 lg:h-0 lg:gap-20"
+        className="w-full flex flex-col items-center gap-4 md:grid md:grid-cols-2 md:items-start md:gap-5 lg:-mt-15 lg:absolute lg:block! lg:top-[63%] lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:w-0 lg:h-0 lg:gap-20"
       >
         {TESTIMONIALS.map((item, i) => (
           <article
@@ -394,9 +387,9 @@ export default function Testimonials() {
             {/* Author */}
             <div className="flex items-center gap-3">
               <div className="flex flex-col gap-[0.15rem] min-w-0">
-                <h6 className="text-lg lg:text-[1.5rem] tracking-normal leading-none">
+                <p className="text-lg lg:text-[1.5rem] tracking-normal leading-none font-semibold">
                   {item.name}
-                </h6>
+                </p>
                 <p className="mono sm opacity-60">{item.role}</p>
               </div>
             </div>

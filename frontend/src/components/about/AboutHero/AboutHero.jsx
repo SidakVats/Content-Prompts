@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
@@ -58,11 +59,13 @@ function AboutHeroMobile() {
                 key={i}
                 className={`${heightClass} rounded-md overflow-hidden shrink-0`}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={src}
                   alt={label}
+                  width={1122}
+                  height={1402}
                   className="h-full w-auto object-cover"
+                  sizes="120px"
                   loading={i < 16 ? "eager" : "lazy"}
                 />
               </div>
@@ -247,8 +250,11 @@ export default function AboutHero() {
           >
             {ABOUT_COPY_BLOCKS.map((text, i) => (
               <div key={i} className="flex-1">
+                {/* Visually-hidden accessible label — SplitText mangles the DOM */}
+                <span className="sr-only">{text}</span>
                 <p
                   ref={blockRefList[i]}
+                  aria-hidden="true"
                   className="text-[1.2rem] md:text-[1.2rem] 2xl:text-[1.5rem]
                             leading-snug 2xl:tracking-tighter text-black"
                 >
@@ -304,11 +310,13 @@ export default function AboutHero() {
                     key={i}
                     className={`${heightClass} rounded-md overflow-hidden shrink-0`}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={src}
                       alt={label}
+                      width={1122}
+                      height={1402}
                       className="h-full w-auto object-cover"
+                      sizes="(max-width: 1280px) 200px, 280px"
                       loading={i < 16 ? "eager" : "lazy"}
                     />
                   </div>

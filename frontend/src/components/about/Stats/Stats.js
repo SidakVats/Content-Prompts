@@ -244,9 +244,9 @@ export default function Stats() {
               className="relative rounded-2xl overflow-hidden transform-3d backface-hidden will-change-transform aspect-[0.65/1] min-h-64 lg:min-h-88 flex flex-col justify-between p-4 lg:p-[1.15rem] text-white"
               style={{ background: "#1864d4" }}
             >
-              <h6 className="text-5xl md:text-[2.5rem] lg:text-[3.5rem] leading-[0.9]">
+              <p className="text-5xl md:text-[2.5rem] lg:text-[3.5rem] leading-[0.9]">
                 Where we make noise
-              </h6>
+              </p>
               <div className="flex items-end justify-between">
                 <div className="relative -mb-4 -ml-4 lg:mb-[-1.15rem] lg:ml-[-1.15rem]">
                   <img
