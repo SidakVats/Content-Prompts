@@ -5,7 +5,8 @@ import HamburgerMenu from "@/components/shared/HamburgerMenu/HamburgerMenu";
 import WhatsAppButton from "@/components/shared/WhatsAppButton/WhatsAppButton";
 import Transition from "@/components/shared/Transition/Transition";
 import Logo from "@/components/shared/Logo/Logo";
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalytics } from "@next/third-parties/google";
+import MetaPixel from "@/components/shared/MetaPixel/MetaPixel";
 
 const font1 = localFont({
   src: "./fonts/font1.ttf",
@@ -88,13 +89,12 @@ export default function RootLayout({ children }) {
       className={`${font1.variable} ${font2.variable} ${font3.variable} ${font4.variable} ${font5.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#edeee8]">
-         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        <MetaPixel />
         <Transition />
         <HamburgerMenu />
         <WhatsAppButton />
         <SmoothScroll>
-          {/* Logo lives here so it's inside the Lenis scroll container
-              and scrolls away naturally while the fixed menu button stays put */}
           <div className="relative">
             <div className="absolute top-4 left-4 md:top-7 md:left-7 z-40 pointer-events-none">
               <Logo />
