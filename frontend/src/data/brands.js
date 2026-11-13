@@ -64,9 +64,5 @@ export const BRANDS = [
   {
     image: "/clients/EMI Essential Mortgages & Insurance Logo.png",
     name: "Simply Mortgages",
-  },
-  {
-    image: "/clients/Essential Mortgages & Insurance Logo.png",
-    name: "Simply Mortgages",
-  },
+  }
 ];

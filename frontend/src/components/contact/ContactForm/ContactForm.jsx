@@ -95,6 +95,7 @@ export default function ContactForm() {
   return (
     <section
       ref={sectionRef}
+      id="contact-form"
       className="relative w-full bg-black py-24 px-4 flex flex-col items-center"
     >
       {/* ── Big title ── */}

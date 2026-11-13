@@ -94,8 +94,8 @@ export default function PreloaderHero() {
       const tile = document.createElement("div");
       tile.style.width = `${tileSize}px`;
       tile.style.height = `${tileSize}px`;
-      tile.style.backgroundColor = "#b08968";
-      tile.style.outline = "0.05px solid #b08968";
+      tile.style.backgroundColor = "#EFD2AC";
+      tile.style.outline = "0.05px solid #EFD2AC";
       tile.style.willChange = "transform, opacity";
       preloaderGrid.appendChild(tile);
       tiles.push(tile);
@@ -210,7 +210,7 @@ export default function PreloaderHero() {
     timeline.to(
       [firstStop, secondStop, thirdStop],
       {
-        backgroundColor: "#b08968",
+        backgroundColor: "#EFD2AC",
         duration: 0.125,
         stagger: 0.25,
       },

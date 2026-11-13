@@ -133,13 +133,30 @@ function Card({
 }) {
   const cubeRef = useRef(null);
   const wrapperRef = useRef(null);
-  const isMobile = useRef(false);
   const [mobile, setMobile] = useState(false);
+
+  // ── Card click → smooth GSAP scroll to form ─────────────────────────────
+  function handleCardClick() {
+    const target = document.getElementById("contact-form");
+    if (!target) return;
+
+    const targetY = target.getBoundingClientRect().top + window.scrollY;
+
+    // Proxy object lets GSAP tween window.scrollY
+    const proxy = { y: window.scrollY };
+    gsap.to(proxy, {
+      y: targetY,
+      duration: 1.6,
+      ease: "power4.inOut",
+      onUpdate() {
+        window.scrollTo(0, proxy.y);
+      },
+    });
+  }
 
   // ── Reveal animation ──────────────────────────────────
   useEffect(() => {
     const m = getIsMobile();
-    isMobile.current = m;
     setMobile(m);
     const el = wrapperRef.current;
     if (!el) return;
@@ -273,6 +290,10 @@ function Card({
     >
       {/* Cube */}
       <div
+        onClick={handleCardClick}
+        className="block w-full h-full cursor-pointer"
+      >
+      <div
         ref={cubeRef}
         className="otsuka-cube relative w-full h-full cursor-pointer"
       >
@@ -364,6 +385,7 @@ function Card({
             transform: `rotateX(-90deg) translateZ(${cardH / 2}px)`,
           }}
         />
+      </div>
       </div>
     </div>
   );
