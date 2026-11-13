@@ -5,6 +5,7 @@ import HamburgerMenu from "@/components/shared/HamburgerMenu/HamburgerMenu";
 import WhatsAppButton from "@/components/shared/WhatsAppButton/WhatsAppButton";
 import Transition from "@/components/shared/Transition/Transition";
 import Logo from "@/components/shared/Logo/Logo";
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const font1 = localFont({
   src: "./fonts/font1.ttf",
@@ -87,6 +88,7 @@ export default function RootLayout({ children }) {
       className={`${font1.variable} ${font2.variable} ${font3.variable} ${font4.variable} ${font5.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#edeee8]">
+         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         <Transition />
         <HamburgerMenu />
         <WhatsAppButton />
